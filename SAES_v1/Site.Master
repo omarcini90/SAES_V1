@@ -157,9 +157,9 @@
     </style>
 </head>
 <script type="text/javascript">
-    $(window).on("load", function () {
-        $(".loader").fadeOut("slow");
-    });
+    //$(window).on("load", function () {
+    //    $(".loader").fadeOut("slow");
+    //});
     function loader_push() {
         $(".loader1").fadeIn("slow");
     }
@@ -168,7 +168,7 @@
     }
 </script>
 <body class="nav-md footer_fixed">
-    <div class="loader">
+    <div class="loader" style="display:none;">
         <div class="clock"></div>
     </div>
     <div class="loader1" style="display: none;">
@@ -228,6 +228,12 @@
                                             <li id="documentos" runat="server"><a href="#">Documentos</a></li>
                                             <li id="procedencia" runat="server"><a href="#">Escuelas-Procedencia</a></li>
                                             <li id="pronostico" runat="server"><a href="#">Pronóstico-Nuevo Ingreso</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="Li1" runat="server"><a><i class="fas fa-file-upload" style="padding-right: 5px;"></i>Repositorio de Documentos <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li id="Li2" runat="server"><a href="#">Configuración</a></li>
+                                            <li id="Li3" runat="server"><a href="#">Expedientes</a></li>
                                         </ul>
                                     </li>
                                     <li id="escolares" runat="server"><a><i class="fas fa-graduation-cap" style="padding-right: 5px;"></i>Control Escolar <span class="fa fa-chevron-down"></span></a>

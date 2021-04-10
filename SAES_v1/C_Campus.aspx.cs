@@ -11,6 +11,14 @@ namespace SAES_v1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "show_tab", "show_pais();", true);
+            }
+        }
+
+        protected void admi_campus_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

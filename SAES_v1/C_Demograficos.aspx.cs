@@ -15,14 +15,14 @@ namespace SAES_v1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["usuario"] = "oalfaro";
-            //if (!HttpContext.Current.User.Identity.IsAuthenticated)
-            //{
-            //    Response.Redirect(FormsAuthentication.DefaultUrl);
-            //    Response.End();
-            //}
-            //else
-            //{
+
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect(FormsAuthentication.DefaultUrl);
+                Response.End();
+            }
+            else
+            {
                 if (!IsPostBack)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "show_tab", "show_pais();", true);
@@ -45,7 +45,7 @@ namespace SAES_v1
                 grid_estados_bind();
                 grid_delegaciones_bind();
                 grid_zip_bind();
-            //}
+            }
         }
 
         protected void combo_estatus()
@@ -927,8 +927,10 @@ namespace SAES_v1
             }
             else
             {
+                
                 cboe_zip.Items.Clear();
                 combo_estados_zip();
+                
             }
             add_zip.Attributes.Add("style", "display:none; margin-top:15px;");
             form_zip.Attributes.Add("style", "display:Block");

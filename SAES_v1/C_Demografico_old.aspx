@@ -1,7 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="C_Demograficos.aspx.cs" Inherits="SAES_v1.C_Demograficos" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="C_Demografico.aspx.cs" Inherits="SAES_v1.C_Demografico" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script>
+
+    <script type="text/javascript" class="init">        
+
         function save() {
             swal({
                 allowEscapeKey: false,
@@ -31,42 +33,54 @@
                     }
                 });
         }
+
         function incompletos(tab) {
             console.log(tab);
             if (tab == "pais_n") {
                 nuevo_pais();
+                $("#ContentPlaceHolder1_c_pais").addClass("focus");
+                $("#ContentPlaceHolder1_n_pais").addClass("focus");
             } else if (tab == "pais_u") {
                 update_pais();
+                //$("#ContentPlaceHolder1_c_pais").addClass("focus");
+                $("#ContentPlaceHolder1_n_pais").addClass("focus");
             } else if (tab == "estado_n") {
                 nuevo_estado();
+                $("#ContentPlaceHolder1_c_estado").addClass("focus");
+                $("#ContentPlaceHolder1_n_estado").addClass("focus");
+                $("#ContentPlaceHolder1_cbo_pais").addClass("focus");
             } else if (tab == "estado_u") {
                 update_estado();
+                //$("#ContentPlaceHolder1_c_estado").addClass("focus");
+                $("#ContentPlaceHolder1_n_estado").addClass("focus");
             } else if (tab == "delegacion_n") {
                 nuevo_delegacion();
+                $("#ContentPlaceHolder1_c_deleg").addClass("focus");
+                $("#ContentPlaceHolder1_n_deleg").addClass("focus");
+                $("#ContentPlaceHolder1_cbop_deleg").addClass("focus");
+                $("#ContentPlaceHolder1_cboe_deleg").addClass("focus");
             } else if (tab == "delegacion_u") {
                 update_delegacion();
-            } else if (tab == "zip_n") {
-                nuevo_zip();
-            } else if (tab == "zip_u") {
-                update_zip();
+                //$("#ContentPlaceHolder1_c_deleg").addClass("focus");
+                $("#ContentPlaceHolder1_n_deleg").addClass("focus");
             }
+
             swal({
                 type: 'warning',
                 html: '<h2 class="swal2-title" id="swal2-title">Datos Incompletos</h2>Los datos marcados son obligatorios.'
             })
-            loader_stop();
+            $(".loader").fadeOut("slow");
         }
 
         function valida(tab) {
             if (tab == "pais_n") { nuevo_pais(); }
             else if (tab == "estado_n") { nuevo_estado(); }
-            else if (tab == "delegacion_n") { nuevo_delegacion(); }
-            else if (tab == "zip_n") { nuevo_zip(); }
             swal({
                 type: 'warning',
                 html: '<h2 class="swal2-title" id="swal2-title">Datos Incorrectos</h2>La clave ingresada ya existe.'
             })
         }
+
     </script>
     <style>
         #ContentPlaceHolder1_GridPaises_info {
@@ -99,22 +113,6 @@
 
         #ContentPlaceHolder1_GridZip_length {
             float: left;
-        }
-
-        #ContentPlaceHolder1_GridPaises tbody tr {
-            cursor: pointer;
-        }
-
-        #ContentPlaceHolder1_GridEstados tbody tr {
-            cursor: pointer;
-        }
-
-        #ContentPlaceHolder1_GridDelegacion tbody tr {
-            cursor: pointer;
-        }
-
-        #ContentPlaceHolder1_GridZip tbody tr {
-            cursor: pointer;
         }
 
         .bottom {
@@ -196,14 +194,9 @@
         .focus {
             border: 1px solid rgb(227, 65, 0);
         }
-
-        .right_col {
-            min-height: 700px !important;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="x_title">
         <h2>
             <img src="Images/Operaciones/globo.png" style="width: 30px;" /><small>Catálogos Demográficos</small></h2>
@@ -219,7 +212,6 @@
                 <a class="nav-item nav-link justify-content-end" id="nav-zip-tab" data-toggle="tab" href="#nav-zip" role="tab" aria-controls="nav-zip" aria-selected="false">Código Postal</a>
             </div>
         </nav>
-
         <div class="tab-content" id="nav-tabContent">
             <!--Pestaña Pais-->
             <div class="tab-pane fade" id="nav-pais" role="tabpanel" aria-labelledby="nav-paises-tab">
@@ -227,11 +219,11 @@
                     <ContentTemplate>
                         <div id="add_pais" class="row justify-content-start" style="margin-top: 15px;">
                             <div class="col-10">
-                                <asp:Button ID="agregar_pais" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClick="agregar_pais_Click" OnClientClick="loader_push();" />
+                                <asp:Button ID="agregar_pais" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClientClick="nuevo_pais();return false" />
                             </div>
                         </div>
-                        <div id="form_pais" runat="server">
-                            <div class="row g-3" style="margin-top: 15px;">
+                        <div id="form_pais" style="margin-top: 15px; display: none;">
+                            <div class="row g-3">
                                 <div class="col-md-2">
                                     <label for="ContentPlaceHolder1_c_pais" class="form-label">Clave</label>
                                     <asp:TextBox ID="c_pais" runat="server" CssClass="form-control"></asp:TextBox>
@@ -251,19 +243,15 @@
                                 </div>
                             </div>
                             <br />
-                        </div>
-                        <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_pais" runat="server">
-                            <div class="col-md-3" style="text-align: center;">
-                                <asp:Button ID="cancel_pais" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_pais();return false" />
-                                <asp:Button ID="save_pais" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" OnClick="save_pais_Click" />
-                                <asp:Button ID="update_pais" runat="server" CssClass="btn btn-round btn-success ocultar" Text="Actualizar" OnClick="update_pais_Click" />
+                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
+                                <div class="col-3">
+                                    <asp:Button ID="cancel_pais" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_pais();return false" />
+                                    <asp:Button ID="save_pais" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" OnClick="save_pais_Click" OnClientClick="loader_push();" />
+                                    <asp:Button ID="update_pais" runat="server" CssClass="btn btn-round btn-success ocultar" Text="Actualizar" OnClick="update_pais_Click" OnClientClick="loader_push();" />
+                                </div>
                             </div>
                         </div>
                     </ContentTemplate>
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="save_pais" />
-                        <asp:AsyncPostBackTrigger ControlID="update_pais" />
-                    </Triggers>
                 </asp:UpdatePanel>
                 <div id="table_pais">
                     <asp:GridView ID="GridPaises" runat="server" CssClass="table table-striped table-bordered" Width="100%" AutoGenerateColumns="False">
@@ -280,6 +268,7 @@
                         </Columns>
                     </asp:GridView>
                 </div>
+
             </div>
             <!--\Pestaña Pais-->
             <!--Pestaña Estado-->
@@ -288,11 +277,11 @@
                     <ContentTemplate>
                         <div id="add_estado" class="row justify-content-start" style="margin-top: 15px;">
                             <div class="col-10">
-                                <asp:Button ID="agregar_estado" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClick="agregar_estado_Click" OnClientClick="loader_push();" />
+                                <asp:Button ID="agregar_estado" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClientClick="nuevo_estado();return false" />
                             </div>
                         </div>
-                        <div id="form_estado" runat="server">
-                            <div class="row g-3" style="margin-top: 15px;">
+                        <div id="form_estado" style="display: none; margin-top: 15px;">
+                            <div class="row g-3">
                                 <div class="col-md-3">
                                     <label for="ContentPlaceHolder1_cbo_pais" class="form-label">Pais</label>
                                     <asp:DropDownList ID="cbo_pais" runat="server" CssClass="form-control"></asp:DropDownList>
@@ -313,12 +302,12 @@
                                 </div>
                             </div>
                             <br />
-                        </div>
-                        <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_estado" runat="server">
-                            <div class="col-md-3" style="text-align: center;">
-                                <asp:Button ID="cancel_estado" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_estado();return false" />
-                                <asp:Button ID="save_estado" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" OnClick="save_estado_Click" />
-                                <asp:Button ID="update_estado" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" OnClick="update_estado_Click" />
+                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
+                                <div class="col-3">
+                                    <asp:Button ID="cancel_estado" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_estado();return false" />
+                                    <asp:Button ID="save_estado" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" OnClick="save_estado_Click" OnClientClick="loader_push();" />
+                                    <asp:Button ID="update_estado" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" OnClick="update_estado_Click" OnClientClick="loader_push();" />
+                                </div>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -348,14 +337,14 @@
             <div class="tab-pane fade" id="nav-delegacion" role="tabpanel" aria-labelledby="nav-delegacion-tab">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <div id="add_delegacion" class="row justify-content-start" style="margin-top: 15px;" runat="server">
+                        <div id="add_delegacion" class="row justify-content-start" style="margin-top: 15px;">
                             <div class="col-10">
-                                <asp:Button ID="agregar_delegacion" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClick="agregar_delegacion_Click" OnClientClick="loader_push();" />
+                                <asp:Button ID="agregar_delegacion" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClientClick="nuevo_delegacion();return false" />
                             </div>
                         </div>
 
-                        <div id="form_delegacion" runat="server">
-                            <div class="row g-3" style="margin-top: 15px;">
+                        <div id="form_delegacion" style="display: none; margin-top: 15px;" runat="server">
+                            <div class="row g-3">
                                 <div class="col-md-2">
                                     <label for="ContentPlaceHolder1_cbop_deleg" class="form-label">Pais</label>
                                     <asp:DropDownList ID="cbop_deleg" runat="server" CssClass="form-control" Font-Size="Small" AutoPostBack="true" OnSelectedIndexChanged="cbop_deleg_SelectedIndexChanged"></asp:DropDownList>
@@ -370,25 +359,25 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="ContentPlaceHolder1_c_deleg" class="form-label">Clave</label>
-                                    <asp:TextBox ID="c_deleg" runat="server" CssClass="form-control" Font-Size="Small"></asp:TextBox>
+                                    <asp:TextBox ID="c_deleg" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="ContentPlaceHolder1_n_deleg" class="form-label">Nombre</label>
-                                    <asp:TextBox ID="n_deleg" runat="server" CssClass="form-control" Font-Size="Small"></asp:TextBox>
+                                    <asp:TextBox ID="n_deleg" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="ContentPlaceHolder1_e_deleg" class="form-label">Estatus</label>
-                                    <asp:DropDownList ID="e_deleg" runat="server" CssClass="form-control" Font-Size="Small"></asp:DropDownList>
+                                    <asp:DropDownList ID="e_deleg" runat="server" CssClass="form-control"></asp:DropDownList>
                                     <asp:HiddenField ID="status_deleg" runat="server" />
                                 </div>
                             </div>
                             <br />
-                        </div>
-                        <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_delegacion" runat="server">
-                            <div class="col-md-3" style="text-align: center">
-                                <asp:Button ID="cancel_deleg" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_delegacion();return false" />
-                                <asp:Button ID="save_deleg" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" OnClick="save_deleg_Click" />
-                                <asp:Button ID="update_deleg" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" OnClick="update_deleg_Click" />
+                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
+                                <div class="col-3">
+                                    <asp:Button ID="cancel_deleg" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_delegacion();return false" />
+                                    <asp:Button ID="save_deleg" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" />
+                                    <asp:Button ID="update_deleg" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" />
+                                </div>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -421,68 +410,56 @@
             <!--\Pestaña Delegación-->
             <!--Pestaña ZIP-->
             <div class="tab-pane fade" id="nav-zip" role="tabpanel" aria-labelledby="nav-zip-tab">
-                <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
-                        <div id="add_zip" class="row justify-content-start" style="margin-top: 15px;" runat="server">
-                            <div class="col-10">
-                                <asp:Button ID="agregar_zip" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClick="agregar_zip_Click" OnClientClick="loader_push();" />
-                            </div>
+                <div id="add_zip" class="row justify-content-start" style="margin-top: 15px;">
+                    <div class="col-10">
+                        <asp:Button ID="agregar_zip" runat="server" CssClass="btn btn-success" Text="Nuevo" OnClientClick="nuevo_zip();return false" />
+                    </div>
+                </div>
+                <div id="form_zip" style="display: none; margin-top: 15px;">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="ContentPlaceHolder1_cbop_zip" class="form-label">Pais</label>
+                            <asp:DropDownList ID="cbop_zip" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:HiddenField ID="pais_zip" runat="server" />
                         </div>
-                        <div id="form_zip" runat="server">
-                            <div class="row g-3" style="margin-top: 15px;">
-                                <div class="col-md-4">
-                                    <label for="ContentPlaceHolder1_cbop_zip" class="form-label">Pais</label>
-                                    <asp:DropDownList ID="cbop_zip" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="cbop_zip_SelectedIndexChanged" Font-Size="Small"></asp:DropDownList>
-                                    <asp:HiddenField ID="pais_zip" runat="server" />
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="ContentPlaceHolder1_cboe_zip" class="form-label">Estado</label>
-                                    <asp:DropDownList ID="cboe_zip" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="cboe_zip_SelectedIndexChanged" Font-Size="Small"></asp:DropDownList>
-                                    <asp:HiddenField ID="state_zip" runat="server" />
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="ContentPlaceHolder1_cbod_zip" class="form-label">Delegacion</label>
-                                    <asp:DropDownList ID="cbod_zip" runat="server" CssClass="form-control" Font-Size="Small"></asp:DropDownList>
-                                    <asp:HiddenField ID="country_zip" runat="server" />
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="ContentPlaceHolder1_c_zip" class="form-label">Clave</label>
-                                    <asp:TextBox ID="c_zip" runat="server" CssClass="form-control" Font-Size="Small"></asp:TextBox>
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="ContentPlaceHolder1_n_zip" class="form-label">Nombre</label>
-                                    <asp:TextBox ID="n_zip" runat="server" CssClass="form-control" Font-Size="Small"></asp:TextBox>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="ContentPlaceHolder1_e_zip" class="form-label">Estatus</label>
-                                    <asp:DropDownList ID="e_zip" runat="server" CssClass="form-control" Font-Size="Small"></asp:DropDownList>
-                                    <asp:HiddenField ID="status_zip" runat="server" />
-                                </div>
-                            </div>
-                            <br />
+                        <div class="col-md-4">
+                            <label for="ContentPlaceHolder1_cboe_zip" class="form-label">Estado</label>
+                            <asp:DropDownList ID="cboe_zip" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:HiddenField ID="state_zip" runat="server" />
                         </div>
-                        <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_zip" runat="server">
-                            <div class="col-md-3" style="text-align: center">
-                                <asp:Button ID="cancel_zip" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_zip();return false" />
-                                <asp:Button ID="save_zip" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" OnClick="save_zip_Click" OnClientClick="loader_push();" />
-                                <asp:Button ID="update_zip" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" OnClick="update_zip_Click" OnClientClick="loader_push();" />
-                            </div>
+                        <div class="col-md-4">
+                            <label for="ContentPlaceHolder1_cbod_zip" class="form-label">Delegacion</label>
+                            <asp:DropDownList ID="cbod_zip" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:HiddenField ID="country_zip" runat="server" />
                         </div>
-                    </ContentTemplate>
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="save_zip" />
-                    </Triggers>
-                </asp:UpdatePanel>
+                        <div class="col-md-3">
+                            <label for="ContentPlaceHolder1_c_zip" class="form-label">Clave</label>
+                            <asp:TextBox ID="c_zip" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="ContentPlaceHolder1_n_zip" class="form-label">Nombre</label>
+                            <asp:TextBox ID="n_zip" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ContentPlaceHolder1_e_zip" class="form-label">Estatus</label>
+                            <asp:DropDownList ID="e_zip" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:HiddenField ID="status_zip" runat="server" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row justify-content-center" style="text-align: center; margin: auto;">
+                        <div class="col-3">
+                            <asp:Button ID="cancel_zip" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" OnClientClick="cancelar_zip();return false" />
+                            <asp:Button ID="save_zip" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" />
+                            <asp:Button ID="update_zip" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" />
+                        </div>
+                    </div>
+                </div>
                 <div id="tabla_zip">
                     <asp:GridView ID="GridZip" runat="server" CssClass="table table-striped table-bordered" Width="100%" AutoGenerateColumns="false">
                         <Columns>
                             <asp:BoundField DataField="CLAVE" HeaderText="Clave" />
                             <asp:BoundField DataField="NOMBRE" HeaderText="Colonia" />
-                            <asp:BoundField DataField="C_PAIS" HeaderText="Clave_pais">
-                                <HeaderStyle CssClass="ocultar" />
-                                <ItemStyle CssClass="ocultar" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="PAIS" HeaderText="País" />
                             <asp:BoundField DataField="C_ESTADO" HeaderText="Clave_estado">
                                 <HeaderStyle CssClass="ocultar" />
                                 <ItemStyle CssClass="ocultar" />
@@ -505,6 +482,8 @@
             </div>
             <!--\Pestaña ZIP-->
         </div>
+
+
     </div>
     <!--Funciones Generales-->
     <script>
@@ -525,7 +504,7 @@
     </script>
     <!--\Funciones Generales-->
     <!--Funciones para pestaña pais-->
-    <script>
+    <script>        
         $(document).ready(function () {
 
             $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -589,8 +568,7 @@
 
                 if ($(this).hasClass("selected")) {
                     $("#add_pais").fadeIn("fast");
-                    $("#ContentPlaceHolder1_form_pais").slideUp("slow");
-                    $("#ContentPlaceHolder1_btn_pais").fadeOut("slow");
+                    $("#form_pais").slideUp("slow");
                 } else {
                     $("#ContentPlaceHolder1_c_pais").val(clave_pais);
                     $("#ContentPlaceHolder1_c_pais").prop("readonly", true);
@@ -599,44 +577,53 @@
                     $("#ContentPlaceHolder1_estatus_pais").find('option[value="' + est_pais + '"]').prop("selected", true);
                     $("#ContentPlaceHolder1_edo_pais").val(est_pais);
                     $("#add_pais").fadeOut("fast");
-                    $("#ContentPlaceHolder1_form_pais").slideDown("slow");
+                    $("#form_pais").slideDown("slow");
                     $("#ContentPlaceHolder1_update_pais").css({ display: "initial" });
                     $("#ContentPlaceHolder1_save_pais").css({ display: "none" });
-                    $("#ContentPlaceHolder1_btn_pais").fadeIn("slow");
                 }
             });
         });
-
-        function show_pais() {
-            $('#nav-pais').tab('show');
-        }
         function nuevo_pais() {
+            $("#ContentPlaceHolder1_update_pais").css({ display: "none" });
+            $("#ContentPlaceHolder1_c_pais").prop("readonly", false);
+            $("#ContentPlaceHolder1_save_pais").css({ display: "initial" });
+            $("#ContentPlaceHolder1_c_pais").val('');
+            $("#ContentPlaceHolder1_n_pais").val('');
+            $("#ContentPlaceHolder1_g_pais").val('');
             $("#table_pais").fadeOut("fast");
             $("#add_pais").fadeOut("fast");
-            $("#ContentPlaceHolder1_form_pais").slideDown("slow");
-            $("#ContentPlaceHolder1_btn_pais").fadeIn("slow");
+            $("#form_pais").slideDown("slow");
         }
         function cancelar_pais() {
             $("#ContentPlaceHolder1_GridPaises tbody tr").removeClass("selected");
+            $("#ContentPlaceHolder1_c_pais").val('');
+            $("#ContentPlaceHolder1_n_pais").val('');
             $("#ContentPlaceHolder1_c_pais").removeClass("focus");
             $("#ContentPlaceHolder1_n_pais").removeClass("focus");
+            $("#ContentPlaceHolder1_g_pais").val('');
             $("#table_pais").fadeIn("fast");
             $("#add_pais").fadeIn("fast");
-            $("#ContentPlaceHolder1_form_pais").slideUp("slow");
-            $("#ContentPlaceHolder1_btn_pais").fadeOut("slow");
+            $("#form_pais").slideUp("slow");
         }
-
         function update_pais() {
-            $("#ContentPlaceHolder1_form_pais").slideDown("slow");
+            $("#form_pais").slideDown("slow");
             $("#add_pais").fadeOut("fast");
-            $("#ContentPlaceHolder1_btn_pais").fadeIn("slow");
             $("#ContentPlaceHolder1_update_pais").css({ display: "initial" });
             $("#ContentPlaceHolder1_save_pais").css({ display: "none" });
+            $("#ContentPlaceHolder1_c_pais").prop("readonly", true);
         }
+        function show_pais() {
+            $('#nav-pais').tab('show');
+        }
+        $("#ContentPlaceHolder1_estatus_pais").change(function () {
+            var est_pais = $("#ContentPlaceHolder1_estatus_pais").val();
+            $("#ContentPlaceHolder1_edo_pais").val(est_pais);
+        });
     </script>
     <!--\Funciones para pestaña pais-->
     <!--Funciones para pestaña estado-->
     <script>
+
         $(document).ready(function () {
 
             let table_e = $("#ContentPlaceHolder1_GridEstados").DataTable({
@@ -695,18 +682,18 @@
 
                 if ($(this).hasClass("selected")) {
                     $("#add_estado").fadeIn("fast");
-                    $("#ContentPlaceHolder1_form_estado").slideUp("slow");
-                    $("#ContentPlaceHolder1_btn_estado").fadeOut("slow");
+                    $("#form_estado").slideUp("slow");
                 } else {
                     $("#ContentPlaceHolder1_cbo_pais").find('option[value="' + clave_pais + '"]').prop("selected", true);
+                    $("#ContentPlaceHolder1_dde_pais").val(clave_pais);
                     $("#ContentPlaceHolder1_c_estado").val(clave_estado);
                     $("#ContentPlaceHolder1_c_estado").prop("readonly", true);
                     $("#ContentPlaceHolder1_cbo_pais").prop("disabled", true);
                     $("#ContentPlaceHolder1_n_estado").val(nombre_estado);
                     $("#ContentPlaceHolder1_estatus_estado").find('option[value="' + est_estado + '"]').prop("selected", true);
+                    $("#ContentPlaceHolder1_edo_estado").val(est_estado);
                     $("#add_estado").fadeOut("fast");
-                    $("#ContentPlaceHolder1_form_estado").slideDown("slow");
-                    $("#ContentPlaceHolder1_btn_estado").fadeIn("slow");
+                    $("#form_estado").slideDown("slow");
                     $("#ContentPlaceHolder1_update_estado").css({ display: "initial" });
                     $("#ContentPlaceHolder1_save_estado").css({ display: "none" });
                 }
@@ -714,33 +701,50 @@
         });
 
         function nuevo_estado() {
+            $("#ContentPlaceHolder1_update_estado").css({ display: "none" });
+            $("#ContentPlaceHolder1_c_estado").prop("readonly", false);
+            $("#ContentPlaceHolder1_cbo_pais").prop("disabled", false);
+            $("#ContentPlaceHolder1_save_estado").css({ display: "initial" });
+            $("#ContentPlaceHolder1_c_estado").val('');
+            $("#ContentPlaceHolder1_n_estado").val('');
+            $("#ContentPlaceHolder1_cbo_pais").val(0).change();
             $("#tabla_estados").fadeOut("fast");
             $("#add_estado").fadeOut("fast");
-            $("#ContentPlaceHolder1_form_estado").slideDown("slow");
-            $("#ContentPlaceHolder1_btn_estado").fadeIn("slow");
+            $("#form_estado").slideDown("slow");
         }
+
         function cancelar_estado() {
             $("#ContentPlaceHolder1_GridEstados tbody tr").removeClass("selected");
-            $("#ContentPlaceHolder1_c_estado").removeClass("focus");
-            $("#ContentPlaceHolder1_n_estado").removeClass("focus");
+            $("#ContentPlaceHolder1_c_estado").val('');
+            $("#ContentPlaceHolder1_n_estado").val('');
+            $("#ContentPlaceHolder1_cbo_pais").val(0).change();
             $("#tabla_estados").fadeIn("fast");
             $("#add_estado").fadeIn("fast");
-            $("#ContentPlaceHolder1_form_estado").slideUp("slow");
-            $("#ContentPlaceHolder1_btn_estado").fadeOut("slow");
+            $("#form_estado").slideUp("fast");
         }
 
         function update_estado() {
-            $("#ContentPlaceHolder1_form_estado").slideDown("slow");
+            $("#form_estado").slideDown("slow");
             $("#add_estado").fadeOut("fast");
-            $("#ContentPlaceHolder1_btn_estado").fadeIn("slow");
             $("#ContentPlaceHolder1_update_estado").css({ display: "initial" });
             $("#ContentPlaceHolder1_save_estado").css({ display: "none" });
+            $("#ContentPlaceHolder1_c_estado").prop("readonly", true);
+            $("#ContentPlaceHolder1_cbo_pais").prop("disabled", true);
         }
+
+        $("#ContentPlaceHolder1_cbo_pais").change(function () {
+            var cbo_pais = $("#ContentPlaceHolder1_cbo_pais").val();
+            $("#ContentPlaceHolder1_dde_pais").val(cbo_pais);
+        });
+
+        $("#ContentPlaceHolder1_estatus_estado").change(function () {
+            var estatus_estado = $("#ContentPlaceHolder1_estatus_estado").val();
+            $("#ContentPlaceHolder1_edo_estado").val(estatus_estado);
+        });
     </script>
     <!--\Funciones para pestaña estado-->
     <!--Funciones para pestaña delegacion-->
     <script>
-
         $(document).ready(function () {
 
             let table_d = $("#ContentPlaceHolder1_GridDelegacion").DataTable({
@@ -796,14 +800,11 @@
                 var nombre_delegacion = data[1];
                 var clave_pais = data[2];
                 var clave_estado = data[4];
-                var nombre_estado = data[5];
                 var est_delegacion = data[6];
-                console.log(clave_estado);
 
                 if ($(this).hasClass("selected")) {
-                    $("#ContentPlaceHolder1_add_delegacion").fadeIn("fast");
-                    $("#ContentPlaceHolder1_form_delegacion").slideUp("slow");
-                    $("#ContentPlaceHolder1_btn_delegacion").fadeOut("slow");
+                    $("#add_delegacion").fadeIn("fast");
+                    $("#form_delegacion").slideUp("slow");
                 } else {
                     $("#ContentPlaceHolder1_c_deleg").val(clave_delegacion);
                     $("#ContentPlaceHolder1_c_deleg").prop("readonly", true);
@@ -813,13 +814,11 @@
                     $("#ContentPlaceHolder1_cbop_deleg").find('option[value="' + clave_pais + '"]').prop("selected", true);
                     $("#ContentPlaceHolder1_pais_deleg").val(clave_pais);
                     $("#ContentPlaceHolder1_cboe_deleg").find('option[value="' + clave_estado + '"]').prop("selected", true);
-                    $('#ContentPlaceHolder1_cboe_deleg').append(new Option(nombre_estado, clave_estado, false, true));
                     $("#ContentPlaceHolder1_state_deleg").val(clave_estado);
                     $("#ContentPlaceHolder1_e_deleg").find('option[value="' + est_delegacion + '"]').prop("selected", true);
                     $("#ContentPlaceHolder1_status_deleg").val(est_delegacion);
-                    $("#ContentPlaceHolder1_add_delegacion").fadeOut("fast");
-                    $("#ContentPlaceHolder1_form_delegacion").slideDown("slow");
-                    $("#ContentPlaceHolder1_btn_delegacion").fadeIn("slow");
+                    $("#add_delegacion").fadeOut("fast");
+                    $("#form_delegacion").slideDown("slow");
                     $("#ContentPlaceHolder1_update_deleg").css({ display: "initial" });
                     $("#ContentPlaceHolder1_save_deleg").css({ display: "none" });
                 }
@@ -827,36 +826,60 @@
         });
 
         function nuevo_delegacion() {
+            $("#ContentPlaceHolder1_update_deleg").css({ display: "none" });
+            $("#ContentPlaceHolder1_c_deleg").prop("readonly", false);
+            $("#ContentPlaceHolder1_cbop_deleg").prop("disabled", false);
+            $("#ContentPlaceHolder1_cboe_deleg").prop("disabled", false);
+            $("#ContentPlaceHolder1_save_deleg").css({ display: "initial" });
+            $("#ContentPlaceHolder1_c_deleg").val('');
+            $("#ContentPlaceHolder1_n_deleg").val('');
+            $("#ContentPlaceHolder1_cbop_deleg").val(0).change();
+            $("#ContentPlaceHolder1_cboe_deleg").val(0).change();
             $("#tabla_delegacion").fadeOut("fast");
-            $("#ContentPlaceHolder1_add_delegacion").fadeOut("fast");
-            $("#ContentPlaceHolder1_form_delegacion").slideDown("slow");
-            $("#ContentPlaceHolder1_btn_delegacion").fadeIn("slow");
+            $("#add_delegacion").fadeOut("fast");
+            $("#form_delegacion").slideDown("slow");
+            return false;
         }
 
         function cancelar_delegacion() {
             $("#ContentPlaceHolder1_GridDelegacion tbody tr").removeClass("selected");
-            $("#ContentPlaceHolder1_c_deleg").removeClass("focus");
-            $("#ContentPlaceHolder1_n_deleg").removeClass("focus");
-            $("#ContentPlaceHolder1_cbop_deleg").removeClass("focus");
-            $("#ContentPlaceHolder1_cboe_deleg").removeClass("focus");
+            $("#ContentPlaceHolder1_c_deleg").val('');
+            $("#ContentPlaceHolder1_n_deleg").val('');
+            $("#ContentPlaceHolder1_cbop_deleg").val(0).change();
+            $("#ContentPlaceHolder1_cboe_deleg").val(0).change();
             $("#tabla_delegacion").fadeIn("fast");
-            $("#ContentPlaceHolder1_add_delegacion").fadeIn("fast");
-            $("#ContentPlaceHolder1_form_delegacion").slideUp("slow");
-            $("#ContentPlaceHolder1_btn_delegacion").fadeOut("slow");
+            $("#add_delegacion").fadeIn("fast");
+            $("#form_delegacion").slideUp("slow");
         }
 
         function update_delegacion() {
-            $("#ContentPlaceHolder1_form_delegacion").slideDown("slow");
-            $("#ContentPlaceHolder1_btn_delegacion").fadeIn("slow");
-            $("#ContentPlaceHolder1_add_delegacion").fadeOut("fast");
+            $("#form_delegacion").slideDown("slow");
+            $("#add_delegacion").fadeOut("fast");
             $("#ContentPlaceHolder1_update_deleg").css({ display: "initial" });
             $("#ContentPlaceHolder1_save_deleg").css({ display: "none" });
+            $("#ContentPlaceHolder1_c_deleg").prop("readonly", true);
+            $("#ContentPlaceHolder1_cbop_deleg").prop("disabled", true);
+            $("#ContentPlaceHolder1_cboe_deleg").prop("disabled", true);
         }
+
+        $("#ContentPlaceHolder1_cbop_deleg").change(function () {
+            var cbod_pais = $("#ContentPlaceHolder1_cbop_deleg").val();
+            $("#ContentPlaceHolder1_pais_deleg").val(cbod_pais);
+        });
+
+        $("#ContentPlaceHolder1_cboe_deleg").change(function () {
+            var cbod_estado = $("#ContentPlaceHolder1_cboe_deleg").val();
+            $("#ContentPlaceHolder1_state_deleg").val(cbod_estado);
+        });
+
+        $("#ContentPlaceHolder1_e_deleg").change(function () {
+            var estatus_deleg = $("#ContentPlaceHolder1_e_deleg").val();
+            $("#ContentPlaceHolder1_status_deleg").val(estatus_deleg);
+        });
     </script>
     <!--\Funciones para pestaña delegacion-->
     <!--Funciones para pestaña Zip-->
     <script>
-
         $(document).ready(function () {
 
             let table_z = $("#ContentPlaceHolder1_GridZip").DataTable({
@@ -908,37 +931,26 @@
 
             $('#ContentPlaceHolder1_GridZip tbody').on('click', 'tr', function () {
                 var data = table_z.row(this).data();
+                //alert('You clicked on ' + data[0] + '\'s row');
                 var clave_zip = data[0];
                 var nombre_zip = data[1];
-                var clave_pais = data[2];
-                var clave_estado = data[4];
-                var nombre_estado = data[5];
-                var clave_delegacion = data[6];
-                var nombre_delegacion = data[7];
-                var est_delegacion = data[8];
+                var clave_estado = data[2];
+                var clave_delegacion = data[4];
+                var est_estado = data[6];
 
                 if ($(this).hasClass("selected")) {
-                    $("#ContentPlaceHolder1_add_zip").fadeIn("fast");
-                    $("#ContentPlaceHolder1_form_zip").slideUp("slow");
-                    $("#ContentPlaceHolder1_btn_zip").fadeOut("slow");
+                    $("#add_zip").fadeIn("fast");
+                    $("#form_zip").slideUp("slow");
                 } else {
                     $("#ContentPlaceHolder1_c_zip").val(clave_zip);
                     $("#ContentPlaceHolder1_c_zip").prop("readonly", true);
-                    $("#ContentPlaceHolder1_cbop_zip").prop("disabled", true);
-                    $("#ContentPlaceHolder1_cboe_zip").prop("disabled", true);
-                    $("#ContentPlaceHolder1_cbod_zip").prop("disabled", true);
                     $("#ContentPlaceHolder1_n_zip").val(nombre_zip);
-                    $("#ContentPlaceHolder1_cbop_zip").find('option[value="' + clave_pais + '"]').prop("selected", true);
-                    $("#ContentPlaceHolder1_cboe_zip").find('option[value="' + clave_estado + '"]').prop("selected", true);
-                    $('#ContentPlaceHolder1_cboe_zip').append(new Option(nombre_estado, clave_estado, false, true));
-                    $("#ContentPlaceHolder1_state_zip").val(clave_estado);
-                    $("#ContentPlaceHolder1_cbod_zip").find('option[value="' + clave_delegacion + '"]').prop("selected", true);
-                    $('#ContentPlaceHolder1_cbod_zip').append(new Option(nombre_delegacion, clave_delegacion, false, true));
-                    $("#ContentPlaceHolder1_country_zip").val(clave_delegacion);
-                    $("#ContentPlaceHolder1_e_zip").val(est_delegacion).change();
-                    $("#ContentPlaceHolder1_add_zip").fadeOut("fast");
-                    $("#ContentPlaceHolder1_form_zip").slideDown("slow");
-                    $("#ContentPlaceHolder1_btn_zip").fadeIn("slow");
+                    $("#ContentPlaceHolder1_cboe_zip").val(clave_estado).change();
+                    //$("#ContentPlaceHolder1_cboe_deleg").prop("disabled", true);
+                    $("#ContentPlaceHolder1_cbod_zip").val(clave_delegacion).change();
+                    $("#ContentPlaceHolder1_e_zip").val(est_estado).change();
+                    $("#add_zip").fadeOut("fast");
+                    $("#form_zip").slideDown("slow");
                     $("#ContentPlaceHolder1_update_zip").css({ display: "initial" });
                     $("#ContentPlaceHolder1_save_zip").css({ display: "none" });
                 }
@@ -946,35 +958,24 @@
         });
 
         function nuevo_zip() {
+            $("#ContentPlaceHolder1_update_zip").css({ display: "none" });
+            $("#ContentPlaceHolder1_c_zip").prop("readonly", false);
+            $("#ContentPlaceHolder1_save_zip").css({ display: "initial" });
+            $("#ContentPlaceHolder1_c_zip").val('');
+            $("#ContentPlaceHolder1_n_zip").val('');
             $("#tabla_zip").fadeOut("fast");
-            $("#ContentPlaceHolder1_add_zip").fadeOut("fast");
-            $("#ContentPlaceHolder1_form_zip").slideDown("slow");
-            $("#ContentPlaceHolder1_btn_zip").fadeIn("slow");
+            $("#add_zip").fadeOut("fast");
+            $("#form_zip").slideDown("slow");
         }
 
         function cancelar_zip() {
             $("#ContentPlaceHolder1_GridZip tbody tr").removeClass("selected");
+            $("#ContentPlaceHolder1_c_zip").val('');
+            $("#ContentPlaceHolder1_n_zip").val('');
             $("#tabla_zip").fadeIn("fast");
-            $("#ContentPlaceHolder1_add_zip").fadeIn("fast");
-            $("#ContentPlaceHolder1_form_zip").slideUp("slow");
-            $("#ContentPlaceHolder1_btn_zip").fadeOut("slow");
-            $("#ContentPlaceHolder1_cbop_zip").removeClass("focus");
-            $("#ContentPlaceHolder1_cboe_zip").removeClass("focus");
-            $("#ContentPlaceHolder1_cbod_zip").removeClass("focus");
-            $("#ContentPlaceHolder1_c_zip").removeClass("focus");
-            $("#ContentPlaceHolder1_n_zip").removeClass("focus");
+            $("#add_zip").fadeIn("fast");
+            $("#form_zip").slideUp("slow");
         }
-
-        function update_zip() {
-            $("#ContentPlaceHolder1_form_zip").slideDown("slow");
-            $("#ContentPlaceHolder1_btn_zip").fadeIn("slow");
-            $("#ContentPlaceHolder1_add_zip").fadeOut("fast");
-            $("#ContentPlaceHolder1_update_zip").css({ display: "initial" });
-            $("#ContentPlaceHolder1_save_zip").css({ display: "none" });
-        }
-        $("#ContentPlaceHolder1_cbop_zip").change(function () {
-            alert('test');
-        });
     </script>
     <!--\Funciones para pestaña Zip-->
 </asp:Content>

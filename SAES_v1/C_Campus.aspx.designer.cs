@@ -15,58 +15,31 @@ namespace SAES_v1
     {
 
         /// <summary>
-        /// Control campus_upd.
+        /// Control upd_Campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel campus_upd;
+        protected global::System.Web.UI.UpdatePanel upd_Campus;
 
         /// <summary>
-        /// Control lblccampus.
+        /// Control agregar_Campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblccampus;
+        protected global::System.Web.UI.WebControls.Button agregar_Campus;
 
         /// <summary>
-        /// Control lblncampus.
+        /// Control form_Campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblncampus;
-
-        /// <summary>
-        /// Control lblacampus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblacampus;
-
-        /// <summary>
-        /// Control lblrfccampus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblrfccampus;
-
-        /// <summary>
-        /// Control lblecampus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblecampus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_Campus;
 
         /// <summary>
         /// Control c_campus.
@@ -96,13 +69,13 @@ namespace SAES_v1
         protected global::System.Web.UI.WebControls.TextBox a_campus;
 
         /// <summary>
-        /// Control rfc_campus.
+        /// Control RFC_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rfc_campus;
+        protected global::System.Web.UI.WebControls.TextBox RFC_campus;
 
         /// <summary>
         /// Control estatus_campus.
@@ -114,94 +87,40 @@ namespace SAES_v1
         protected global::System.Web.UI.WebControls.DropDownList estatus_campus;
 
         /// <summary>
-        /// Control cancel_campus1.
+        /// Control edo_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancel_campus1;
+        protected global::System.Web.UI.WebControls.HiddenField edo_campus;
 
         /// <summary>
-        /// Control continue_campus.
+        /// Control ddp_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button continue_campus;
+        protected global::System.Web.UI.WebControls.DropDownList ddp_campus;
 
         /// <summary>
-        /// Control lblpais_campus.
+        /// Control dde_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpais_campus;
+        protected global::System.Web.UI.WebControls.DropDownList dde_campus;
 
         /// <summary>
-        /// Control lblestado_campus.
+        /// Control ddd_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblestado_campus;
-
-        /// <summary>
-        /// Control lbldeleg_campus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbldeleg_campus;
-
-        /// <summary>
-        /// Control lblzip_campus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblzip_campus;
-
-        /// <summary>
-        /// Control lblcol_campus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblcol_campus;
-
-        /// <summary>
-        /// Control pais_campus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList pais_campus;
-
-        /// <summary>
-        /// Control estado_campus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList estado_campus;
-
-        /// <summary>
-        /// Control deleg_campus.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList deleg_campus;
+        protected global::System.Web.UI.WebControls.DropDownList ddd_campus;
 
         /// <summary>
         /// Control zip_campus.
@@ -219,186 +138,132 @@ namespace SAES_v1
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList col_campus;
+        protected global::System.Web.UI.WebControls.TextBox col_campus;
 
         /// <summary>
-        /// Control lbladdr_campus.
+        /// Control direc_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbladdr_campus;
+        protected global::System.Web.UI.WebControls.TextBox direc_campus;
 
         /// <summary>
-        /// Control address_campus.
+        /// Control btn_pais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox address_campus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btn_pais;
 
         /// <summary>
-        /// Control cancel_campus2.
+        /// Control cancelar_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancel_campus2;
+        protected global::System.Web.UI.WebControls.Button cancelar_campus;
 
         /// <summary>
-        /// Control save_campus.
+        /// Control guardar_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button save_campus;
+        protected global::System.Web.UI.WebControls.Button guardar_campus;
 
         /// <summary>
-        /// Control udate_campus.
+        /// Control actualizar_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button udate_campus;
+        protected global::System.Web.UI.WebControls.Button actualizar_campus;
 
         /// <summary>
-        /// Control camp_prog_upd.
+        /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel camp_prog_upd;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Control lblca_prog.
+        /// Control form_programa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblca_prog;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_programa;
 
         /// <summary>
-        /// Control busq_campus.
+        /// Control search_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox busq_campus;
+        protected global::System.Web.UI.WebControls.DropDownList search_campus;
 
         /// <summary>
-        /// Control busqueda_campus.
+        /// Control agregar_programa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button busqueda_campus;
+        protected global::System.Web.UI.WebControls.Button agregar_programa;
 
         /// <summary>
-        /// Control lblc_prog_campus.
+        /// Control c_prog_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblc_prog_campus;
+        protected global::System.Web.UI.WebControls.TextBox c_prog_campus;
 
         /// <summary>
-        /// Control lblprog_campus.
+        /// Control n_prog_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblprog_campus;
+        protected global::System.Web.UI.WebControls.TextBox n_prog_campus;
 
         /// <summary>
-        /// Control lblad_campus.
+        /// Control checked_input.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblad_campus;
+        protected global::System.Web.UI.WebControls.HiddenField checked_input;
 
         /// <summary>
-        /// Control lbles_pcampus.
+        /// Control e_prog_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbles_pcampus;
+        protected global::System.Web.UI.WebControls.DropDownList e_prog_campus;
 
         /// <summary>
-        /// Control c_pcampus.
+        /// Control btn_estado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList c_pcampus;
-
-        /// <summary>
-        /// Control camp_prog.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox camp_prog;
-
-        /// <summary>
-        /// Control chk_admision.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chk_admision;
-
-        /// <summary>
-        /// Control e_cprog.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList e_cprog;
-
-        /// <summary>
-        /// Control cancel_camp_prog.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancel_camp_prog;
-
-        /// <summary>
-        /// Control save_camp_prog.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button save_camp_prog;
-
-        /// <summary>
-        /// Control update_camp_prog.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button update_camp_prog;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btn_estado;
     }
 }

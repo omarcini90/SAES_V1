@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="C_Campus.aspx.cs" Inherits="SAES_v1.C_Campus" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .custom-control-input:checked ~ .custom-control-label::before {
+            color: #fff;
+            border-color: #169f85;
+            background-color: #169f85;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="x_title">
@@ -9,184 +16,168 @@
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
-        <ul class="nav nav-tabs justify-content-end bar_tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="pais-tab" data-toggle="tab" href="#campus1" role="tab" aria-controls="campus" aria-selected="true">Campus</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="estado-tab" data-toggle="tab" href="#programas1" role="tab" aria-controls="programas" aria-selected="false">Programas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="deleg-tab" data-toggle="tab" href="#cobranza1" role="tab" aria-controls="cobranza" aria-selected="false">Cobranza</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="zip-tab" data-toggle="tab" href="#secuencias1" role="tab" aria-controls="secuencias" aria-selected="false">Secuencias</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="campus1" role="tabpanel" aria-labelledby="campus-tab">
-                <asp:UpdatePanel ID="campus_upd" runat="server" UpdateMode="Conditional">
+        <nav style="margin-top: 10px;">
+            <div class="nav nav-tabs justify-content-end pills" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link justify-content-end active" id="nav-Campus-tab" data-toggle="tab" href="#nav-Campus" role="tab" aria-controls="nav-Campus" aria-selected="true">Campus</a>
+                <a class="nav-item nav-link justify-content-end" id="nav-Programas-tab" data-toggle="tab" href="#nav-Programas" role="tab" aria-controls="nav-Programas" aria-selected="false">Programas</a>
+                <a class="nav-item nav-link justify-content-end" id="nav-Cobranza-tab" data-toggle="tab" href="#nav-Cobranza" role="tab" aria-controls="nav-Cobranza" aria-selected="false">Cobranza</a>
+                <a class="nav-item nav-link justify-content-end" id="nav-Secuencias-tab" data-toggle="tab" href="#nav-Secuencias" role="tab" aria-controls="nav-Secuencias" aria-selected="false">Secuencias</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <!--Pestaña Campus-->
+            <div class="tab-pane fade show active" id="nav-Campus" role="tabpanel" aria-labelledby="nav-Campus-tab">
+                <asp:UpdatePanel ID="upd_Campus" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                            <div class="col-2">
-                                <asp:Label ID="lblccampus" runat="server" Text="Clave"></asp:Label>
-                            </div>
-                            <div class="col-4">
-                                <asp:Label ID="lblncampus" runat="server" Text="Nombre"></asp:Label>
-                            </div>
-                            <div class="col-1">
-                                <asp:Label ID="lblacampus" runat="server" Text="Abreviatura"></asp:Label>
-                            </div>
-                            <div class="col-2">
-                                <asp:Label ID="lblrfccampus" runat="server" Text="RFC"></asp:Label>
-                            </div>
-                            <div class="col-3">
-                                <asp:Label ID="lblecampus" runat="server" Text="Estatus"></asp:Label>
+                        <div id="add_Campus" class="row justify-content-start" style="margin-top: 15px;">
+                            <div class="col-10">
+                                <asp:Button ID="agregar_Campus" runat="server" CssClass="btn btn-success" Text="Nuevo" />
                             </div>
                         </div>
-                        <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                            <div class="col-2">
-                                <asp:TextBox ID="c_campus" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="col-4">
-                                <asp:TextBox ID="n_campus" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="col-1">
-                                <asp:TextBox ID="a_campus" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="col-2">
-                                <asp:TextBox ID="rfc_campus" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                            <div class="col-3">
-                                <asp:DropDownList ID="estatus_campus" runat="server" CssClass="form-control"></asp:DropDownList>
-                            </div>
-                        </div>
-                        <br />
-                        <div id="btn_continuar" class="row justify-content-center" style="text-align: center; margin: auto;">
-                            <div class="col-3">
-                                <asp:Button ID="cancel_campus1" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" />
-                                <asp:Button ID="continue_campus" runat="server" CssClass="btn btn-round btn-success" Text="Continuar" OnClientClick="continuar(); return false" />
-                            </div>
-                        </div>
-                        <div id="Direccion_campus" style="display: none;">
-                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                                <div class="col-2">
-                                    <asp:Label ID="lblpais_campus" runat="server" Text="Pais"></asp:Label>
+                        <div id="form_Campus" runat="server">
+                            <div class="row g-3" style="margin-top: 15px;">
+                                <div class="col-md-4">
+                                    <label for="ContentPlaceHolder1_c_campus" class="form-label">Clave</label>
+                                    <asp:TextBox ID="c_campus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <div class="col-2">
-                                    <asp:Label ID="lblestado_campus" runat="server" Text="Estado"></asp:Label>
+                                <div class="col-md-8">
+                                    <label for="ContentPlaceHolder1_n_campus" class="form-label">Nombre</label>
+                                    <asp:TextBox ID="n_campus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <div class="col-2">
-                                    <asp:Label ID="lbldeleg_campus" runat="server" Text="Delegación-Municipio"></asp:Label>
+                                <div class="col-md-4">
+                                    <label for="ContentPlaceHolder1_a_campus" class="form-label">Abreviatura</label>
+                                    <asp:TextBox ID="a_campus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <div class="col-2">
-                                    <asp:Label ID="lblzip_campus" runat="server" Text="Código Postal"></asp:Label>
+                                <div class="col-md-4">
+                                    <label for="ContentPlaceHolder1_RFC_campus" class="form-label">RFC</label>
+                                    <asp:TextBox ID="RFC_campus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <div class="col-3">
-                                    <asp:Label ID="lblcol_campus" runat="server" Text="Colonia"></asp:Label>
+                                <div class="col-md-4">
+                                    <label for="ContentPlaceHolder1_estatus_pais" class="form-label">Estatus</label>
+                                    <asp:DropDownList ID="estatus_campus" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:HiddenField ID="edo_campus" runat="server" />
                                 </div>
                             </div>
-                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                                <div class="col-2">
-                                    <asp:DropDownList ID="pais_campus" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <br />
+                            <div class="row g-3" style="margin-top: 15px;" id="direccion_campus">
+                                <div class="col-md-4">
+                                    <label for="ContentPlaceHolder1_ddp_campus" class="form-label">Pais</label>
+                                    <asp:DropDownList ID="ddp_campus" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
-                                <div class="col-2">
-                                    <asp:DropDownList ID="estado_campus" runat="server" CssClass="form-control"></asp:DropDownList>
+                                <div class="col-md-4">
+                                    <label for="ContentPlaceHolder1_dde_campus" class="form-label">Estado</label>
+                                    <asp:DropDownList ID="dde_campus" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
-                                <div class="col-2">
-                                    <asp:DropDownList ID="deleg_campus" runat="server" CssClass="form-control"></asp:DropDownList>
+                                <div class="col-md-4">
+                                    <label for="ContentPlaceHolder1_ddd_campus" class="form-label">Delegacion-Municipio</label>
+                                    <asp:DropDownList ID="ddd_campus" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-md-2">
+                                    <label for="ContentPlaceHolder1_zip_campus" class="form-label">Código Postal</label>
                                     <asp:TextBox ID="zip_campus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
-                                <div class="col-3">
-                                    <asp:DropDownList ID="col_campus" runat="server" CssClass="form-control"></asp:DropDownList>
+                                <div class="col-md-3">
+                                    <label for="ContentPlaceHolder1_col_campus" class="form-label">Colonia</label>
+                                    <asp:TextBox ID="col_campus" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="ContentPlaceHolder1_direc_campus" class="form-label">Dirección</label>
+                                    <asp:TextBox ID="direc_campus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
-                            <br />
-                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                                <div class="col-10">
-                                    <asp:Label ID="lbladdr_campus" runat="server" Text="Dirección"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                                <div class="col-10">
-                                    <asp:TextBox ID="address_campus" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                                <div class="col-3">
-                                    <asp:Button ID="cancel_campus2" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" />
-                                    <asp:Button ID="save_campus" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" />
-                                    <asp:Button ID="udate_campus" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" Visible="false" />
-                                </div>
+                        </div>
+                        <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_pais" runat="server">
+                            <div class="col-md-3" style="text-align: center;">
+                                <asp:Button ID="cancelar_campus" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" />
+                                <asp:Button ID="guardar_campus" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" />
+                                <asp:Button ID="actualizar_campus" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" />
                             </div>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+                <div id="table_campus">
+                </div>
             </div>
-            <div class="tab-pane fade" id="programas1" role="tabpanel" aria-labelledby="programas-tab">
-                <asp:UpdatePanel ID="camp_prog_upd" runat="server" UpdateMode="Conditional">
+            <!--\Pestaña Campus-->
+
+            <!--Pestaña Programas-->
+            <div class="tab-pane fade" id="nav-Programas" role="tabpanel" aria-labelledby="nav-Programas-tab">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <div id="busqueda" >
-                            <div class="row justify-content-center" style="text-align: center; margin: auto; padding-top: 15px;">
-                                <div class="col-2" style="padding-top: 10px;">
-                                    <asp:Label ID="lblca_prog" runat="server" Text="Busqueda de Campus"></asp:Label>
+                        <div id="form_programa" runat="server">
+                            <div class="row g-3 justify-content-center" style="margin-top: 15px;">
+                                <div class="col-md-8">
+                                    <label for="ContentPlaceHolder1_search_campus" class="form-label">Busqueda de Campus</label>
+                                    <asp:DropDownList ID="search_campus" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
-                                <div class="col-5">
-                                    <asp:TextBox ID="busq_campus" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <br />
+                            <div id="add_programa" class="row justify-content-start" style="margin-top: 15px;">
+                                <div class="col-10">
+                                    <asp:Button ID="agregar_programa" runat="server" CssClass="btn btn-success" Text="Nuevo" />
                                 </div>
-                                <div class="col-2">
-                                    <asp:Button ID="busqueda_campus" runat="server" CssClass="btn btn-round btn-success" Text="Continuar" OnClientClick="search(); return false"/>
+                            </div>
+                            <div class="row g-3 justify-content-center" style="margin-top: 15px;">
+                                <div class="col-md-2">
+                                    <label for="ContentPlaceHolder1_c_prog_campus" class="form-label">Clave</label>
+                                    <asp:TextBox ID="c_prog_campus" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="ContentPlaceHolder1_n_prog_campus" class="form-label">Programa</label>
+                                    <asp:TextBox ID="n_prog_campus" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="col-md-1" style="text-align: center;">
+                                    <label for="ContentPlaceHolder1_adm_campus" class="form-label">Admisión</label>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitches">
+                                        <label class="custom-control-label" for="customSwitches"></label>
+                                        <asp:HiddenField ID="checked_input" runat="server" />
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="ContentPlaceHolder1_e_prog_campus" class="form-label">Estatus</label>
+                                    <asp:DropDownList ID="e_prog_campus" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
-                        <div id="panel_programa" style="display: none;">
-                            <div class="row justify-content-center" style="text-align: center; margin: auto; padding-top: 15px;">
-                                <div class="col-3">
-                                    <asp:Label ID="lblc_prog_campus" runat="server" Text="Clave"></asp:Label></div>
-                                <div class="col-4">
-                                    <asp:Label ID="lblprog_campus" runat="server" Text="Programa"></asp:Label></div>
-                                <div class="col-2">
-                                    <asp:Label ID="lblad_campus" runat="server" Text="Admisión"></asp:Label></div>
-                                <div class="col-3">
-                                    <asp:Label ID="lbles_pcampus" runat="server" Text="Estatus"></asp:Label></div>
-                            </div>
-                            <div class="row justify-content-center" style="text-align: center; margin: auto; padding-top: 15px;">
-                                <div class="col-3">
-                                    <asp:DropDownList ID="c_pcampus" runat="server" CssClass="form-control"></asp:DropDownList></div>
-                                <div class="col-4">
-                                    <asp:TextBox ID="camp_prog" runat="server" CssClass="form-control"></asp:TextBox></div>
-                                <div class="col-2" style="padding-top: 10px;">
-                                    <asp:CheckBox ID="chk_admision" runat="server" /></div>
-                                <div class="col-3">
-                                    <asp:DropDownList ID="e_cprog" runat="server" CssClass="form-control"></asp:DropDownList></div>
-                            </div>
-                            <br />
-                            <div class="row justify-content-center" style="text-align: center; margin: auto;">
-                                <div class="col-3">
-                                    <asp:Button ID="cancel_camp_prog" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" />
-                                    <asp:Button ID="save_camp_prog" runat="server" CssClass="btn btn-round btn-success" Text="Guardar" />
-                                    <asp:Button ID="update_camp_prog" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" Visible="false" />
-                                </div>
+                        <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_estado" runat="server">
+                            <div class="col-md-3" style="text-align: center;">
                             </div>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+                <div id="tabla_programas">
+                </div>
             </div>
-            <div class="tab-pane fade show active" id="cobranza1" role="tabpanel" aria-labelledby="cobranza-tab"></div>
-            <div class="tab-pane fade show active" id="paissecuencias1es1" role="tabpanel" aria-labelledby="secuencias-tab"></div>
+            <!--\Pestaña Programas-->
         </div>
     </div>
+    <!--Funciones Generales-->
     <script>
-        function continuar() {
-            $("#btn_continuar").slideUp("fast");
-            $("#Direccion_campus").slideDown("slow");
-        }
-        function search() {
-            $("#busqueda").slideUp("fast");
-            $("#panel_programa").slideDown("slow");
-        }
+        $(document).ready(function () {
+
+            if (location.hash) {
+                $("a[href='" + location.hash + "']").tab("show");
+            }
+            $(document.body).on("click", "a[data-toggle='tab']", function (event) {
+                location.hash = this.getAttribute("href");
+            });
+        });
+
+        $(window).on("popstate", function () {
+            var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
+            $("a[href='" + anchor + "']").tab("show");
+        });
+
+        $("#customSwitches").change(function () {
+            if (this.checked) {
+                $("#ContentPlaceHolder1_checked_input").val('1')
+            } else {
+                $("#ContentPlaceHolder1_checked_input").val('0')
+            }
+            
+        });
+
     </script>
+    <!--\Funciones Generales-->
 </asp:Content>
