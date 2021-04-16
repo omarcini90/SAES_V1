@@ -56,3 +56,5 @@ C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\obj\Release\SAES_v1.csproj.
 C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\obj\Release\SAES_v1.csproj.CopyComplete
 C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\obj\Release\SAES_v1.dll
 C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\obj\Release\SAES_v1.pdb
+C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\Newtonsoft.Json.dll
+C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\Newtonsoft.Json.xml

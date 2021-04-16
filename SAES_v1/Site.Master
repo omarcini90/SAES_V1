@@ -167,7 +167,7 @@
         $(".loader1").fadeOut("slow");
     }
 </script>
-<body class="nav-md footer_fixed">
+<body class="nav-md">
     <div class="loader" style="display:none;">
         <div class="clock"></div>
     </div>
@@ -178,7 +178,7 @@
         <asp:ScriptManager ID="script_site" runat="server"></asp:ScriptManager>
         <div class="container body">
             <div class="main_container">
-                <div class="col-md-3 left_col">
+                <div class="col-md-3 left_col menu-fixed">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
                             <a href="Inicio.aspx" class="site_title">
@@ -232,7 +232,7 @@
                                     </li>
                                     <li id="Li1" runat="server"><a><i class="fas fa-file-upload" style="padding-right: 5px;"></i>Repositorio de Documentos <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li id="Li2" runat="server"><a href="#">Configuración</a></li>
+                                            <li id="Li2" runat="server"><a href="Repositorio/Configuracion.aspx">Configuración</a></li>
                                             <li id="Li3" runat="server"><a href="#">Expedientes</a></li>
                                         </ul>
                                     </li>

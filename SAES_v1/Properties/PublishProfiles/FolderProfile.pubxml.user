@@ -31,6 +31,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="bin/MySql.Data.dll">
       <publishTime>12/09/2020 00:51:10</publishTime>
     </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/17/2021 20:03:36</publishTime>
+    </File>
     <File Include="bin/Renci.SshNet.dll">
       <publishTime>12/31/2020 13:12:50</publishTime>
     </File>
@@ -113,10 +116,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/27/2016 21:50:24</publishTime>
     </File>
     <File Include="bin/SAES_v1.dll">
-      <publishTime>04/06/2021 12:01:35</publishTime>
+      <publishTime>04/16/2021 02:06:10</publishTime>
     </File>
     <File Include="bin/SAES_v1.pdb">
-      <publishTime>04/06/2021 12:01:35</publishTime>
+      <publishTime>04/16/2021 02:06:10</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
       <publishTime>02/19/2020 10:05:18</publishTime>
@@ -149,13 +152,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/01/2021 18:23:18</publishTime>
     </File>
     <File Include="C_Campus.aspx">
-      <publishTime>04/01/2021 02:06:44</publishTime>
+      <publishTime>04/16/2021 01:54:34</publishTime>
     </File>
     <File Include="C_Demografico.aspx">
       <publishTime>04/06/2021 02:41:13</publishTime>
     </File>
     <File Include="C_Demografico2.aspx">
       <publishTime>04/06/2021 01:30:04</publishTime>
+    </File>
+    <File Include="C_Demograficos.aspx">
+      <publishTime>04/13/2021 20:43:12</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>04/01/2021 07:00:25</publishTime>
@@ -178,11 +184,26 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Images/Operaciones/globo.png">
       <publishTime>03/31/2021 23:32:56</publishTime>
     </File>
+    <File Include="Images/Operaciones/lupa.png">
+      <publishTime>04/15/2021 18:19:26</publishTime>
+    </File>
     <File Include="Images/Operaciones/telefono.png">
       <publishTime>04/01/2021 00:52:47</publishTime>
     </File>
     <File Include="Images/Operaciones/universidad.png">
       <publishTime>04/01/2021 00:52:47</publishTime>
+    </File>
+    <File Include="Images/Repositorio/Derecha.png">
+      <publishTime>04/15/2021 03:28:33</publishTime>
+    </File>
+    <File Include="Images/Repositorio/Doble.png">
+      <publishTime>04/15/2021 03:44:41</publishTime>
+    </File>
+    <File Include="Images/Repositorio/Izq.png">
+      <publishTime>04/15/2021 03:28:33</publishTime>
+    </File>
+    <File Include="Images/Repositorio/proceso.png">
+      <publishTime>04/10/2021 13:34:56</publishTime>
     </File>
     <File Include="Images/Sitemaster/Home.jpg">
       <publishTime>04/06/2021 11:43:57</publishTime>
@@ -215,7 +236,37 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/01/2021 00:41:02</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/06/2021 12:01:42</publishTime>
+      <publishTime>04/16/2021 02:06:21</publishTime>
+    </File>
+    <File Include="Repositorio/CargaDocumentos.aspx">
+      <publishTime>04/10/2021 12:55:59</publishTime>
+    </File>
+    <File Include="Repositorio/Comentarios.aspx">
+      <publishTime>04/10/2021 12:56:17</publishTime>
+    </File>
+    <File Include="Repositorio/Configuracion.aspx">
+      <publishTime>04/15/2021 03:48:12</publishTime>
+    </File>
+    <File Include="Repositorio/InputFile.aspx">
+      <publishTime>04/10/2021 12:58:38</publishTime>
+    </File>
+    <File Include="Repositorio/ListadoAdministracion.aspx">
+      <publishTime>04/10/2021 12:54:28</publishTime>
+    </File>
+    <File Include="Repositorio/ListadoExpediente.aspx">
+      <publishTime>04/10/2021 12:54:50</publishTime>
+    </File>
+    <File Include="Repositorio/Preview_Page.aspx">
+      <publishTime>04/10/2021 12:57:53</publishTime>
+    </File>
+    <File Include="Repositorio/Privacidad.aspx">
+      <publishTime>04/10/2021 12:59:05</publishTime>
+    </File>
+    <File Include="Repositorio/Site1.Master">
+      <publishTime>04/12/2021 23:44:38</publishTime>
+    </File>
+    <File Include="Repositorio/UploadPage.aspx">
+      <publishTime>04/10/2021 12:59:32</publishTime>
     </File>
     <File Include="Script/SweetAlert/sweetalert.js">
       <publishTime>04/01/2021 18:22:23</publishTime>
@@ -230,13 +281,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/01/2021 18:22:23</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>04/06/2021 01:34:39</publishTime>
+      <publishTime>04/15/2021 03:35:24</publishTime>
     </File>
     <File Include="Template/Sitemaster/build/css/custom.css">
       <publishTime>03/31/2021 00:11:50</publishTime>
     </File>
     <File Include="Template/Sitemaster/build/css/custom.min.css">
-      <publishTime>04/05/2021 22:06:27</publishTime>
+      <publishTime>04/10/2021 13:07:51</publishTime>
     </File>
     <File Include="Template/Sitemaster/build/images/back_disabled.png">
       <publishTime>08/05/2020 01:06:58</publishTime>
@@ -14381,7 +14432,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/01/2021 00:54:25</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/06/2021 11:53:12</publishTime>
+      <publishTime>04/16/2021 02:06:14</publishTime>
     </File>
   </ItemGroup>
 </Project>

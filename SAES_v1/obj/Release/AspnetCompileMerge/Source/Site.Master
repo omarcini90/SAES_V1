@@ -53,7 +53,19 @@
             height: 100%;
             z-index: 3;
             /*background: url('Images/Sitemaster/loader.gif') 50% 50% no-repeat rgb(249,249,249);*/
-            opacity: .9;
+            opacity: 1;
+            background-color: #2a3f54;
+        }
+
+        .loader1 {
+            position: fixed;
+            left: 15%;
+            top: 10%;
+            width: 85%;
+            height: 100%;
+            z-index: 3;
+            /* background: url(Images/Sitemaster/loader.gif) 50% 50% no-repeat rgb(249,249,249); */
+            opacity: 0.8;
             background-color: #2a3f54;
         }
 
@@ -145,22 +157,28 @@
     </style>
 </head>
 <script type="text/javascript">
-    $(window).on("load", function () {
-        $(".loader").fadeOut("slow");
-    });
+    //$(window).on("load", function () {
+    //    $(".loader").fadeOut("slow");
+    //});
     function loader_push() {
-        $(".loader").fadeIn("slow");
+        $(".loader1").fadeIn("slow");
+    }
+    function loader_stop() {
+        $(".loader1").fadeOut("slow");
     }
 </script>
-<body class="nav-md footer_fixed">
-    <div class="loader">
+<body class="nav-md">
+    <div class="loader" style="display:none;">
+        <div class="clock"></div>
+    </div>
+    <div class="loader1" style="display: none;">
         <div class="clock"></div>
     </div>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="script_site" runat="server"></asp:ScriptManager>
         <div class="container body">
             <div class="main_container">
-                <div class="col-md-3 left_col">
+                <div class="col-md-3 left_col menu-fixed">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
                             <a href="Inicio.aspx" class="site_title">
@@ -185,7 +203,7 @@
                                 <ul class="nav side-menu">
                                     <li id="operacion" runat="server"><a><i class="fas fa-desktop" style="padding-right: 5px;"></i>Operación <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li id="demograficos" runat="server"><a href="C_Demografico.aspx">Catálogos Demográficos</a></li>
+                                            <li id="demograficos" runat="server"><a href="C_Demograficos.aspx">Catálogos Demográficos</a></li>
                                             <li id="campus" runat="server"><a href="C_Campus.aspx">Catálogo Campus</a></li>
                                             <li id="periodos" runat="server"><a href="Periodos_Escolares.aspx">Periodos Escolares</a></li>
                                             <li id="tdireccion" runat="server"><a href="T_Direccion.aspx">Tipos-Dirección</a></li>
@@ -210,6 +228,12 @@
                                             <li id="documentos" runat="server"><a href="#">Documentos</a></li>
                                             <li id="procedencia" runat="server"><a href="#">Escuelas-Procedencia</a></li>
                                             <li id="pronostico" runat="server"><a href="#">Pronóstico-Nuevo Ingreso</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="Li1" runat="server"><a><i class="fas fa-file-upload" style="padding-right: 5px;"></i>Repositorio de Documentos <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li id="Li2" runat="server"><a href="Repositorio/Configuracion.aspx">Configuración</a></li>
+                                            <li id="Li3" runat="server"><a href="#">Expedientes</a></li>
                                         </ul>
                                     </li>
                                     <li id="escolares" runat="server"><a><i class="fas fa-graduation-cap" style="padding-right: 5px;"></i>Control Escolar <span class="fa fa-chevron-down"></span></a>
@@ -293,6 +317,7 @@
 
                             <div class="x_panel">
                                 <div class="x_content">
+
                                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                     </asp:ContentPlaceHolder>
 

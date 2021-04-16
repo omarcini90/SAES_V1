@@ -65,6 +65,9 @@
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.23\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -122,8 +125,13 @@
     <Content Include="Images\Operaciones\contacto.png" />
     <Content Include="Images\Operaciones\correo.png" />
     <Content Include="Images\Operaciones\globo.png" />
+    <Content Include="Images\Operaciones\lupa.png" />
     <Content Include="Images\Operaciones\telefono.png" />
     <Content Include="Images\Operaciones\universidad.png" />
+    <Content Include="Images\Repositorio\Derecha.png" />
+    <Content Include="Images\Repositorio\Doble.png" />
+    <Content Include="Images\Repositorio\Izq.png" />
+    <Content Include="Images\Repositorio\proceso.png" />
     <Content Include="Images\Sitemaster\Home.jpg" />
     <Content Include="Images\Sitemaster\loader.gif" />
     <Content Include="Images\Sitemaster\login.gif" />
@@ -134,6 +142,15 @@
     <Content Include="Images\Sitemaster\Logo_B_2.png" />
     <Content Include="Inicio.aspx" />
     <Content Include="Periodos_Escolares.aspx" />
+    <Content Include="Repositorio\CargaDocumentos.aspx" />
+    <Content Include="Repositorio\Comentarios.aspx" />
+    <Content Include="Repositorio\Configuracion.aspx" />
+    <Content Include="Repositorio\InputFile.aspx" />
+    <Content Include="Repositorio\ListadoAdministracion.aspx" />
+    <Content Include="Repositorio\ListadoExpediente.aspx" />
+    <Content Include="Repositorio\Preview_Page.aspx" />
+    <Content Include="Repositorio\Privacidad.aspx" />
+    <Content Include="Repositorio\UploadPage.aspx" />
     <Content Include="Script\SweetAlert\sweetalert.js" />
     <Content Include="Script\SweetAlert\sweetalert.min.js" />
     <Content Include="Script\SweetAlert\sweetalert2.min.js" />
@@ -3833,6 +3850,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases_auxiliares\Data.cs" />
     <Compile Include="C_Campus.aspx.cs">
       <DependentUpon>C_Campus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3869,6 +3887,76 @@
       <DependentUpon>Periodos_Escolares.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\CargaDocumentos.aspx.cs">
+      <DependentUpon>CargaDocumentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\CargaDocumentos.aspx.designer.cs">
+      <DependentUpon>CargaDocumentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Comentarios.aspx.cs">
+      <DependentUpon>Comentarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\Comentarios.aspx.designer.cs">
+      <DependentUpon>Comentarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Configuracion.aspx.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\Configuracion.aspx.designer.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\InputFile.aspx.cs">
+      <DependentUpon>InputFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\InputFile.aspx.designer.cs">
+      <DependentUpon>InputFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\ListadoAdministracion.aspx.cs">
+      <DependentUpon>ListadoAdministracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\ListadoAdministracion.aspx.designer.cs">
+      <DependentUpon>ListadoAdministracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\ListadoExpediente.aspx.cs">
+      <DependentUpon>ListadoExpediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\ListadoExpediente.aspx.designer.cs">
+      <DependentUpon>ListadoExpediente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Preview_Page.aspx.cs">
+      <DependentUpon>Preview_Page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\Preview_Page.aspx.designer.cs">
+      <DependentUpon>Preview_Page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Privacidad.aspx.cs">
+      <DependentUpon>Privacidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\Privacidad.aspx.designer.cs">
+      <DependentUpon>Privacidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\UploadPage.aspx.cs">
+      <DependentUpon>UploadPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\UploadPage.aspx.designer.cs">
+      <DependentUpon>UploadPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4933,6 +5021,7 @@
     <Content Include="Template\Sitemaster\vendors\validator\.bower.json" />
     <Content Include="Template\Sitemaster\vendors\validator\package.json" />
     <Content Include="Template\Sitemaster\vendors\validator\README.md" />
+    <Content Include="Repositorio\Site1.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

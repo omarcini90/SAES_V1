@@ -55,4 +55,6 @@ C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\Renci.SshNet.xml
 C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\System.Buffers.xml
 C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\System.Memory.xml
 C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\Newtonsoft.Json.dll
+C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\bin\Newtonsoft.Json.xml
 C:\Users\momar\Documents\GitHub\SAES\SAES_V1\SAES_v1\obj\Debug\SAES_v1.csprojAssemblyReference.cache

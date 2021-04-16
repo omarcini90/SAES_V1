@@ -175,7 +175,7 @@
 
             .nav-link.active,
             .nav-item.show .nav-link {
-                border-right: 5px solid #169f85 !important;
+                border-right: 5px solid #1abb9c !important;
             }
 
         .buttons-excel {
@@ -197,9 +197,9 @@
             border: 1px solid rgb(227, 65, 0);
         }
 
-        .right_col {
+        /*.right_col {
             min-height: 700px !important;
-        }
+        }*/
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
