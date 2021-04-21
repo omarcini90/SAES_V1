@@ -42,11 +42,53 @@ namespace SAES_v1
                 {
                     Session["usuario"] = username.Text;
                     Session["rol"] = "Alumno";
-                    FormsAuthentication.Initialize();
-                    FormsAuthenticationTicket fat = new FormsAuthenticationTicket(1,
-                            username.Text, DateTime.Now, DateTime.Now.AddMinutes(20), false, "SAES", FormsAuthentication.FormsCookiePath);
-                    Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(fat)));
-                    Response.Redirect("Inicio.aspx");
+
+                    MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
+
+                    //Obtiene si el admin ya tiene registro
+                    string strQueryok = "";
+                    strQueryok = " SELECT COUNT(*) FROM tuser WHERE TUSER_CLAVE='" + username.Text + "'";
+
+                    string strQueryrol = "";
+                    strQueryrol = "SELECT tuser_desc FROM tuser INNER JOIN trole ON trole_clave=tuser_trole_clave WHERE tuser_clave='" + username.Text + "'";
+                    ConexionMySql.Open();
+                    MySqlDataAdapter mysqladapter = new MySqlDataAdapter();
+                    DataSet dsmysql = new DataSet();
+                    MySqlCommand cmdmysql = new MySqlCommand(strQueryok, ConexionMySql);
+                    mysqladapter.SelectCommand = cmdmysql;
+                    mysqladapter.Fill(dsmysql);
+                    mysqladapter.Dispose();
+                    cmdmysql.Dispose();
+                    ConexionMySql.Close();
+
+                    if (dsmysql.Tables[0].Rows[0][0].ToString() != "0")
+                    {
+                        ConexionMySql.Open();
+
+                        MySqlDataAdapter mysqladapter1 = new MySqlDataAdapter();
+                        DataSet dsmysql1 = new DataSet();
+                        MySqlCommand cmdmysql1 = new MySqlCommand(strQueryrol, ConexionMySql);
+                        mysqladapter1.SelectCommand = cmdmysql1;
+                        mysqladapter1.Fill(dsmysql1);
+                        mysqladapter1.Dispose();
+                        cmdmysql1.Dispose();
+                        ConexionMySql.Close();
+
+                        
+                        Session["nombre"] = dsmysql1.Tables[0].Rows[0][0].ToString().Trim();
+
+                        FormsAuthentication.Initialize();
+                        FormsAuthenticationTicket fat = new FormsAuthenticationTicket(1,
+                                username.Text, DateTime.Now, DateTime.Now.AddMinutes(20), false, "SAES", FormsAuthentication.FormsCookiePath);
+                        Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(fat)));
+
+                        Response.Redirect("Inicio.aspx");
+                        //Response.Redirect("Prueba_site.aspx");
+                    }
+                    else
+                    {
+                        ///El usuario no existe
+                    }
                 }
                 else if (autenticacion_admin(username.Text, password.Text))
                 {
@@ -55,12 +97,12 @@ namespace SAES_v1
 
                     MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
 
-                    //Obtiene si el estudiante ya tiene registro
+                    //Obtiene si el admin ya tiene registro
                     string strQueryok = "";
                     strQueryok = " SELECT COUNT(*) FROM tuser WHERE TUSER_CLAVE='" + username.Text + "'";
 
                     string strQueryrol = "";
-                    strQueryrol = "SELECT trole_desc FROM tuser INNER JOIN trole ON trole_clave=tuser_trole_clave WHERE tuser_clave='"+username.Text+"'";
+                    strQueryrol = "SELECT trole_desc,tuser_desc FROM tuser INNER JOIN trole ON trole_clave=tuser_trole_clave WHERE tuser_clave='" + username.Text+"'";
                     ConexionMySql.Open();
                     MySqlDataAdapter mysqladapter = new MySqlDataAdapter();
                     DataSet dsmysql = new DataSet();
@@ -84,7 +126,7 @@ namespace SAES_v1
                         ConexionMySql.Close();
 
                         Session["rol"] = dsmysql1.Tables[0].Rows[0][0].ToString().Trim();
-                        //Session["clave_campus"] = dssql1.Tables[0].Rows[0][1].ToString().Trim();
+                        Session["nombre"] = dsmysql1.Tables[0].Rows[0][1].ToString().Trim();
 
                         FormsAuthentication.Initialize();
                         FormsAuthenticationTicket fat = new FormsAuthenticationTicket(1,
