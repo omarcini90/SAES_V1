@@ -112,6 +112,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap2.min.css" />
+    <Content Include="Content\fileinput.css" />
+    <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\loaders.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\SweetAlert\sweetalert.css" />
@@ -128,10 +133,20 @@
     <Content Include="Images\Operaciones\lupa.png" />
     <Content Include="Images\Operaciones\telefono.png" />
     <Content Include="Images\Operaciones\universidad.png" />
+    <Content Include="Images\Repositorio\buscar.png" />
+    <Content Include="Images\Repositorio\comentarios.png" />
     <Content Include="Images\Repositorio\Derecha.png" />
     <Content Include="Images\Repositorio\Doble.png" />
+    <Content Include="Images\Repositorio\Flecha_down.png" />
+    <Content Include="Images\Repositorio\flecha_rigth.png" />
+    <Content Include="Images\Repositorio\folder.png" />
+    <Content Include="Images\Repositorio\icono_sesion_alert.png" />
     <Content Include="Images\Repositorio\Izq.png" />
+    <Content Include="Images\Repositorio\negocios-y-finanzas.png" />
+    <Content Include="Images\Repositorio\preview.png" />
     <Content Include="Images\Repositorio\proceso.png" />
+    <Content Include="Images\Repositorio\settings.png" />
+    <Content Include="Images\Repositorio\Upload_n.png" />
     <Content Include="Images\Sitemaster\Home.jpg" />
     <Content Include="Images\Sitemaster\loader.gif" />
     <Content Include="Images\Sitemaster\login.gif" />
@@ -144,13 +159,15 @@
     <Content Include="Periodos_Escolares.aspx" />
     <Content Include="Repositorio\CargaDocumentos.aspx" />
     <Content Include="Repositorio\Comentarios.aspx" />
-    <Content Include="Repositorio\Configuracion.aspx" />
     <Content Include="Repositorio\InputFile.aspx" />
     <Content Include="Repositorio\ListadoAdministracion.aspx" />
     <Content Include="Repositorio\ListadoExpediente.aspx" />
+    <Content Include="Repositorio\Permisos.aspx" />
     <Content Include="Repositorio\Preview_Page.aspx" />
     <Content Include="Repositorio\Privacidad.aspx" />
+    <Content Include="Repositorio\Tipodocumentos.aspx" />
     <Content Include="Repositorio\UploadPage.aspx" />
+    <Content Include="Script\fileinput.js" />
     <Content Include="Script\SweetAlert\sweetalert.js" />
     <Content Include="Script\SweetAlert\sweetalert.min.js" />
     <Content Include="Script\SweetAlert\sweetalert2.min.js" />
@@ -3901,13 +3918,6 @@
     <Compile Include="Repositorio\Comentarios.aspx.designer.cs">
       <DependentUpon>Comentarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Repositorio\Configuracion.aspx.cs">
-      <DependentUpon>Configuracion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Repositorio\Configuracion.aspx.designer.cs">
-      <DependentUpon>Configuracion.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Repositorio\InputFile.aspx.cs">
       <DependentUpon>InputFile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3929,6 +3939,13 @@
     <Compile Include="Repositorio\ListadoExpediente.aspx.designer.cs">
       <DependentUpon>ListadoExpediente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Repositorio\Permisos.aspx.cs">
+      <DependentUpon>Permisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\Permisos.aspx.designer.cs">
+      <DependentUpon>Permisos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Repositorio\Preview_Page.aspx.cs">
       <DependentUpon>Preview_Page.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3949,6 +3966,13 @@
     </Compile>
     <Compile Include="Repositorio\Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorio\Tipodocumentos.aspx.cs">
+      <DependentUpon>Tipodocumentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Repositorio\Tipodocumentos.aspx.designer.cs">
+      <DependentUpon>Tipodocumentos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Repositorio\UploadPage.aspx.cs">
       <DependentUpon>UploadPage.aspx</DependentUpon>
@@ -5032,6 +5056,7 @@
   <ItemGroup>
     <Folder Include="logs\debug\" />
     <Folder Include="logs\error\" />
+    <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Template\Sitemaster\vendors\moment\moment.d.ts" />

@@ -11,124 +11,124 @@ namespace SAES_v1.Repositorio
 {
 
 
-    public partial class Preview_Page
+    public partial class Tipodocumentos
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control sincroniza_documentos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button sincroniza_documentos;
 
         /// <summary>
-        /// Control ScriptManager1.
+        /// Control upd_documento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.UpdatePanel upd_documento;
 
         /// <summary>
-        /// Control UpdatePanel_top.
+        /// Control form_doc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel_top;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_doc;
 
         /// <summary>
-        /// Control UpdatePanel.
+        /// Control IDTipoDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel;
+        protected global::System.Web.UI.WebControls.TextBox IDTipoDocumento;
 
         /// <summary>
-        /// Control RevisaDoc.
+        /// Control documento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RevisaDoc;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText documento;
 
         /// <summary>
-        /// Control Label2.
+        /// Control descripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText descripcion;
 
         /// <summary>
-        /// Control Label3.
+        /// Control tamanominimo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tamanominimo;
 
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control tamanomaximo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tamanomaximo;
 
         /// <summary>
-        /// Control DropDownEstatus.
+        /// Control Formato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownEstatus;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Formato;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control btn_doc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btn_doc;
 
         /// <summary>
-        /// Control Guarda_Rev.
+        /// Control cancelar_documento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Guarda_Rev;
+        protected global::System.Web.UI.WebControls.Button cancelar_documento;
 
         /// <summary>
-        /// Control Button1.
+        /// Control actualizar_documento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button actualizar_documento;
 
         /// <summary>
-        /// Control UpdateProgress.
+        /// Control gvTipoDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdateProgress UpdateProgress;
+        protected global::System.Web.UI.WebControls.GridView gvTipoDocumento;
     }
 }

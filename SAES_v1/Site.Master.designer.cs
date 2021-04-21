@@ -222,31 +222,49 @@ namespace SAES_v1
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pronostico;
 
         /// <summary>
-        /// Control Li1.
+        /// Control repositorio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl repositorio;
 
         /// <summary>
-        /// Control Li2.
+        /// Control tdocumentos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tdocumentos;
 
         /// <summary>
-        /// Control Li3.
+        /// Control permisos_repo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl permisos_repo;
+
+        /// <summary>
+        /// Control expedientes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl expedientes;
+
+        /// <summary>
+        /// Control carga_alumno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl carga_alumno;
 
         /// <summary>
         /// Control escolares.
@@ -517,6 +535,15 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl reportes;
+
+        /// <summary>
+        /// Control Seguridad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Seguridad;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

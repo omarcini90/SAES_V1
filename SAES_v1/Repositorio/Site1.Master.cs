@@ -11,7 +11,27 @@ namespace SAES_v1.Repositorio
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+            if (Session["rol"].ToString() == "Alumno")
+            {
+                ///Menus///
+                operacion.Visible = false;
+                prospectos.Visible = false;
+                admision.Visible = false;
+                escolares.Visible = false;
+                planeacion.Visible = false;
+                Finanzas.Visible = false;
+                Seguridad.Visible = false;
+                ///SubMenus
+                tdocumentos.Visible = false;
+                permisos_repo.Visible = false;
+                expedientes.Visible = false;
+            }
+            else
+            {
+                ///SubMenu///
+                carga_alumno.Visible = false;
+            }
         }
     }
 }
