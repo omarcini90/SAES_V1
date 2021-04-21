@@ -26,7 +26,7 @@
             })
                 .then(willDelete => {
                     if (willDelete) {
-                        loader_push();
+                        //loader_push();
                         window.location.reload();
                     }
                 });
@@ -260,10 +260,6 @@
                             </div>
                         </div>
                     </ContentTemplate>
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="save_pais" />
-                        <asp:AsyncPostBackTrigger ControlID="update_pais" />
-                    </Triggers>
                 </asp:UpdatePanel>
                 <div id="table_pais">
                     <asp:GridView ID="GridPaises" runat="server" CssClass="table table-striped table-bordered" Width="100%" AutoGenerateColumns="False">
@@ -570,13 +566,21 @@
                         title: 'SAES_Catálogo de Paises',
                         className: 'btn-dark',
                         extend: 'excel',
-                        text: 'Exportar Excel'
+                        text: 'Exportar Excel',
+                        exportOptions: {
+                            columns: [1, 2, 4, 5]
+                        }
                     },
                     {
                         title: 'SAES_Catálogo de Paises',
                         className: 'btn-dark',
-                        extend: 'pdf',
-                        text: 'Exportar PDF'
+                        extend: 'pdfHtml5',
+                        text: 'Exportar PDF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [1, 2, 4, 5]
+                        }
                     }
                 ]
             });
@@ -675,13 +679,21 @@
                         title: 'SAES_Catálogo de Estados',
                         className: 'btn-dark',
                         extend: 'excel',
-                        text: 'Exportar Excel'
+                        text: 'Exportar Excel',
+                        exportOptions: {
+                            columns: [1,3,5, 6]
+                        }
                     },
                     {
                         title: 'SAES_Catálogo de Estados',
                         className: 'btn-dark',
-                        extend: 'pdf',
-                        text: 'Exportar PDF'
+                        extend: 'pdfHtml5',
+                        text: 'Exportar PDF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [1,3, 5, 6]
+                        }
                     }
                 ]
             });
@@ -779,13 +791,21 @@
                         title: 'SAES_Catálogo de Delegaciones',
                         className: 'btn-dark',
                         extend: 'excel',
-                        text: 'Exportar Excel'
+                        text: 'Exportar Excel',
+                        exportOptions: {
+                            columns: [1,3, 5, 7, 8]
+                        }
                     },
                     {
                         title: 'SAES_Catálogo de Delegaciones',
                         className: 'btn-dark',
-                        extend: 'pdf',
-                        text: 'Exportar PDF'
+                        extend: 'pdfHtml5',
+                        text: 'Exportar PDF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [1,3, 5, 7, 8]
+                        }
                     }
                 ]
             });
@@ -895,13 +915,21 @@
                         title: 'SAES_Catálogo de Códigos Postales',
                         className: 'btn-dark',
                         extend: 'excel',
-                        text: 'Exportar Excel'
+                        text: 'Exportar Excel',
+                        exportOptions: {
+                            columns: [1, 3, 5, 7, 9, 10]
+                        }
                     },
                     {
                         title: 'SAES_Catálogo de Códigos Postales',
                         className: 'btn-dark',
-                        extend: 'pdf',
-                        text: 'Exportar PDF'
+                        extend: 'pdfHtml5',
+                        text: 'Exportar PDF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [1, 3, 5, 7, 9,10]
+                        }
                     }
                 ]
             });

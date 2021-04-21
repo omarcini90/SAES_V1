@@ -34,8 +34,7 @@
     <!-- Custom Theme Style -->
     <link href="../Template/Sitemaster/build/css/custom.min.css" rel="stylesheet">
     <!-- jQuery -->
-    <script src="../Template/Sitemaster/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
+    
 
     <!--Sweet Alert-->
     <script src="../Script/SweetAlert/sweetalert.js"></script>
@@ -168,7 +167,7 @@
     }
 </script>
 <body class="nav-md">
-    <div class="loader" style="display:none;">
+    <div class="loader" style="display: none;">
         <div class="clock"></div>
     </div>
     <div class="loader1" style="display: none;">
@@ -190,8 +189,8 @@
                         <!-- menu profile quick info -->
                         <div class="profile clearfix">
                             <div class="profile_info" style="margin: auto;">
-                                <span>Bienvenido,John Doe</span>
-                                <span>Perfil:Administrador</span>
+                                <span>Bienvenido,<asp:Label ID="nombre" runat="server" Text=""></asp:Label></span>
+                                <span>Perfil:<asp:Label ID="perfil" runat="server" Text=""></asp:Label></span>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -230,11 +229,12 @@
                                             <li id="pronostico" runat="server"><a href="../#">Pronóstico-Nuevo Ingreso</a></li>
                                         </ul>
                                     </li>
-                                    <li id="Li1" runat="server"><a><i class="fas fa-file-upload" style="padding-right: 5px;"></i>Repositorio de Documentos <span class="fa fa-chevron-down"></span></a>
+                                    <li id="repositorio" runat="server"><a><i class="fas fa-file-upload" style="padding-right: 5px;"></i>Repositorio de Documentos <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li id="configuracion" runat="server"><a href="#">Configuración</a></li>
-                                            <li id="expedientes" runat="server"><a href="#">Expedientes</a></li>
-                                            <li id="carga_alumno" runat="server"><a href="#">Carga de Documentos</a></li>
+                                            <li id="tdocumentos" runat="server"><a href="Tipodocumentos.aspx">Configuración de Documentos</a></li>
+                                            <li id="permisos_repo" runat="server"><a href="Permisos.aspx">Configuración de Permisos</a></li>
+                                            <li id="expedientes" runat="server"><a href="ListadoAdministracion.aspx">Expedientes</a></li>
+                                            <li id="carga_alumno" runat="server"><a href="CargaDocumentos.aspx">Carga de Documentos</a></li>
                                         </ul>
                                     </li>
                                     <li id="escolares" runat="server"><a><i class="fas fa-graduation-cap" style="padding-right: 5px;"></i>Control Escolar <span class="fa fa-chevron-down"></span></a>
@@ -276,7 +276,7 @@
                                             <li id="reportes" runat="server"><a href="../#">Reportes-Cierre</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#"><i class="fas fa-shield-alt" style="padding-right: 5px;"></i>Seguridad</a>
+                                    <li id="Seguridad" runat="server"><a href="#"><i class="fas fa-shield-alt" style="padding-right: 5px;"></i>Seguridad</a>
                                     </li>
                                 </ul>
                             </div>
@@ -300,9 +300,8 @@
                             <ul class=" navbar-right">
                                 <span style="font-size: xx-large; padding-left: 200px;">Sistema de Administración Escolar-SAES</span>
                                 <li class="nav-item dropdown open" style="padding-left: 15px; padding-top: 10px;">
-                                    <span style="padding-right: 10px;">John Doe | Administrador </span>
-                                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                                        <span class="glyphicon glyphicon-off" aria-hidden="true" style="font-size: large;"></span></a>
+                                    <span style="padding-right: 10px;"><asp:Label ID="nombre_1" runat="server" Text=""></asp:Label> | <asp:Label ID="perfil_1" runat="server" Text=""></asp:Label> </span>
+                                    <asp:LinkButton ID="logout_btn" runat="server" OnClick="logout_btn_Click"><span class="glyphicon glyphicon-off" aria-hidden="true" style="font-size: large;"></span></asp:LinkButton>
                                 </li>
                             </ul>
                         </nav>
@@ -342,8 +341,8 @@
         </div>
 
         <!-- jQuery -->
-        <script src="../Template/Sitemaster/vendors/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <%--<script src="../Template/Sitemaster/vendors/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>--%>
         <!-- Bootstrap -->
         <script src="../Template/Sitemaster/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <!-- FastClick -->

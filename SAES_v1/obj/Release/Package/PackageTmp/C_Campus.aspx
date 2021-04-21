@@ -726,13 +726,21 @@
                         title: 'SAES_Catálogo de Campus',
                         className: 'btn-dark',
                         extend: 'excel',
-                        text: 'Exportar Excel'
+                        text: 'Exportar Excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 5, 6]
+                        }
                     },
                     {
                         title: 'SAES_Catálogo de Campus',
                         className: 'btn-dark',
-                        extend: 'pdf',
-                        text: 'Exportar PDF'
+                        extend: 'pdfHtml5',
+                        text: 'Exportar PDF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [0,1,2, 3, 5, 6]
+                        }
                     }
                 ]
             });
@@ -870,13 +878,21 @@
                         title: 'SAES_Catálogo de Campus-Programas',
                         className: 'btn-dark',
                         extend: 'excel',
-                        text: 'Exportar Excel'
+                        text: 'Exportar Excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 6, 7]
+                        }
                     },
                     {
                         title: 'SAES_Catálogo de Campus-Programas',
                         className: 'btn-dark',
-                        extend: 'pdf',
-                        text: 'Exportar PDF'
+                        extend: 'pdfHtml5',
+                        text: 'Exportar PDF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 6,7]
+                        }
                     }
                 ]
             });
@@ -973,13 +989,21 @@
                         title: 'SAES_Catálogo de Campus-Cobranza',
                         className: 'btn-dark',
                         extend: 'excel',
-                        text: 'Exportar Excel'
+                        text: 'Exportar Excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 5, 6, 7, 9, 11, 12]
+                        }
                     },
                     {
                         title: 'SAES_Catálogo de Campus-Cobranza',
                         className: 'btn-dark',
-                        extend: 'pdf',
-                        text: 'Exportar PDF'
+                        extend: 'pdfHtml5',
+                        text: 'Exportar PDF',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 5, 6, 7, 9, 11, 12]
+                        }
                     }
                 ]
             });
