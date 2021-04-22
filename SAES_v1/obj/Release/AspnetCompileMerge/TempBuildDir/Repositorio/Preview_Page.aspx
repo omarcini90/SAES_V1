@@ -181,7 +181,7 @@
                 </div>
 
                 <div id="guardar">
-                    <center><asp:Button ID="Guarda_Rev" runat="server" Text="Guardar" CssClass="btn btn-logout" OnClick="Guarda_Rev_Click"/>&nbsp;<asp:Button ID="Button1" runat="server" Text="Cancelar" OnClientClick="slide_up(); return false" CssClass="btn btn-secondary"/></center>
+                    <center><asp:Button ID="Guarda_Rev" runat="server" Text="Guardar" CssClass="btn btn-success" OnClick="Guarda_Rev_Click"/>&nbsp;<asp:Button ID="Button1" runat="server" Text="Cancelar" OnClientClick="slide_up(); return false" CssClass="btn btn-secondary"/></center>
                 </div>
                 <asp:UpdateProgress ID="UpdateProgress" runat="server" AssociatedUpdatePanelID="UpdatePanel">
                     <ProgressTemplate>

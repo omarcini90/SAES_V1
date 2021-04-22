@@ -119,7 +119,7 @@ namespace SAES_v1.Repositorio
                     "FROM Estatus A " +
                     "INNER JOIN Permisos_Documentos_Estatus B ON B.IDEstatus = A.IDEstatus " +
                     "INNER JOIN Rol C ON C.IDRol=B.IDRol " +
-                    "WHERE B.IDTipoDocumento = '" + IDTipoDocumento + "' AND C.Nombre = '" + Session["Rol"].ToString() + "'";
+                    "WHERE B.IDTipoDocumento = '" + IDTipoDocumento + "' AND C.Nombre = '" + Session["Rol"].ToString() + "' AND A.IDEstatus IN (1,2)";
 
             MySqlDataAdapter MySqladapter = new MySqlDataAdapter(Query, ConexionMySql);
             DataTable dt = new DataTable();

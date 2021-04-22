@@ -116,10 +116,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/27/2016 21:50:24</publishTime>
     </File>
     <File Include="bin/SAES_v1.dll">
-      <publishTime>04/20/2021 23:39:38</publishTime>
+      <publishTime>04/22/2021 01:38:58</publishTime>
     </File>
     <File Include="bin/SAES_v1.pdb">
-      <publishTime>04/20/2021 23:39:38</publishTime>
+      <publishTime>04/22/2021 01:38:58</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
       <publishTime>02/19/2020 10:05:18</publishTime>
@@ -208,6 +208,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Images/Operaciones/universidad.png">
       <publishTime>04/01/2021 00:52:47</publishTime>
     </File>
+    <File Include="Images/Repositorio/anadir.png">
+      <publishTime>04/22/2021 00:45:34</publishTime>
+    </File>
+    <File Include="Images/Repositorio/bloqueado.png">
+      <publishTime>04/22/2021 00:39:14</publishTime>
+    </File>
     <File Include="Images/Repositorio/buscar.png">
       <publishTime>04/19/2021 13:54:26</publishTime>
     </File>
@@ -217,8 +223,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Images/Repositorio/Derecha.png">
       <publishTime>04/15/2021 03:28:33</publishTime>
     </File>
+    <File Include="Images/Repositorio/desbloqueado.png">
+      <publishTime>04/22/2021 00:39:14</publishTime>
+    </File>
     <File Include="Images/Repositorio/Doble.png">
       <publishTime>04/15/2021 03:44:41</publishTime>
+    </File>
+    <File Include="Images/Repositorio/eliminar.png">
+      <publishTime>04/22/2021 00:45:36</publishTime>
     </File>
     <File Include="Images/Repositorio/Flecha_down.png">
       <publishTime>04/17/2021 14:27:35</publishTime>
@@ -281,7 +293,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/01/2021 00:41:02</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>04/20/2021 23:39:46</publishTime>
+      <publishTime>04/22/2021 01:39:05</publishTime>
     </File>
     <File Include="Repositorio/CargaDocumentos.aspx">
       <publishTime>04/20/2021 21:24:33</publishTime>
@@ -302,13 +314,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/20/2021 13:06:56</publishTime>
     </File>
     <File Include="Repositorio/Permisos.aspx">
-      <publishTime>04/19/2021 23:59:37</publishTime>
+      <publishTime>04/22/2021 01:04:30</publishTime>
     </File>
     <File Include="Repositorio/Preview_Page.aspx">
-      <publishTime>04/20/2021 02:15:48</publishTime>
+      <publishTime>04/22/2021 01:23:40</publishTime>
     </File>
     <File Include="Repositorio/Privacidad.aspx">
-      <publishTime>04/10/2021 12:59:05</publishTime>
+      <publishTime>04/20/2021 23:54:06</publishTime>
     </File>
     <File Include="Repositorio/Site1.Master">
       <publishTime>04/20/2021 22:46:07</publishTime>

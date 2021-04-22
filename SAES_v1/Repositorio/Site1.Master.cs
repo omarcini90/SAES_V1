@@ -62,8 +62,10 @@ namespace SAES_v1.Repositorio
             }
             else
             {
+                FormsAuthentication.SignOut();
+                HttpContext.Current.Session.Abandon();
                 Session.Clear();
-                Response.Redirect("Default.aspx");
+                Response.Redirect("../Default.aspx");
             }
         }
     }

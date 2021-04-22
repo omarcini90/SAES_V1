@@ -133,10 +133,14 @@
     <Content Include="Images\Operaciones\lupa.png" />
     <Content Include="Images\Operaciones\telefono.png" />
     <Content Include="Images\Operaciones\universidad.png" />
+    <Content Include="Images\Repositorio\anadir.png" />
+    <Content Include="Images\Repositorio\bloqueado.png" />
     <Content Include="Images\Repositorio\buscar.png" />
     <Content Include="Images\Repositorio\comentarios.png" />
     <Content Include="Images\Repositorio\Derecha.png" />
+    <Content Include="Images\Repositorio\desbloqueado.png" />
     <Content Include="Images\Repositorio\Doble.png" />
+    <Content Include="Images\Repositorio\eliminar.png" />
     <Content Include="Images\Repositorio\Flecha_down.png" />
     <Content Include="Images\Repositorio\flecha_rigth.png" />
     <Content Include="Images\Repositorio\folder.png" />

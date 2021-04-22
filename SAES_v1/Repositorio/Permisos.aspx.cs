@@ -22,138 +22,144 @@ namespace SAES_v1.Repositorio
         applyWeb.Data.Data objAreas = new applyWeb.Data.Data(System.Configuration.ConfigurationManager.ConnectionStrings["MysqlConnectionString"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             string valor = Convert.ToString(Request.QueryString["rol"]);
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 Response.Redirect(FormsAuthentication.DefaultUrl);
                 Response.End();
             }
-            else
+            if (Session["Rol"] == null || Session["Rol"].ToString().Equals("Alumno"))
             {
-                if (!IsPostBack)
-                {
-                   
-                    CargaListaRoles();
-                    acordion.Visible = false;
-                    permisos();
-                    Permisos_App.Visible = true;
-                    CargarPermisos_App();
-
-                    if (valor == "1")
-                    {
-                        ddlRol.SelectedValue = "1";
-                        acordion.Visible = true;
-                        CargaListaCampus();
-                        CargaListaNiveles();
-                        CargaListaDocumentos();
-                        CargaListaDocumentos_estatus();
-                        ocultar_perm_desplegables();
-                        lstUsuariosCampus.Items.Clear();
-                        lstUsuarios.Items.Clear();
-                        ListUsuariosNivel.Items.Clear();
-                        ListUsuarios.Items.Clear();
-                        ListUsuariosDocumentos.Items.Clear();
-                        ListUsuarios_1.Items.Clear();
-
-                        consulta_permisos_user();
-                    }
-                    else if (valor == "2")
-                    {
-                        ddlRol.SelectedValue = "2";
-                        acordion.Visible = true;
-                        CargaListaCampus();
-                        CargaListaNiveles();
-                        CargaListaDocumentos();
-                        CargaListaDocumentos_estatus();
-                        ocultar_perm_desplegables();
-                        lstUsuariosCampus.Items.Clear();
-                        lstUsuarios.Items.Clear();
-                        ListUsuariosNivel.Items.Clear();
-                        ListUsuarios.Items.Clear();
-                        ListUsuariosDocumentos.Items.Clear();
-                        ListUsuarios_1.Items.Clear();
-
-                        consulta_permisos_user();
-                    }
-                    else if (valor == "3")
-                    {
-                        ddlRol.SelectedValue = "3";
-                        acordion.Visible = true;
-                        CargaListaCampus();
-                        CargaListaNiveles();
-                        CargaListaDocumentos();
-                        CargaListaDocumentos_estatus();
-                        ocultar_perm_desplegables();
-                        lstUsuariosCampus.Items.Clear();
-                        lstUsuarios.Items.Clear();
-                        ListUsuariosNivel.Items.Clear();
-                        ListUsuarios.Items.Clear();
-                        ListUsuariosDocumentos.Items.Clear();
-                        ListUsuarios_1.Items.Clear();
-
-                        consulta_permisos_user();
-                    }
-                    else if (valor == "4")
-                    {
-                        ddlRol.SelectedValue = "4";
-                        acordion.Visible = true;
-                        CargaListaCampus();
-                        CargaListaNiveles();
-                        CargaListaDocumentos();
-                        CargaListaDocumentos_estatus();
-                        ocultar_perm_desplegables();
-                        lstUsuariosCampus.Items.Clear();
-                        lstUsuarios.Items.Clear();
-                        ListUsuariosNivel.Items.Clear();
-                        ListUsuarios.Items.Clear();
-                        ListUsuariosDocumentos.Items.Clear();
-                        ListUsuarios_1.Items.Clear();
-
-                        consulta_permisos_user();
-                    }
-                    else if (valor == "5")
-                    {
-                        ddlRol.SelectedValue = "5";
-                        acordion.Visible = true;
-                        CargaListaCampus();
-                        CargaListaNiveles();
-                        CargaListaDocumentos();
-                        CargaListaDocumentos_estatus();
-                        ocultar_perm_desplegables();
-                        lstUsuariosCampus.Items.Clear();
-                        lstUsuarios.Items.Clear();
-                        ListUsuariosNivel.Items.Clear();
-                        ListUsuarios.Items.Clear();
-                        ListUsuariosDocumentos.Items.Clear();
-                        ListUsuarios_1.Items.Clear();
-
-                        consulta_permisos_user();
-                    }
-                    else if (valor == "6")
-                    {
-                        ddlRol.SelectedValue = "6";
-                        acordion.Visible = true;
-                        CargaListaCampus();
-                        CargaListaNiveles();
-                        CargaListaDocumentos();
-                        CargaListaDocumentos_estatus();
-                        ocultar_perm_desplegables();
-                        lstUsuariosCampus.Items.Clear();
-                        lstUsuarios.Items.Clear();
-                        ListUsuariosNivel.Items.Clear();
-                        ListUsuarios.Items.Clear();
-                        ListUsuariosDocumentos.Items.Clear();
-                        ListUsuarios_1.Items.Clear();
-
-                        consulta_permisos_user();
-                    }
-
-                }
-                ocultar_img();
+                Response.Redirect("Default.aspx");
             }
-        }
+            else
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            if (!IsPostBack)
+            {
+                Session["Reset"] = true;
+                Configuration config = WebConfigurationManager.OpenWebConfiguration("~/Web.Config");
+                SessionStateSection section = (SessionStateSection)config.GetSection("system.web/sessionState");
+                int timeout = ((int)section.Timeout.TotalMinutes - 3) * 1000 * 60;
+                ClientScript.RegisterStartupScript(this.GetType(), "SessionAlert", "SessionExpireAlert(" + timeout + ");", true);
 
+                CargaListaRoles();
+                Permisos_1.Visible = false;
+                permisos();
+                Permisos_App.Visible = true;
+                CargarPermisos_App();
+
+                if (valor == "1")
+                {
+                    ddlRol.SelectedValue = "1";
+                    Permisos_1.Visible = true;
+                    CargaListaCampus();
+                    CargaListaNiveles();
+                    CargaListaDocumentos();
+                    CargaListaDocumentos_estatus();
+                    ocultar_perm_desplegables();
+                    lstUsuariosCampus.Items.Clear();
+                    lstUsuarios.Items.Clear();
+                    ListUsuariosNivel.Items.Clear();
+                    ListUsuarios.Items.Clear();
+                    ListUsuariosDocumentos.Items.Clear();
+                    ListUsuarios_1.Items.Clear();
+
+                    consulta_permisos_user();
+                }
+                else if (valor == "2")
+                {
+                    ddlRol.SelectedValue = "2";
+                    Permisos_1.Visible = true;
+                    CargaListaCampus();
+                    CargaListaNiveles();
+                    CargaListaDocumentos();
+                    CargaListaDocumentos_estatus();
+                    ocultar_perm_desplegables();
+                    lstUsuariosCampus.Items.Clear();
+                    lstUsuarios.Items.Clear();
+                    ListUsuariosNivel.Items.Clear();
+                    ListUsuarios.Items.Clear();
+                    ListUsuariosDocumentos.Items.Clear();
+                    ListUsuarios_1.Items.Clear();
+
+                    consulta_permisos_user();
+                }
+                else if (valor == "3")
+                {
+                    ddlRol.SelectedValue = "3";
+                    Permisos_1.Visible = true;
+                    CargaListaCampus();
+                    CargaListaNiveles();
+                    CargaListaDocumentos();
+                    CargaListaDocumentos_estatus();
+                    ocultar_perm_desplegables();
+                    lstUsuariosCampus.Items.Clear();
+                    lstUsuarios.Items.Clear();
+                    ListUsuariosNivel.Items.Clear();
+                    ListUsuarios.Items.Clear();
+                    ListUsuariosDocumentos.Items.Clear();
+                    ListUsuarios_1.Items.Clear();
+
+                    consulta_permisos_user();
+                }
+                else if (valor == "4")
+                {
+                    ddlRol.SelectedValue = "4";
+                    Permisos_1.Visible = true;
+                    CargaListaCampus();
+                    CargaListaNiveles();
+                    CargaListaDocumentos();
+                    CargaListaDocumentos_estatus();
+                    ocultar_perm_desplegables();
+                    lstUsuariosCampus.Items.Clear();
+                    lstUsuarios.Items.Clear();
+                    ListUsuariosNivel.Items.Clear();
+                    ListUsuarios.Items.Clear();
+                    ListUsuariosDocumentos.Items.Clear();
+                    ListUsuarios_1.Items.Clear();
+
+                    consulta_permisos_user();
+                }
+                else if (valor == "5")
+                {
+                    ddlRol.SelectedValue = "5";
+                    Permisos_1.Visible = true;
+                    CargaListaCampus();
+                    CargaListaNiveles();
+                    CargaListaDocumentos();
+                    CargaListaDocumentos_estatus();
+                    ocultar_perm_desplegables();
+                    lstUsuariosCampus.Items.Clear();
+                    lstUsuarios.Items.Clear();
+                    ListUsuariosNivel.Items.Clear();
+                    ListUsuarios.Items.Clear();
+                    ListUsuariosDocumentos.Items.Clear();
+                    ListUsuarios_1.Items.Clear();
+
+                    consulta_permisos_user();
+                }
+                else if (valor == "6")
+                {
+                    ddlRol.SelectedValue = "6";
+                    Permisos_1.Visible = true;
+                    CargaListaCampus();
+                    CargaListaNiveles();
+                    CargaListaDocumentos();
+                    CargaListaDocumentos_estatus();
+                    ocultar_perm_desplegables();
+                    lstUsuariosCampus.Items.Clear();
+                    lstUsuarios.Items.Clear();
+                    ListUsuariosNivel.Items.Clear();
+                    ListUsuarios.Items.Clear();
+                    ListUsuariosDocumentos.Items.Clear();
+                    ListUsuarios_1.Items.Clear();
+
+                    consulta_permisos_user();
+                }
+
+            }
+            ocultar_img();
+        }
         protected void CargaListaRoles()
         {
             ArrayList arrParam = new ArrayList();
@@ -168,7 +174,7 @@ namespace SAES_v1.Repositorio
         {
             if (ddlRol.SelectedValue == "0")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ocultar_permisos", "ocultar_permisos();", true);
+                Permisos_1.Visible = false;
             }
             else
             if (ddlRol.SelectedIndex > 0)
@@ -247,7 +253,7 @@ namespace SAES_v1.Repositorio
                     string IDUsuario = lstUsuarios.Items[lstUsuarios.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
 
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDCampus_in", IDCampus));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDUsuario_in", IDUsuario));
@@ -272,7 +278,7 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParam = new ArrayList();
                     string IDUsuario = lstUsuariosCampus.Items[lstUsuariosCampus.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDCampus_in", IDCampus));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDUsuario_in", IDUsuario));
@@ -350,7 +356,7 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParam = new ArrayList();
                     string IDUsuario = ListUsuarios.Items[ListUsuarios.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDNivel_in", IDNivel));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDUsuario_in", IDUsuario));
@@ -374,7 +380,7 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParam = new ArrayList();
                     string IDUsuario = ListUsuariosNivel.Items[ListUsuariosNivel.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDNivel_in", IDNivel));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDUsuario_in", IDUsuario));
@@ -453,7 +459,7 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParam = new ArrayList();
                     string IDUsuario = ListUsuarios_1.Items[ListUsuarios_1.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDTipoDocumento_in", IDTipoDocumento));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDUsuario_in", IDUsuario));
@@ -477,7 +483,7 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParam = new ArrayList();
                     string IDUsuario = ListUsuariosDocumentos.Items[ListUsuariosDocumentos.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDTipoDocumento_in", IDTipoDocumento));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDUsuario_in", IDUsuario));
@@ -504,16 +510,16 @@ namespace SAES_v1.Repositorio
             {
                 int IDprivilegio = dr.GetInt32(0);
 
-                if (IDprivilegio == 12) { p_campus.Visible = true; } //Permiso para Asignar campus
-                else if (IDprivilegio == 13) { p_nivel.Visible = true; } //Permiso para Asignar nivel
-                else if (IDprivilegio == 14) { p_documentos.Visible = true; }//Permiso para Asignar Documentos
-                else if (IDprivilegio == 15) { p_permisos_app.Visible = true; }//Permisos de aplicacion
+                if (IDprivilegio == 12) { UpdatePanel.Visible = true; } //Permiso para Asignar campus
+                else if (IDprivilegio == 13) { UpdatePanel1.Visible = true; } //Permiso para Asignar nivel
+                else if (IDprivilegio == 14) { UpdatePanel2.Visible = true; }//Permiso para Asignar Documentos
+                else if (IDprivilegio == 15) { Panel3.Visible = true; }//Permisos de aplicacion
                 else
                 {
-                    p_campus.Visible = false;
-                    p_nivel.Visible = false;
-                    p_documentos.Visible = false;
-                    p_permisos_app.Visible = false;
+                    UpdatePanel.Visible = false;
+                    UpdatePanel1.Visible = false;
+                    UpdatePanel2.Visible = false;
+                    Panel3.Visible = false;
 
                 }
             }
@@ -893,7 +899,7 @@ namespace SAES_v1.Repositorio
                         ArrayList arrParametros = new ArrayList();
                         arrParametros.Add(new applyWeb.Data.Parametro("@IDRol_in", IDRol));
                         arrParametros.Add(new applyWeb.Data.Parametro("@IDPrivilegio_in", IDPrivilegio));
-                        arrParametros.Add(new applyWeb.Data.Parametro("@UserLog", Session["usuario"].ToString()));
+                        arrParametros.Add(new applyWeb.Data.Parametro("@UserLog", Session["Usuario"].ToString()));
                         DataSet dsUsuario_D = objAreas.ExecuteSP("Eliminar_Permisos_Rol", arrParametros);
 
                     }
@@ -904,12 +910,12 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParametros = new ArrayList();
                     arrParametros.Add(new applyWeb.Data.Parametro("@IDRol_in", IDRol));
                     arrParametros.Add(new applyWeb.Data.Parametro("@IDPrivilegio_in", IDPrivilegio));
-                    arrParametros.Add(new applyWeb.Data.Parametro("@UserLog", Session["usuario"].ToString()));
+                    arrParametros.Add(new applyWeb.Data.Parametro("@UserLog", Session["Usuario"].ToString()));
                     DataSet dsUsuario_D = objAreas.ExecuteSP("Insertar_Permisos_Rol", arrParametros);
                 }
             }
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Guardar", "save();", true);
-            ClientScript.RegisterStartupScript(this.GetType(), "", "guardar_permisos("+ddlRol.SelectedValue+")", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "save", "guardar_permisos();", true);
+            //ClientScript.RegisterStartupScript(this.GetType(), "", "guardar_permisos()", true);
 
         }
 
@@ -1074,6 +1080,106 @@ namespace SAES_v1.Repositorio
             }
         }
 
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox_campus.Checked)
+            {
+                foreach (ListItem item in lstCampus.Items)
+                {
+                    ListItem selecteditem = lstCampus.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = true;
+
+                        lstCampus.Enabled = false;
+                    }
+                    CargaListaUsuarios_C();
+                    CargaListaCampus_Usuarios();
+                }
+
+            }
+            else
+            {
+                foreach (ListItem item in lstCampus.Items)
+                {
+                    ListItem selecteditem = lstCampus.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = false;
+                        lstCampus.Enabled = true;
+
+                    }
+                }
+                lstUsuariosCampus.Items.Clear();
+                lstUsuarios.Items.Clear();
+            }
+        }
+
+
+        protected void CheckBox_Niveles_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox_Niveles.Checked)
+            {
+                foreach (ListItem item in ListNiveles.Items)
+                {
+                    ListItem selecteditem = ListNiveles.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = true;
+                        ListNiveles.Enabled = false;
+                    }
+                    CargaListaNiveles_Usuarios();
+                    CargaListaUsuarios_N();
+                }
+            }
+            else
+            {
+                foreach (ListItem item in ListNiveles.Items)
+                {
+                    ListItem selecteditem = ListNiveles.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = false;
+                        ListNiveles.Enabled = true;
+
+                    }
+                }
+                ListUsuariosNivel.Items.Clear();
+                ListUsuarios.Items.Clear();
+            }
+        }
+        protected void CheckBox_Doc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckBox_Doc.Checked)
+            {
+                foreach (ListItem item in ListDocumentos.Items)
+                {
+                    ListItem selecteditem = ListDocumentos.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = true;
+                        ListDocumentos.Enabled = false;
+                    }
+                    CargaListaDoc_Usuarios();
+                    CargaListaUsuarios_D();
+                }
+            }
+            else
+            {
+                foreach (ListItem item in ListDocumentos.Items)
+                {
+                    ListItem selecteditem = ListDocumentos.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = false;
+                        ListDocumentos.Enabled = true;
+                    }
+                }
+                ListUsuariosDocumentos.Items.Clear();
+                ListUsuarios_1.Items.Clear();
+            }
+
+        }
 
         protected void CargaListaDocumentos_estatus()
         {
@@ -1100,6 +1206,38 @@ namespace SAES_v1.Repositorio
             ListDocumentos.ClearSelection();
             ListDocs.Focus();
 
+        }
+
+        protected void CheckBox1_CheckedChanged1(object sender, EventArgs e)
+        {
+            if (CheckBox1.Checked)
+            {
+                foreach (ListItem item in ListDocs.Items)
+                {
+                    ListItem selecteditem = ListDocs.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = true;
+                        ListDocs.Enabled = false;
+                    }
+                    CargaListaDoc_Estatus();
+                    CargaListaEstatus_D();
+                }
+            }
+            else
+            {
+                foreach (ListItem item in ListDocs.Items)
+                {
+                    ListItem selecteditem = ListDocs.Items.FindByValue(item.Value);
+                    if (selecteditem != null)
+                    {
+                        selecteditem.Selected = false;
+                        ListDocs.Enabled = true;
+                    }
+                }
+                ListDocE.Items.Clear();
+                ListEstatus.Items.Clear();
+            }
         }
 
         protected void CargaListaDoc_Estatus()
@@ -1140,7 +1278,7 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParam = new ArrayList();
                     string IDUsuario = ListEstatus.Items[ListEstatus.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDTipoDocumento_in", IDTipoDocumento));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDEstatus_in", IDUsuario));
@@ -1165,7 +1303,7 @@ namespace SAES_v1.Repositorio
                     ArrayList arrParam = new ArrayList();
                     string IDUsuario = ListDocE.Items[ListDocE.GetSelectedIndices()[i]].Value;
                     string IDRol = ddlRol.SelectedItem.Value.ToString();
-                    string user_log = Session["usuario"].ToString();
+                    string user_log = Session["Usuario"].ToString();
 
                     arrParam.Add(new applyWeb.Data.Parametro("@IDTipoDocumento_in", IDTipoDocumento));
                     arrParam.Add(new applyWeb.Data.Parametro("@IDEstatus_in", IDUsuario));
