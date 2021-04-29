@@ -28,7 +28,8 @@ namespace SAES_v1
             }
             else
             {
-                Response.Redirect("Inicio.aspx");
+                //Response.Redirect("Inicio.aspx");
+                Response.Redirect("Dashboard.aspx");
             }
             //Response.Redirect("Inicio.aspx");
         }
@@ -82,7 +83,8 @@ namespace SAES_v1
                                 username.Text, DateTime.Now, DateTime.Now.AddMinutes(20), false, "SAES", FormsAuthentication.FormsCookiePath);
                         Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(fat)));
 
-                        Response.Redirect("Inicio.aspx");
+                        //Response.Redirect("Inicio.aspx");
+                        Response.Redirect("Dashboard.aspx");
                         //Response.Redirect("Prueba_site.aspx");
                     }
                     else
@@ -133,7 +135,8 @@ namespace SAES_v1
                                 username.Text, DateTime.Now, DateTime.Now.AddMinutes(20), false, "SAES", FormsAuthentication.FormsCookiePath);
                         Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(fat)));
 
-                        Response.Redirect("Inicio.aspx");
+                        //Response.Redirect("Inicio.aspx");
+                        Response.Redirect("Dashboard.aspx");
                         //Response.Redirect("Prueba_site.aspx");
                     }
                     else

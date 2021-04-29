@@ -319,7 +319,7 @@ namespace SAES_v1
             }
             else
             {
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Valida_clave", "valida('pais_n');", true);
+                
             }
         }
         protected bool valida_clave(string clave)

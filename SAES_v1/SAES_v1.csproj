@@ -118,13 +118,17 @@
     <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\loaders.css" />
+    <Content Include="Content\Saes.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\SweetAlert\sweetalert.css" />
     <Content Include="Content\SweetAlert\sweetalert2.min.css" />
     <Content Include="C_Campus.aspx" />
     <Content Include="C_Demograficos.aspx" />
+    <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Images\Dashboard\dashboard.png" />
     <Content Include="Images\Generales\editar.png" />
+    <Content Include="Images\Generales\hacer-clic.png" />
     <Content Include="Images\Operaciones\address.png" />
     <Content Include="Images\Operaciones\calendario.png" />
     <Content Include="Images\Operaciones\contacto.png" />
@@ -160,7 +164,6 @@
     <Content Include="Images\Sitemaster\Logo_Blank.png" />
     <Content Include="Images\Sitemaster\Logo_B_2.png" />
     <Content Include="Inicio.aspx" />
-    <Content Include="Periodos_Escolares.aspx" />
     <Content Include="Repositorio\CargaDocumentos.aspx" />
     <Content Include="Repositorio\Comentarios.aspx" />
     <Content Include="Repositorio\InputFile.aspx" />
@@ -175,6 +178,11 @@
     <Content Include="Script\SweetAlert\sweetalert.js" />
     <Content Include="Script\SweetAlert\sweetalert.min.js" />
     <Content Include="Script\SweetAlert\sweetalert2.min.js" />
+    <Content Include="tcamp.aspx" />
+    <Content Include="tcapr.aspx" />
+    <Content Include="tcopo.aspx" />
+    <Content Include="tcseq.aspx" />
+    <Content Include="tdele.aspx" />
     <Content Include="Template\Sitemaster\build\css\custom.css" />
     <Content Include="Template\Sitemaster\build\css\custom.min.css" />
     <Content Include="Template\Sitemaster\build\images\back_disabled.png" />
@@ -3864,10 +3872,9 @@
     <Content Include="Template\Sitemaster\vendors\validator\index.html" />
     <Content Include="Template\Sitemaster\vendors\validator\multifield.js" />
     <Content Include="Template\Sitemaster\vendors\validator\validator.js" />
-    <Content Include="T_Contactos.aspx" />
-    <Content Include="T_Correo.aspx" />
-    <Content Include="T_Direccion.aspx" />
-    <Content Include="T_Telefono.aspx" />
+    <Content Include="testa.aspx" />
+    <Content Include="tpaco.aspx" />
+    <Content Include="tpais.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -3886,6 +3893,13 @@
     <Compile Include="C_Demograficos.aspx.designer.cs">
       <DependentUpon>C_Demograficos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3899,13 +3913,6 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Periodos_Escolares.aspx.cs">
-      <DependentUpon>Periodos_Escolares.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Periodos_Escolares.aspx.designer.cs">
-      <DependentUpon>Periodos_Escolares.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\CargaDocumentos.aspx.cs">
@@ -3992,33 +3999,61 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="T_Contactos.aspx.cs">
-      <DependentUpon>T_Contactos.aspx</DependentUpon>
+    <Compile Include="tcamp.aspx.cs">
+      <DependentUpon>tcamp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="T_Contactos.aspx.designer.cs">
-      <DependentUpon>T_Contactos.aspx</DependentUpon>
+    <Compile Include="tcamp.aspx.designer.cs">
+      <DependentUpon>tcamp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="T_Correo.aspx.cs">
-      <DependentUpon>T_Correo.aspx</DependentUpon>
+    <Compile Include="tcapr.aspx.cs">
+      <DependentUpon>tcapr.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="T_Correo.aspx.designer.cs">
-      <DependentUpon>T_Correo.aspx</DependentUpon>
+    <Compile Include="tcapr.aspx.designer.cs">
+      <DependentUpon>tcapr.aspx</DependentUpon>
     </Compile>
-    <Compile Include="T_Direccion.aspx.cs">
-      <DependentUpon>T_Direccion.aspx</DependentUpon>
+    <Compile Include="tcopo.aspx.cs">
+      <DependentUpon>tcopo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="T_Direccion.aspx.designer.cs">
-      <DependentUpon>T_Direccion.aspx</DependentUpon>
+    <Compile Include="tcopo.aspx.designer.cs">
+      <DependentUpon>tcopo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="T_Telefono.aspx.cs">
-      <DependentUpon>T_Telefono.aspx</DependentUpon>
+    <Compile Include="tcseq.aspx.cs">
+      <DependentUpon>tcseq.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="T_Telefono.aspx.designer.cs">
-      <DependentUpon>T_Telefono.aspx</DependentUpon>
+    <Compile Include="tcseq.aspx.designer.cs">
+      <DependentUpon>tcseq.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tdele.aspx.cs">
+      <DependentUpon>tdele.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tdele.aspx.designer.cs">
+      <DependentUpon>tdele.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testa.aspx.cs">
+      <DependentUpon>testa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testa.aspx.designer.cs">
+      <DependentUpon>testa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpaco.aspx.cs">
+      <DependentUpon>tpaco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpaco.aspx.designer.cs">
+      <DependentUpon>tpaco.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tpais.aspx.cs">
+      <DependentUpon>tpais.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tpais.aspx.designer.cs">
+      <DependentUpon>tpais.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -202,8 +202,8 @@
                                 <ul class="nav side-menu">
                                     <li id="operacion" runat="server"><a><i class="fas fa-desktop" style="padding-right: 5px;"></i>Operación <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li id="demograficos" runat="server"><a href="../C_Demograficos.aspx">Catálogos Demográficos</a></li>
-                                            <li id="campus" runat="server"><a href="../C_Campus.aspx">Catálogo Campus</a></li>
+                                            <li id="demograficos" runat="server"><a href="../tpais.aspx">Catálogos Demográficos</a></li>
+                                            <li id="campus" runat="server"><a href="../tcamp.aspx">Catálogo Campus</a></li>
                                             <li id="periodos" runat="server"><a href="../Periodos_Escolares.aspx">Periodos Escolares</a></li>
                                             <li id="tdireccion" runat="server"><a href="../T_Direccion.aspx">Tipos-Dirección</a></li>
                                             <li id="ttelefono" runat="server"><a href="../T_Telefono.aspx">Tipos-Teléfono</a></li>

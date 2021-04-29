@@ -5,12 +5,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title></title>
 
+    <!-- Saes Style -->
+    <link href="Content/Saes.css" rel="stylesheet" />
     <!-- Bootstrap -->
     <link href="Template/Sitemaster/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -155,11 +157,27 @@
             }
         }
     </style>
+    <script>
+        function sin_acceso() {
+            swal({
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                type: 'error',
+                html: '<h2 class="swal2-title" id="swal2-title">Error al accesar</h2>El usuario no cuenta con permisos para acceder a esta pagina.'
+            })
+                .then(willDelete => {
+                    if (willDelete) {
+                        loader_push();
+                        window.location = "Inicio.aspx";
+                    }
+                });
+        }
+    </script>
 </head>
 <script type="text/javascript">
-    //$(window).on("load", function () {
-    //    $(".loader").fadeOut("slow");
-    //});
+    $(window).on("load", function () {
+        $(".loader1").fadeOut("slow");
+    });
     function loader_push() {
         $(".loader1").fadeIn("slow");
     }
@@ -171,7 +189,7 @@
     <div class="loader" style="display:none;">
         <div class="clock"></div>
     </div>
-    <div class="loader1" style="display: none;">
+    <div class="loader1">
         <div class="clock"></div>
     </div>
     <form id="form1" runat="server">
@@ -181,7 +199,7 @@
                 <div class="col-md-3 left_col menu-fixed">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title" style="border: 0;">
-                            <a href="Inicio.aspx" class="site_title">
+                            <a href="Dashboard.aspx" class="site_title">
                                 <img src="Images/Sitemaster/Logo.png" style="width: 50px;" /><span><img src="Images/Sitemaster/Logo_B_2.png" style="width: 150px;" /></span></a>
                         </div>
 
@@ -203,13 +221,13 @@
                                 <ul class="nav side-menu">
                                     <li id="operacion" runat="server"><a><i class="fas fa-desktop" style="padding-right: 5px;"></i>Operación <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li id="demograficos" runat="server"><a href="C_Demograficos.aspx">Catálogos Demográficos</a></li>
-                                            <li id="campus" runat="server"><a href="C_Campus.aspx">Catálogo Campus</a></li>
-                                            <li id="periodos" runat="server"><a href="Periodos_Escolares.aspx">Periodos Escolares</a></li>
-                                            <li id="tdireccion" runat="server"><a href="T_Direccion.aspx">Tipos-Dirección</a></li>
-                                            <li id="ttelefono" runat="server"><a href="T_Telefono.aspx">Tipos-Teléfono</a></li>
-                                            <li id="tcorreo" runat="server"><a href="T_Correo.aspx">Tipos-Correo</a></li>
-                                            <li id="tcontacto" runat="server"><a href="T_Contactos.aspx">Tipos-Contactos</a></li>
+                                            <li id="demograficos" runat="server"><a href="tpais.aspx">Catálogos Demográficos</a></li>
+                                            <li id="campus" runat="server"><a href="tcamp.aspx">Catálogo Campus</a></li>
+                                            <li id="periodos" runat="server"><a href="#">Periodos Escolares</a></li>
+                                            <li id="tdireccion" runat="server"><a href="#">Tipos-Dirección</a></li>
+                                            <li id="ttelefono" runat="server"><a href="#">Tipos-Teléfono</a></li>
+                                            <li id="tcorreo" runat="server"><a href="#">Tipos-Correo</a></li>
+                                            <li id="tcontacto" runat="server"><a href="#">Tipos-Contactos</a></li>
                                         </ul>
                                     </li>
                                     <li id="prospectos" runat="server"><a><i class="fab fa-sellsy" style="padding-right: 5px;"></i>Prospectos <span class="fa fa-chevron-down"></span></a>
