@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="SAES_v1.Dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .ddl_chart {
+            width: 100%;
+            font-size: small;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="x_title">
@@ -9,48 +15,40 @@
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
+
         <div class="col-md-6 col-sm-6">
-            <canvas id="lineChart"></canvas>
+            <asp:UpdatePanel ID="upd_dashboard" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4">
+                            <asp:DropDownList runat="server" ID="ddl_periodo" OnSelectedIndexChanged="ddl_periodo_SelectedIndexChanged" CssClass="form-control-sm ddl_chart" AutoPostBack="true"></asp:DropDownList>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:DropDownList runat="server" ID="ddl_campus" OnSelectedIndexChanged="ddl_campus_SelectedIndexChanged" CssClass="form-control-sm ddl_chart" AutoPostBack="true"></asp:DropDownList>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:DropDownList runat="server" ID="ddl_nivel" CssClass="form-control-sm ddl_chart" OnSelectedIndexChanged="ddl_nivel_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                        </div>
+                    </div>
+                    <canvas id="dashboard_1"></canvas>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="ddl_periodo" />
+                </Triggers>
+            </asp:UpdatePanel>
+            
         </div>
-        <div class="col-md-6 col-sm-6">
-            <canvas id="mybarChart"></canvas>
-        </div>
-        <div class="col-md-6 col-sm-6">
-            <canvas id="canvasDoughnut"></canvas>
-        </div>
-        <div class="col-md-6 col-sm-6"><canvas id="pieChart"></canvas></div>
     </div>
     <!-- Chart.js -->
-    <script src="Template/Sitemaster/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.js" integrity="sha512-opXrgVcTHsEVdBUZqTPlW9S8+99hNbaHmXtAdXXc61OUU6gOII5ku/PzZFqexHXc3hnK8IrJKHo+T7O4GRIJcw==" crossorigin="anonymous"></script>
+
     <%--<script>
-        var speedCanvas = document.getElementById("Chart_line");
-
-        Chart.defaults.global.defaultFontFamily = "Lato";
-        Chart.defaults.global.defaultFontSize = 18;
-
-        var speedData = {
-            labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
-            datasets: [{
-                label: "Car Speed (mph)",
-                data: [0, 59, 75, 20, 20, 55, 40],
-            }]
-        };
-
-        var chartOptions = {
-            legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                    boxWidth: 80,
-                    fontColor: 'black'
-                }
-            }
-        };
-
-        var lineChart = new Chart(speedCanvas, {
-            type: 'line',
-            data: speedData,
-            options: chartOptions
-        });
+        function dashboard_1() {
+            // === include 'setup' then 'config' above ===
+            const labels = [<%=labels_dashboard_1%>];
+            const data = {labels: labels,datasets: [{ label: <%=label_dashboard_1%>,backgroundColor: 'rgba(255, 99, 132,0.1)',borderColor: 'rgb(255, 99, 132)',data: [<%=data_dashboard_1%>],fill: true,tension: 0.4}]};
+            const config = {type: 'line',data,options: {responsive: true,plugins: {title: {display: true,text: 'Alumnos activos',font: {size: 14,family: "Raleway"}},legend: {labels: {font: {size: 14,family: "Raleway"}}}}}};
+            var myChart = new Chart(document.getElementById('dashboard_1'),config);
+        }
     </script>--%>
 </asp:Content>

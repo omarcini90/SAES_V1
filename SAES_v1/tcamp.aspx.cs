@@ -27,9 +27,10 @@ namespace SAES_v1
                 c_campus.Attributes.Add("oninput", "validarclaveCampus('ContentPlaceHolder1_c_campus',0)");
                 n_campus.Attributes.Add("onblur", "validarNombreCampus('ContentPlaceHolder1_n_campus')");
                 n_campus.Attributes.Add("oninput", "validarNombreCampus('ContentPlaceHolder1_n_campus')");
-                LlenaPagina();
+                
                 if (!IsPostBack)
                 {
+                    LlenaPagina();
                     combo_estatus();
                     combo_pais();
                 }
@@ -409,7 +410,7 @@ namespace SAES_v1
                 try
                 {
                     mysqlcmd.ExecuteNonQuery();
-                    grid_campus_bind();
+                    //grid_campus_bind();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "update_p", "update();", true);
                 }
                 catch (Exception ex)
@@ -433,11 +434,13 @@ namespace SAES_v1
             if (ddp_campus.SelectedValue != "0")
             {
                 combo_estado(ddp_campus.SelectedValue);
+                grid_campus_bind();
             }
             else
             {
                 combo_pais();
                 zip_campus.Text = null;
+                grid_campus_bind();
             }
         }
 

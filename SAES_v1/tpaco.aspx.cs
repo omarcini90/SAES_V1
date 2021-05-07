@@ -393,8 +393,8 @@ namespace SAES_v1
 
         protected void search_term_Click(object sender, ImageClickEventArgs e)
         {
-            dd_term.Attributes.Add("style", "display:initial");
-            term_text.Attributes.Add("style", "display:none");
+            dd_term.Visible = true;
+            term_text.Visible = false;
             combo_periodos();
         }
 
