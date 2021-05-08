@@ -33,6 +33,14 @@
     margin-top: 15px !important;
 }
 
+.dataTables_length {
+    float: left;
+}
+
+.dataTables_info {
+    float: left;
+}
+
 #ContentPlaceHolder1_GridPaises_info {
     float: left;
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -22,12 +23,6 @@ namespace SAES_v1
             }
             else
             {
-                
-                //c_campus.Attributes.Add("onblur", "validarclaveCampus('ContentPlaceHolder1_c_campus',0)");
-                //c_campus.Attributes.Add("oninput", "validarclaveCampus('ContentPlaceHolder1_c_campus',0)");
-                //n_campus.Attributes.Add("onblur", "validarNombreCampus('ContentPlaceHolder1_n_campus')");
-                //n_campus.Attributes.Add("oninput", "validarNombreCampus('ContentPlaceHolder1_n_campus')");
-
                 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ctrl_fecha_i", "ctrl_fecha_i();", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "ctrl_fecha_f", "ctrl_fecha_f();", true);
@@ -164,13 +159,92 @@ namespace SAES_v1
 
         protected void btn_save_Click(object sender, EventArgs e)
         {
+            
+
             if (!String.IsNullOrEmpty(txt_periodo.Text) && !String.IsNullOrEmpty(txt_nombre.Text) && !String.IsNullOrEmpty(txt_fecha_i.Text) && !String.IsNullOrEmpty(txt_fecha_f.Text))
             {
                 if (valida_periodo(txt_periodo.Text))
                 {
-                    string strCadSQL = "INSERT INTO tpees Values ('" + txt_periodo.Text + "','" + txt_nombre.Text + "','" +
-                    txt_oficial.Text + "', STR_TO_DATE('" + string.Format(txt_fecha_i.Text,"dd/MM/yyyy") + "','%d/%m/%Y'), STR_TO_DATE('" + string.Format(txt_fecha_f.Text, "dd/MM/yyyy") + "','%d/%m/%Y'),'" +
+                    string fecha_i_string = txt_fecha_i.Text;
+                    string fecha_f_string = txt_fecha_f.Text;
+                    string format = "dd/MM/yyyy";
+
+                    DateTime fecha_inicio = DateTime.ParseExact(fecha_i_string, format, CultureInfo.InvariantCulture);
+                    DateTime fecha_fin = DateTime.ParseExact(fecha_f_string, format, CultureInfo.InvariantCulture);
+
+                    if (fecha_inicio < fecha_fin)
+                    {
+                        string strCadSQL = "INSERT INTO tpees Values ('" + txt_periodo.Text + "','" + txt_nombre.Text + "','" +
+                    txt_oficial.Text + "', STR_TO_DATE('" + string.Format(txt_fecha_i.Text, "dd/MM/yyyy") + "','%d/%m/%Y'), STR_TO_DATE('" + string.Format(txt_fecha_f.Text, "dd/MM/yyyy") + "','%d/%m/%Y'),'" +
                     Session["usuario"].ToString() + "',current_timestamp(),'" + ddl_estatus.SelectedValue + "')";
+                        MySqlConnection conexion = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
+                        conexion.Open();
+                        MySqlCommand mysqlcmd = new MySqlCommand(strCadSQL, conexion);
+                        mysqlcmd.CommandType = CommandType.Text;
+                        try
+                        {
+                            mysqlcmd.ExecuteNonQuery();
+                            txt_periodo.Text = null;
+                            txt_nombre.Text = null;
+                            txt_oficial.Text = null;
+                            txt_fecha_i.Text = null;
+                            txt_fecha_f.Text = null;
+                            combo_estatus();
+                            grid_periodo_bind();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Guardar", "save();", true);
+                        }
+                        catch (Exception ex)
+                        {
+                            string test = ex.Message;
+                        }
+                        finally
+                        {
+                            conexion.Close();
+                        }
+                    }
+                    else
+                    {
+                        grid_periodo_bind();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validarFechas('ContentPlaceHolder1_txt_fecha_i','ContentPlaceHolder1_txt_fecha_f');", true);
+                    }
+                    
+                }
+                else
+                {
+                    grid_periodo_bind();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validarClavePeriodo('ContentPlaceHolder1_txt_periodo',1);", true);
+                }
+            }
+            else
+            {
+                grid_periodo_bind();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validar_campos_periodo();", true);
+            }
+
+
+        }
+
+        protected void btn_update_Click(object sender, EventArgs e)
+        {
+
+            
+
+            if (!String.IsNullOrEmpty(txt_periodo.Text) && !String.IsNullOrEmpty(txt_nombre.Text) && !String.IsNullOrEmpty(txt_fecha_i.Text) && !String.IsNullOrEmpty(txt_fecha_f.Text))
+            {
+                string fecha_i_string = txt_fecha_i.Text;
+                string fecha_f_string = txt_fecha_f.Text;
+                string format = "dd/MM/yyyy";
+
+                DateTime fecha_inicio = DateTime.ParseExact(fecha_i_string, format, CultureInfo.InvariantCulture);
+                DateTime fecha_fin = DateTime.ParseExact(fecha_f_string, format, CultureInfo.InvariantCulture);
+
+                if (fecha_inicio < fecha_fin)
+                {
+                    string strCadSQL = "UPDATE tpees SET tpees_desc='" + txt_nombre.Text + "', tpees_inicio=STR_TO_DATE('" + txt_fecha_i.Text + "','%d/%m/%Y'),tpees_fin=STR_TO_DATE('" + txt_fecha_f.Text + "','%d/%m/%Y'),tpees_estatus='" + ddl_estatus.SelectedValue + "',tpees_ofic='" + txt_oficial.Text + "', tpees_user='" + Session["usuario"].ToString() + "', tpees_date=CURRENT_TIMESTAMP() WHERE tpees_clave='" + txt_periodo.Text + "'";
                     MySqlConnection conexion = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
                     conexion.Open();
                     MySqlCommand mysqlcmd = new MySqlCommand(strCadSQL, conexion);
@@ -178,15 +252,8 @@ namespace SAES_v1
                     try
                     {
                         mysqlcmd.ExecuteNonQuery();
-                        txt_periodo.Text = null;
-                        txt_nombre.Text = null;
-                        txt_oficial.Text = null;
-                        txt_fecha_i.Text = null;
-                        txt_fecha_f.Text = null;
-                        combo_estatus();
                         grid_periodo_bind();
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Guardar", "save();", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "update_p", "update();", true);
                     }
                     catch (Exception ex)
                     {
@@ -199,46 +266,14 @@ namespace SAES_v1
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validarclavePeriodo('ContentPlaceHolder1_txt_periodo',1);", true);
-                }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validar_campos_periodo();", true);
-            }
-
-
-        }
-
-        protected void btn_update_Click(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(txt_periodo.Text) && !String.IsNullOrEmpty(txt_nombre.Text) && !String.IsNullOrEmpty(txt_fecha_i.Text) && !String.IsNullOrEmpty(txt_fecha_f.Text))
-            {
-                string strCadSQL = "UPDATE tpees SET tpees_desc='"+txt_nombre.Text+ "', tpees_inicio=STR_TO_DATE('" + txt_fecha_i.Text + "','%d/%m/%Y'),tpees_fin=STR_TO_DATE('" + txt_fecha_f.Text + "','%d/%m/%Y'),tpees_estatus='"+ddl_estatus.SelectedValue+"',tpees_ofic='"+txt_oficial.Text+"', tpees_user='"+Session["usuario"].ToString()+"', tpees_date=CURRENT_TIMESTAMP() WHERE tpees_clave='"+txt_periodo.Text+"'";
-                MySqlConnection conexion = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
-                conexion.Open();
-                MySqlCommand mysqlcmd = new MySqlCommand(strCadSQL, conexion);
-                mysqlcmd.CommandType = CommandType.Text;
-                try
-                {
-                    mysqlcmd.ExecuteNonQuery();
                     grid_periodo_bind();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "update_p", "update();", true);
-                }
-                catch (Exception ex)
-                {
-                    string test = ex.Message;
-                }
-                finally
-                {
-                    conexion.Close();
+                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validarFechas('ContentPlaceHolder1_txt_fecha_i','ContentPlaceHolder1_txt_fecha_f');", true);
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validar_campos_periodo();", true);
             }
         }

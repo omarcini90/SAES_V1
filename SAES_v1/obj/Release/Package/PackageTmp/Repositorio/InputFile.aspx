@@ -86,5 +86,6 @@
         minFileSize: "<%=tamano_min%>",
         elErrorContainer: "#errorBlock"
     });
+
     </script>
 </html>
