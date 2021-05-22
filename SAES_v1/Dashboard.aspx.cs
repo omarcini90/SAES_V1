@@ -116,8 +116,9 @@ namespace SAES_v1
             if (ddl_campus.SelectedValue != "0")
             {
                 combo_nivel(ddl_campus.SelectedValue);
-                dashboard_1();
+                
             }
+            dashboard_1();
         }
 
         protected void combo_nivel(string campus)
@@ -212,7 +213,7 @@ namespace SAES_v1
                            "AND testu_tpees_clave = '" + ddl_periodo.SelectedValue + "' AND tcamp_clave = '" + ddl_campus.SelectedValue + "' AND tnive_clave = '" +ddl_nivel.SelectedValue+ "' "+
                            "GROUP BY tnive_desc " +
                            "ORDER BY 1 ";
-                label = "'"+ddl_periodo.SelectedValue + "-" + ddl_campus.SelectedItem.Text+"-"+ddl_nivel.SelectedValue+ "'";
+                label = "'"+ddl_periodo.SelectedValue + "-" + ddl_campus.SelectedItem.Text+"-"+ddl_nivel.SelectedItem.Text+ "'";
             }
             else
             {

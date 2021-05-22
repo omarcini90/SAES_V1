@@ -204,11 +204,11 @@
                                         <ul class="nav child_menu">
                                             <li id="demograficos" runat="server"><a href="../tpais.aspx">Catálogos Demográficos</a></li>
                                             <li id="campus" runat="server"><a href="../tcamp.aspx">Catálogo Campus</a></li>
-                                            <li id="periodos" runat="server"><a href="../Periodos_Escolares.aspx">Periodos Escolares</a></li>
-                                            <li id="tdireccion" runat="server"><a href="../T_Direccion.aspx">Tipos-Dirección</a></li>
-                                            <li id="ttelefono" runat="server"><a href="../T_Telefono.aspx">Tipos-Teléfono</a></li>
-                                            <li id="tcorreo" runat="server"><a href="../T_Correo.aspx">Tipos-Correo</a></li>
-                                            <li id="tcontacto" runat="server"><a href="../T_Contactos.aspx">Tipos-Contactos</a></li>
+                                            <li id="periodos" runat="server"><a href="../tpees.aspx">Periodos Escolares</a></li>
+                                            <li id="tdireccion" runat="server"><a href="../tdire.aspx">Tipos-Dirección</a></li>
+                                            <li id="ttelefono" runat="server"><a href="../ttele.aspx">Tipos-Teléfono</a></li>
+                                            <li id="tcorreo" runat="server"><a href="../tmail.aspx">Tipos-Correo</a></li>
+                                            <li id="tcontacto" runat="server"><a href="../tcont.aspx">Tipos-Contactos</a></li>
                                         </ul>
                                     </li>
                                     <li id="prospectos" runat="server"><a><i class="fab fa-sellsy" style="padding-right: 5px;"></i>Prospectos <span class="fa fa-chevron-down"></span></a>
@@ -220,9 +220,9 @@
                                     </li>
                                     <li id="admision" runat="server"><a><i class="fas fa-user-plus" style="padding-right: 5px;"></i>Admisión <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li id="estatus" runat="server"><a href="../#">Estatus-Solicitud</a></li>
-                                            <li id="tingreso" runat="server"><a href="../#">Tipos-Ingreso</a></li>
-                                            <li id="solicitud" runat="server"><a href="../#">Solicitud</a></li>
+                                            <li id="estatus" runat="server"><a href="../tstso.aspx">Estatus-Solicitud</a></li>
+                                            <li id="tingreso" runat="server"><a href="../ttiin.aspx">Tipos-Ingreso</a></li>
+                                            <li id="solicitud" runat="server"><a href="../tpers.aspx">Solicitud</a></li>
                                             <li id="contactos" runat="server"><a href="../#">Contactos</a></li>
                                             <li id="documentos" runat="server"><a href="../#">Documentos</a></li>
                                             <li id="procedencia" runat="server"><a href="../#">Escuelas-Procedencia</a></li>

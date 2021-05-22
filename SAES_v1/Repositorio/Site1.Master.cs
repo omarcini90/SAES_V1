@@ -12,44 +12,52 @@ namespace SAES_v1.Repositorio
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
             {
+                Response.Redirect(FormsAuthentication.DefaultUrl);
+                Response.End();
+            }
+            else
+            {
+                try
+                {
 
-                if (Session["rol"].ToString() == "Alumno")
-                {
-                    ///Menus///
-                    operacion.Visible = false;
-                    prospectos.Visible = false;
-                    admision.Visible = false;
-                    escolares.Visible = false;
-                    planeacion.Visible = false;
-                    Finanzas.Visible = false;
-                    Seguridad.Visible = false;
-                    ///SubMenus
-                    tdocumentos.Visible = false;
-                    permisos_repo.Visible = false;
-                    expedientes.Visible = false;
+                    if (Session["rol"].ToString() == "Alumno")
+                    {
+                        ///Menus///
+                        operacion.Visible = false;
+                        prospectos.Visible = false;
+                        admision.Visible = false;
+                        escolares.Visible = false;
+                        planeacion.Visible = false;
+                        Finanzas.Visible = false;
+                        Seguridad.Visible = false;
+                        ///SubMenus
+                        tdocumentos.Visible = false;
+                        permisos_repo.Visible = false;
+                        expedientes.Visible = false;
+                    }
+                    else
+                    {
+                        ///SubMenu///
+                        carga_alumno.Visible = false;
+                    }
                 }
-                else
+                catch
                 {
-                    ///SubMenu///
-                    carga_alumno.Visible = false;
+                    Response.Redirect("../Default.aspx");
                 }
-            }
-            catch
-            {
-                Response.Redirect("../Default.aspx");
-            }
-            try
-            {
-                nombre.Text = Session["nombre"].ToString();
-                perfil.Text = Session["rol"].ToString();
-                nombre_1.Text = Session["nombre"].ToString();
-                perfil_1.Text = Session["rol"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("../Default.aspx");
+                try
+                {
+                    nombre.Text = Session["nombre"].ToString();
+                    perfil.Text = Session["rol"].ToString();
+                    nombre_1.Text = Session["nombre"].ToString();
+                    perfil_1.Text = Session["rol"].ToString();
+                }
+                catch
+                {
+                    Response.Redirect("../Default.aspx");
+                }
             }
         }
 

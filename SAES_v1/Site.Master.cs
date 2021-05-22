@@ -12,7 +12,13 @@ namespace SAES_v1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect(FormsAuthentication.DefaultUrl);
+                Response.End();
+            }
+            else
+            {
                 try
                 {
                     if (Session["rol"].ToString() == "Alumno")
@@ -52,7 +58,7 @@ namespace SAES_v1
                 {
                     Response.Redirect("Default.aspx");
                 }
-            
+            }
         }
 
         protected void logout_btn_Click(object sender, EventArgs e)

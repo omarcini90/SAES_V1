@@ -33,7 +33,9 @@
                     <canvas id="dashboard_1"></canvas>
                 </ContentTemplate>
                 <Triggers>
-                    <asp:AsyncPostBackTrigger ControlID="ddl_periodo" />
+                    <asp:PostBackTrigger ControlID="ddl_periodo" />
+                    <asp:PostBackTrigger ControlID="ddl_campus" />
+                    <asp:PostBackTrigger ControlID="ddl_nivel" />
                 </Triggers>
             </asp:UpdatePanel>
             

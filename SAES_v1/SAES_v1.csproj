@@ -122,10 +122,11 @@
     <Content Include="Content\Style.css" />
     <Content Include="Content\SweetAlert\sweetalert.css" />
     <Content Include="Content\SweetAlert\sweetalert2.min.css" />
-    <Content Include="C_Campus.aspx" />
-    <Content Include="C_Demograficos.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Images\Admisiones\agregar-usuario.png" />
+    <Content Include="Images\Admisiones\curriculum.png" />
+    <Content Include="Images\Admisiones\solicitud.png" />
     <Content Include="Images\Dashboard\dashboard.png" />
     <Content Include="Images\Generales\editar.png" />
     <Content Include="Images\Generales\hacer-clic.png" />
@@ -3943,20 +3944,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases_auxiliares\Data.cs" />
-    <Compile Include="C_Campus.aspx.cs">
-      <DependentUpon>C_Campus.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="C_Campus.aspx.designer.cs">
-      <DependentUpon>C_Campus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="C_Demograficos.aspx.cs">
-      <DependentUpon>C_Demograficos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="C_Demograficos.aspx.designer.cs">
-      <DependentUpon>C_Demograficos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
