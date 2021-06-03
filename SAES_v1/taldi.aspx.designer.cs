@@ -105,13 +105,13 @@ namespace SAES_v1
         protected global::System.Web.UI.WebControls.TextBox txt_zip;
 
         /// <summary>
-        /// Control txt_colonia.
+        /// Control ddl_colonia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_colonia;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_colonia;
 
         /// <summary>
         /// Control txt_ciudad.

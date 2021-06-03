@@ -32,7 +32,7 @@
             <ContentTemplate>
                 <div id="form_taldi" runat="server">
                     <div class="row g-3 justify-content-center" style="margin-top: 15px;">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label for="ContentPlaceHolder1_txt_matricula" class="form-label">Matrícula</label>
                             <asp:TextBox ID="txt_matricula"  runat="server" CssClass="form-control"></asp:TextBox><!--Configurar BackEnd la longitud de la BD-->
                         </div>

@@ -33,11 +33,11 @@
             <ContentTemplate>
                 <div id="form_taldi" runat="server">
                     <div class="row g-3 justify-content-center" style="margin-top: 15px;">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label for="ContentPlaceHolder1_txt_matricula" class="form-label">Matrícula</label>
-                            <asp:TextBox ID="txt_matricula"  runat="server" CssClass="form-control"></asp:TextBox> <!--Configurar BackEnd la longitud de la BD-->
+                            <asp:TextBox ID="txt_matricula"  runat="server" CssClass="form-control" OnTextChanged="txt_matricula_TextChanged" AutoPostBack="true"></asp:TextBox> <!--Configurar BackEnd la longitud de la BD-->
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label for="ContentPlaceHolder1_txt_nombre" class="form-label">Nombre</label>
                             <asp:TextBox ID="txt_nombre" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
@@ -52,11 +52,11 @@
                         <div class="w-100"></div>
                         <div class="col-md-4">
                             <label for="ContentPlaceHolder1_ddl_pais" class="form-label">Pais</label>
-                            <asp:DropDownList ID="ddl_pais" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="ddl_pais" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddl_pais_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>
                         <div class="col-md-4">
                             <label for="ContentPlaceHolder1_ddl_estado" class="form-label">Estado</label>
-                            <asp:DropDownList ID="ddl_estado" runat="server" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList ID="ddl_estado" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddl_estado_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>
                         <div class="col-md-4">
                             <label for="ContentPlaceHolder1_ddl_delegacion" class="form-label">Delegación-Municipio</label>
@@ -65,11 +65,11 @@
                         <div class="w-100"></div>
                         <div class="col-md-4">
                             <label for="ContentPlaceHolder1_txt_zip" class="form-label">Codigo Postal</label>
-                            <asp:TextBox ID="txt_zip" MaxLength="5" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txt_zip" MaxLength="5" runat="server" CssClass="form-control" OnTextChanged="txt_zip_TextChanged" AutoPostBack="true"></asp:TextBox>
                         </div>
                         <div class="col-md-4">
-                            <label for="ContentPlaceHolder1_txt_colonia" class="form-label">Colonia</label>
-                            <asp:TextBox ID="txt_colonia" runat="server" CssClass="form-control"></asp:TextBox>
+                            <label for="ContentPlaceHolder1_ddl_colonia" class="form-label">Colonia</label>
+                            <asp:DropDownList ID="ddl_colonia" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
                         <div class="col-md-4">
                             <label for="ContentPlaceHolder1_txt_ciudad" class="form-label">Ciudad</label>
@@ -85,26 +85,34 @@
                 <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_taldi" runat="server">
                     <div class="col-md-4" style="text-align: center; margin-top: 15px;">
                         <asp:Button ID="btn_cancel" runat="server" CssClass="btn btn-round btn-secondary" Text="Cancelar" />
-                        <asp:Button ID="btn_save" runat="server" CssClass="btn btn-round btn-success" Text="Agregar" />
-                        <asp:Button ID="btn_update" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" Visible="false" />
+                        <asp:Button ID="btn_save" runat="server" CssClass="btn btn-round btn-success" Text="Agregar" OnClick="btn_save_Click"/>
+                        <asp:Button ID="btn_update" runat="server" CssClass="btn btn-round btn-success" Text="Actualizar" Visible="false" OnClick="btn_update_Click"/>
                     </div>
                 </div>
                 <div id="table_tladi">
-                    <asp:GridView ID="GridDireccion" runat="server" CssClass="table table-striped table-bordered" Width="100%" AutoGenerateColumns="false" RowStyle-Font-Size="small">
-                        <%--<Columns>
+                    <asp:GridView ID="GridDireccion" runat="server" CssClass="table table-striped table-bordered" Width="100%" AutoGenerateColumns="false" RowStyle-Font-Size="small" OnSelectedIndexChanged="GridDireccion_SelectedIndexChanged">
+                        <Columns>
                             <asp:ButtonField ButtonType="image" ImageUrl="~/Images/Generales/hacer-clic.png" ControlStyle-Height="24px" ControlStyle-Width="24px" CommandName="select" HeaderText="Seleccionar" ItemStyle-CssClass="button_select" />
-                            <asp:BoundField DataField="CLAVE" HeaderText="Clave" />
-                            <asp:BoundField DataField="NOMBRE" HeaderText="Periodo" />
-                            <asp:BoundField DataField="OFICIAL" HeaderText="Oficial" />
-                            <asp:BoundField DataField="FECHA_INI" HeaderText="Fecha Inicial" />
-                            <asp:BoundField DataField="FECHA_FIN" HeaderText="Fecha Final" />
+                            <asp:BoundField DataField="ID_NUM" HeaderText="Id_Num">
+                                <HeaderStyle CssClass="ocultar" />
+                                <ItemStyle CssClass="ocultar" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="CLAVE" HeaderText="Matrícula" />
+                            <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" />
+                            <asp:BoundField DataField="TIPO_DIR" HeaderText="T_direccion"> 
+                                <HeaderStyle CssClass="ocultar" />
+                                <ItemStyle CssClass="ocultar" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="DESCRIPCION" HeaderText="Tipo Dirección" />
+                            <asp:BoundField DataField="CONSECUTIVO" HeaderText="Consecutivo" />
+                            <asp:BoundField DataField="DIRECCION" HeaderText="Dirección" />
                             <asp:BoundField DataField="C_ESTATUS" HeaderText="Estatus_code">
                                 <HeaderStyle CssClass="ocultar" />
                                 <ItemStyle CssClass="ocultar" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ESTATUS" HeaderText="Estatus" />
                             <asp:BoundField DataField="FECHA" HeaderText="Fecha Registro" />
-                        </Columns>--%>
+                        </Columns>
                         <SelectedRowStyle CssClass="selected_table" />
                         <HeaderStyle BackColor="#2a3f54" ForeColor="white" />
                     </asp:GridView>

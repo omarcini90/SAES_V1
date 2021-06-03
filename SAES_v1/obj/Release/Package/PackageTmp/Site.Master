@@ -240,7 +240,7 @@
                                         <ul class="nav child_menu">
                                             <li id="estatus" runat="server"><a href="tstso.aspx">Estatus-Solicitud</a></li>
                                             <li id="tingreso" runat="server"><a href="ttiin.aspx">Tipos-Ingreso</a></li>
-                                            <li id="solicitud" runat="server"><a href="#">Solicitud</a></li>
+                                            <li id="solicitud" runat="server"><a href="tpers.aspx">Solicitud</a></li>
                                             <li id="contactos" runat="server"><a href="#">Contactos</a></li>
                                             <li id="documentos" runat="server"><a href="#">Documentos</a></li>
                                             <li id="procedencia" runat="server"><a href="#">Escuelas-Procedencia</a></li>
