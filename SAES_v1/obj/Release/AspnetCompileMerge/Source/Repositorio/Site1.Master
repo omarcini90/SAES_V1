@@ -223,10 +223,10 @@
                                             <li id="estatus" runat="server"><a href="../tstso.aspx">Estatus-Solicitud</a></li>
                                             <li id="tingreso" runat="server"><a href="../ttiin.aspx">Tipos-Ingreso</a></li>
                                             <li id="solicitud" runat="server"><a href="../tpers.aspx">Solicitud</a></li>
-                                            <li id="contactos" runat="server"><a href="../#">Contactos</a></li>
-                                            <li id="documentos" runat="server"><a href="../#">Documentos</a></li>
-                                            <li id="procedencia" runat="server"><a href="../#">Escuelas-Procedencia</a></li>
-                                            <li id="pronostico" runat="server"><a href="../#">Pronóstico-Nuevo Ingreso</a></li>
+                                            <li id="contactos" runat="server"><a href="../tcoda.aspx">Contactos</a></li>
+                                            <li id="documentos" runat="server"><a href="../tdocu.aspx">Documentos</a></li>
+                                            <li id="procedencia" runat="server"><a href="../tespr.aspx">Escuelas-Procedencia</a></li>
+                                            <li id="pronostico" runat="server"><a href="../tpron.aspx">Pronóstico-Nuevo Ingreso</a></li>
                                         </ul>
                                     </li>
                                     <li id="repositorio" runat="server"><a><i class="fas fa-file-upload" style="padding-right: 5px;"></i>Repositorio de Documentos <span class="fa fa-chevron-down"></span></a>
@@ -239,13 +239,13 @@
                                     </li>
                                     <li id="escolares" runat="server"><a><i class="fas fa-graduation-cap" style="padding-right: 5px;"></i>Control Escolar <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li id="bajas" runat="server"><a href="../#">Tipos-Baja</a></li>
-                                            <li id="conceptos" runat="server"><a href="../#">Conceptos-Calendario</a></li>
-                                            <li id="calificaciones" runat="server"><a href="../#">Calificaciones</a></li>
-                                            <li id="equivalencias" runat="server"><a href="../#">Revalidación-Equivalencias</a></li>
-                                            <li id="estatus_a" runat="server"><a href="../#">Estatus-Alumnos</a></li>
-                                            <li id="calendario" runat="server"><a href="../#">Calendario Escolar</a></li>
-                                            <li id="inscripcion" runat="server"><a href="../#">Inscripción-Materias</a></li>
+                                            <li id="bajas" runat="server"><a href="../ttiba.aspx">Tipos-Baja</a></li>
+                                            <li id="conceptos" runat="server"><a href="../tcoca.aspx">Conceptos-Calendario</a></li>
+                                            <li id="calificaciones" runat="server"><a href="../tcali.aspx">Calificaciones</a></li>
+                                            <li id="equivalencias" runat="server"><a href="../tpred.aspx">Revalidación-Equivalencias</a></li>
+                                            <li id="estatus_a" runat="server"><a href="../tstal.aspx">Estatus-Alumnos</a></li>
+                                            <li id="calendario" runat="server"><a href="../tcaes.aspx">Calendario Escolar</a></li>
+                                            <li id="inscripcion" runat="server"><a href="../ttira.aspx">Inscripción-Materias</a></li>
                                         </ul>
                                     </li>
                                     <li id="planeacion" runat="server"><a><i class="fas fa-book-open" style="padding-right: 5px;"></i>Planeación Académica <span class="fa fa-chevron-down"></span></a>

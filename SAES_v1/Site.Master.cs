@@ -12,8 +12,10 @@ namespace SAES_v1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            if (!HttpContext.Current.User.Identity.IsAuthenticated || Session["rol"]==null )
             {
+                Session.Clear();
+                FormsAuthentication.SignOut();
                 Response.Redirect(FormsAuthentication.DefaultUrl);
                 Response.End();
             }

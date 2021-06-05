@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SAES_v1
-{
-
-
-    public partial class tpees
-    {
-
+namespace SAES_v1 {
+    
+    
+    public partial class tpees {
+        
         /// <summary>
         /// Control upd_Campus.
         /// </summary>
@@ -22,7 +20,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upd_Campus;
-
+        
         /// <summary>
         /// Control form_periodos.
         /// </summary>
@@ -31,7 +29,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_periodos;
-
+        
         /// <summary>
         /// Control txt_periodo.
         /// </summary>
@@ -40,7 +38,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_periodo;
-
+        
         /// <summary>
         /// Control txt_nombre.
         /// </summary>
@@ -49,7 +47,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_nombre;
-
+        
         /// <summary>
         /// Control txt_oficial.
         /// </summary>
@@ -58,7 +56,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_oficial;
-
+        
         /// <summary>
         /// Control ddl_estatus.
         /// </summary>
@@ -67,7 +65,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_estatus;
-
+        
         /// <summary>
         /// Control txt_fecha_i.
         /// </summary>
@@ -76,7 +74,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_fecha_i;
-
+        
         /// <summary>
         /// Control txt_fecha_f.
         /// </summary>
@@ -85,7 +83,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_fecha_f;
-
+        
         /// <summary>
         /// Control btn_periodo.
         /// </summary>
@@ -94,7 +92,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl btn_periodo;
-
+        
         /// <summary>
         /// Control btn_cancel.
         /// </summary>
@@ -103,7 +101,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_cancel;
-
+        
         /// <summary>
         /// Control btn_save.
         /// </summary>
@@ -112,7 +110,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_save;
-
+        
         /// <summary>
         /// Control btn_update.
         /// </summary>
@@ -121,7 +119,7 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_update;
-
+        
         /// <summary>
         /// Control GridPeriodo.
         /// </summary>

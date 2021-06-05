@@ -109,15 +109,15 @@ namespace SAES_v1
         {
 
             dde_campus.Items.Clear();
-            dde_campus.Items.Add(new ListItem("----Selecciona un estado----", "0"));
+            dde_campus.Items.Add(new ListItem("--------", "0"));
             ddd_campus.Items.Clear();
-            ddd_campus.Items.Add(new ListItem("----Selecciona una delegación---", "0"));
+            ddd_campus.Items.Add(new ListItem("-------", "0"));
             ddz_campus.Items.Clear();
-            ddz_campus.Items.Add(new ListItem("----Selecciona una colonia---", "0"));
+            ddz_campus.Items.Add(new ListItem("-------", "0"));
 
             string Query = "SELECT TPAIS_CLAVE Clave,TPAIS_DESC Nombre FROM TPAIS WHERE TPAIS_ESTATUS='A' " +
                            "UNION " +
-                           "SELECT '0' Clave,'----Selecciona un país----' Nombre " +
+                           "SELECT '0' Clave,'--------' Nombre " +
                            "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -151,7 +151,7 @@ namespace SAES_v1
         {
             string Query = "SELECT TESTA_CLAVE Clave,TESTA_DESC Nombre FROM TESTA WHERE TESTA_ESTATUS='A' AND TESTA_TPAIS_CLAVE= " + clave_pais +
                            " UNION " +
-                           "SELECT '0' Clave,'----Selecciona un estado----' Nombre " +
+                           "SELECT '0' Clave,'--------' Nombre " +
                            "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -185,7 +185,7 @@ namespace SAES_v1
         {
             string Query = "SELECT tdele_clave CLAVE,tdele_desc NOMBRE FROM TDELE WHERE tdele_tpais_clave='" + clave_pais + "' AND tdele_testa_clave='" + clave_edo + "' " +
                            "UNION " +
-                           "SELECT '0' CLAVE,'----Selecciona una delegación----' NOMBRE " +
+                           "SELECT '0' CLAVE,'--------' NOMBRE " +
                            "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -219,7 +219,7 @@ namespace SAES_v1
         {
             string Query = "SELECT DISTINCT ROW_NUMBER() OVER (PARTITION BY tcopo_clave,tcopo_tpais_clave,tcopo_testa_clave,tcopo_tdele_clave ORDER BY tcopo_clave) Clave, tcopo_desc Nombre FROM tcopo WHERE tcopo_tpais_clave='" + clave_pais + "' AND tcopo_testa_clave='" + clave_edo + "' AND tcopo_tdele_clave='" + clave_deleg + "' AND tcopo_clave='" + zip_campus.Text + "' " +
                             "UNION " +
-                            "SELECT '0' CLAVE,'----Selecciona una colonia----' NOMBRE " +
+                            "SELECT '0' CLAVE,'--------' NOMBRE " +
                             "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -453,9 +453,9 @@ namespace SAES_v1
             else
             {
                 ddd_campus.Items.Clear();
-                ddd_campus.Items.Add(new ListItem("----Selecciona una delegación---", "0"));
+                ddd_campus.Items.Add(new ListItem("-------", "0"));
                 ddz_campus.Items.Clear();
-                ddz_campus.Items.Add(new ListItem("----Selecciona una colonia---", "0"));
+                ddz_campus.Items.Add(new ListItem("-------", "0"));
                 zip_campus.Text = null;
             }
         }

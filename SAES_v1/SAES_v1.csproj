@@ -3944,6 +3944,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases_auxiliares\Data.cs" />
+    <Compile Include="Clases_auxiliares\Global.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

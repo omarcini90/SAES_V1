@@ -40,7 +40,7 @@ namespace SAES_v1
             search_campus.Items.Clear();
             string Query = "SELECT DISTINCT tcamp_clave Clave, tcamp_desc Campus FROM tcamp " +
                             "UNION " +
-                            "SELECT DISTINCT '0','----Selecciona un Campus----' Campus  " +
+                            "SELECT DISTINCT '0','--------' Campus  " +
                             "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();

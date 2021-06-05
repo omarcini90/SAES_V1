@@ -98,11 +98,11 @@ namespace SAES_v1
         protected void combo_campus_cobranza()
         {
             cobranza_n.Items.Clear();
-            cobranza_n.Items.Add(new ListItem("----Selecciona un Nivel----", "0"));
+            cobranza_n.Items.Add(new ListItem("--------", "0"));
 
             string Query = "SELECT DISTINCT tcamp_clave Clave, tcamp_desc Campus FROM tcamp " +
                             "UNION " +
-                            "SELECT DISTINCT '0','----Selecciona un Campus----' Campus  " +
+                            "SELECT DISTINCT '0','--------' Campus  " +
                             "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -137,7 +137,7 @@ namespace SAES_v1
             cobranza_n.Items.Clear();
             string Query = "SELECT DISTINCT tprog_tnive_clave clave, tnive_desc nivel FROM tcapr, tnive, tprog WHERE tcapr_estatus='A' AND tcapr_tcamp_clave='" + campus + "' AND tcapr_tprog_clave=tprog_clave AND tprog_tnive_clave=tnive_clave  " +
                            "UNION " +
-                           "SELECT DISTINCT '0','----Selecciona un Nivel----' Campus  " +
+                           "SELECT DISTINCT '0','--------' Campus  " +
                            "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -176,7 +176,7 @@ namespace SAES_v1
                             "UNION " +
                             "SELECT '03' clave, 'EXTEMPORANEO' tipo_per " +
                            "UNION " +
-                           "SELECT DISTINCT '0' clave,'----Selecciona un Tipo de Periodo----' tipo_per  " +
+                           "SELECT DISTINCT '0' clave,'--------' tipo_per  " +
                            "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -243,7 +243,7 @@ namespace SAES_v1
         {
             string Query = "SELECT DISTINCT tcoca_clave Clave, tcoca_desc Concepto_Cal FROM tcoca " +
                            "UNION " +
-                           "SELECT DISTINCT '0','----Selecciona un Concepto----' Concepto_Cal  " +
+                           "SELECT DISTINCT '0','--------' Concepto_Cal  " +
                            "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -277,7 +277,7 @@ namespace SAES_v1
         {
             string Query = "SELECT DISTINCT tcoco_clave Clave, tcoco_desc Concepto_Cob FROM tcoco " +
                            "UNION " +
-                           "SELECT DISTINCT '0','----Selecciona un Concepto----' Concepto_Cob  " +
+                           "SELECT DISTINCT '0','--------' Concepto_Cob  " +
                            "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();

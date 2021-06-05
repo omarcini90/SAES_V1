@@ -108,7 +108,7 @@ namespace SAES_v1
             search_campus.Items.Clear();
             string Query = "SELECT DISTINCT tcamp_clave Clave, tcamp_desc Campus FROM tcamp " +
                             "UNION " +
-                            "SELECT DISTINCT '0','----Selecciona un Campus----' Campus  " +
+                            "SELECT DISTINCT '0','--------' Campus  " +
                             "ORDER BY 1";
             MySqlConnection ConexionMySql = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
             ConexionMySql.Open();
@@ -259,6 +259,8 @@ namespace SAES_v1
             update_prog.Visible = false;
             ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
             GridProgramas.Visible = false;
+            Gridtprog.Visible = false;
+
 
         }
 
@@ -341,5 +343,64 @@ namespace SAES_v1
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "validar_campos_campus", "validar_campos_campus();", true);
             }
         }
+
+        protected void Busqueda_Programa(object sender, EventArgs e)
+        {
+            if (Gridtprog.Visible == true )
+            {
+
+                Gridtprog.Visible = false;
+            }
+            else
+            {
+                string strQuery = "";
+                strQuery = " select tprog_clave clave, tprog_desc nombre " +
+                           " from tprog " +
+                           " where tprog_clave not in (select tcapr_tprog_clave from tcapr " +
+                           "      where tcapr_tcamp_clave ='" + search_campus.SelectedValue + "')";
+
+                strQuery = strQuery + " order by clave ";
+
+                //resultado.Text = strQuery;
+                MySqlConnection conexion = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
+                conexion.Open();
+                try
+                {
+                    MySqlDataAdapter dataadapter = new MySqlDataAdapter(strQuery, conexion);
+                    DataSet ds = new DataSet();
+                    dataadapter.Fill(ds, "Programa");
+                    Gridtprog.DataSource = ds;
+                    Gridtprog.DataBind();
+                    Gridtprog.DataMember = "Programa";
+                    if (Gridtprog.Rows.Count == 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "no_existe", "noexist();", true);
+                    }
+                    else
+                    {
+                        Gridtprog.HeaderRow.TableSection = TableRowSection.TableHeader;
+                        Gridtprog.UseAccessibleHeader = true;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "load_datatable_tprog", "load_datatable_tprog();", true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //resultado.Text = ex.Message;
+                }
+                Gridtprog.Visible = true;
+                conexion.Close();
+            }
+        }
+
+        protected void Gridtprog_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = Gridtprog.SelectedRow;
+            c_prog_campus.Text = row.Cells[1].Text;
+            n_prog_campus.Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
+            Gridtprog.Visible = false;
+            //combo_estatus();
+        }
+
     }
 }

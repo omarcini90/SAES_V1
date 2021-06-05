@@ -97,8 +97,7 @@
            const idElemento = idEl;
            let fecha = document.getElementById(idElemento).value;
            if (fecha == null || fecha.length == 0 || /^\s+$/.test(fecha)) {
-               errorForm(idElemento, 'Favor de ingresar uan fecha valida valida');               
-               $("#ContentPlaceHolder1_txt_fecha_i").css("width","80%")
+               errorForm(idElemento, 'Favor de ingresar uan fecha valida valida');
                return false;
            } else {
                validadoForm(idElemento);
@@ -111,25 +110,9 @@
            let fecha = document.getElementById(idElemento).value;
            if (fecha == null || fecha.length == 0 || /^\s+$/.test(fecha)) {
                errorForm(idElemento, 'Favor de ingresar una fecha valida');
-               $("#ContentPlaceHolder1_txt_fecha_f").css("width", "80%")
                return false;
            } else {
                validadoForm(idElemento);
-           }
-       }
-
-       function validarFechas(idEl1, idEl2) {
-           const idElemento_1 = idEl1;
-           const idElemento_2 = idEl2;
-           let fecha_i = document.getElementById(idElemento_1).value.split('/');
-           let fecha_f = document.getElementById(idElemento_2).value.split('/');
-           f_inicio = new Date(fecha_i[2], fecha_i[1] - 1, fecha_i[0]);
-           f_fin = new Date(fecha_f[2], fecha_f[1] - 1, fecha_f[0]);
-           if (f_inicio >= f_fin) {
-               errorForm(idElemento_1, 'La fecha de inicio no puede ser mayor o igual a la fecha fin');
-               return false;
-           } else {
-               validadoForm(idElemento_1);
            }
        }
 
@@ -175,30 +158,40 @@
                         </div>
                         <div class="col-md-3">
                             <label for="ContentPlaceHolder1_txt_fecha_i" class="form-label">Fecha Inicio</label>
-                            <asp:TextBox ID="txt_fecha_i" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txt_fecha_i" runat="server" class="datepicker" data-date-format="/dd/mm/yyyy"></asp:TextBox>
                             <script>
                                 function ctrl_fecha_i() {
+                                    $('.datepicker').datepicker({
+                                        format: 'dd/mm/yyyy',
+                                        startDate: '-3d'
+                                    });
                                     $('#ContentPlaceHolder1_txt_fecha_i').datepicker({
                                         uiLibrary: 'bootstrap4',
                                         locale: 'es-es',
-                                        format: 'dd/mm/yyyy'
+                                        dateFormat: "dd/mm/yyyy"
                                     });
                                 }
                             </script>
                         </div>
+
                         <div class="col-md-3">
                             <label for="ContentPlaceHolder1_txt_fecha_f" class="form-label">Fecha Fin</label>
-                            <asp:TextBox ID="txt_fecha_f" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txt_fecha_f" runat="server" class="datepicker" data-date-format="/dd/mm/yyyy"></asp:TextBox>
                             <script>
                                 function ctrl_fecha_f() {
+                                    $('.datepicker').datepicker({
+                                        format: 'dd/mm/yyyy',
+                                        startDate: '-3d'
+                                    });
                                     $('#ContentPlaceHolder1_txt_fecha_f').datepicker({
                                         uiLibrary: 'bootstrap4',
                                         locale: 'es-es',
-                                        format: 'dd/mm/yyyy'
+                                        dateFormat: "dd/mm/yyyy"
                                     });
                                 }
                             </script>
                         </div>
+
                     </div>
                 </div>
                 <div class="row justify-content-center" style="text-align: center; margin: auto;" id="btn_periodo" runat="server">

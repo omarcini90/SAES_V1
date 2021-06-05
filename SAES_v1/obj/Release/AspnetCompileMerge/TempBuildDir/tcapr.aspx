@@ -92,6 +92,15 @@
             }
         }
 
+        function noexist() {
+           swal({
+               allowEscapeKey: false,
+               allowOutsideClick: false,
+               type: 'success',
+               html: '<h2 class="swal2-title" id="swal2-title">No existen datos para mostrar</h2>Favor de validar en el catálogo.'
+           })
+       }
+
         //---- Valida Campos Campus ----//
         function validar_campos_campus(e) {
             event.preventDefault(e);
@@ -118,13 +127,13 @@
                 <a class="nav-link" href="tcamp.aspx">Campus</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="tcapr.aspx">Programas</a>
+                <a class="nav-link active" href="tcapr.aspx">Programas x Campus</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tpaco.aspx">Cobranza</a>
+                <a class="nav-link" href="tpaco.aspx">Parámetros Cobranza</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tcseq.aspx">Secuencias</a>
+                <a class="nav-link" href="tcseq.aspx">Secuencias x Campus</a>
             </li>
         </ul>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
@@ -140,11 +149,15 @@
                     <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                             <div class="row g-3 justify-content-center" style="margin-top: 15px;">
+                                <div class="col-md-1">
+                                    <asp:ImageButton ID="ImgConsulta" runat="server" ImageUrl="Images/Operaciones/search.png" Height="30px" Width="30px"
+                                     TOOLTIP="Búsqueda"  VISIBLE="true" OnClick="Busqueda_Programa"/>
+                                </div>
                                 <div class="col-md-2">
                                     <label for="ContentPlaceHolder1_c_prog_campus" class="form-label">Clave</label>
                                     <asp:TextBox ID="c_prog_campus" runat="server" CssClass="form-control" OnTextChanged="c_prog_campus_TextChanged" AutoPostBack="true"></asp:TextBox>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <label for="ContentPlaceHolder1_n_prog_campus" class="form-label">Programa</label>
                                     <asp:TextBox ID="n_prog_campus" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
@@ -160,6 +173,17 @@
                                     <label for="ContentPlaceHolder1_e_prog_campus" class="form-label">Estatus</label>
                                     <asp:DropDownList ID="e_prog_campus" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </div>
+                            </div>
+                            <div id="table_tdocu" class="align-center">
+                                <asp:GridView ID="Gridtprog" runat="server" CssClass="table table-striped table-bordered" Width="50%" AutoGenerateColumns="false" RowStyle-Font-Size="small" OnSelectedIndexChanged="Gridtprog_SelectedIndexChanged" Visible="false">
+                                <Columns>
+                                <asp:ButtonField ButtonType="image" ImageUrl="~/Images/Generales/hacer-clic.png" ControlStyle-Height="24px" ControlStyle-Width="24px" CommandName="select" HeaderText="Seleccionar" ItemStyle-CssClass="button_select" ItemStyle-Width="70px" />
+                                <asp:BoundField DataField="CLAVE" HeaderText="Clave" />
+                                <asp:BoundField DataField="NOMBRE" HeaderText="Descripción" />
+                                </Columns>
+                                <SelectedRowStyle CssClass="selected_table" />
+                                <HeaderStyle BackColor="SteelBlue" ForeColor="white" />
+                                </asp:GridView>
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -277,5 +301,41 @@
             });
 
         }
+
+        function load_datatable_tprog() {
+            let table_periodo = $("#ContentPlaceHolder1_Gridtprog").DataTable({
+             language: {
+                 bProcessing: 'Procesando...',
+                 sLengthMenu: 'Mostrar _MENU_ registros',
+                 sZeroRecords: 'No se encontraron resultados',
+                 sEmptyTable: 'Ningún dato disponible en esta tabla',
+                 sInfo: 'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+                 sInfoEmpty: 'Mostrando registros del 0 al 0 de un total de 0 registros',
+                 sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
+                 sInfoPostFix: '',
+                 sSearch: 'Buscar:',
+                 sUrl: '',
+                 sInfoThousands: '',
+                 sLoadingRecords: 'Cargando...',
+                 oPaginate: {
+                     sFirst: 'Primero',
+                     sLast: 'Último',
+                     sNext: 'Siguiente',
+                     sPrevious: 'Anterior'
+                 }
+             },
+             scrollResize: true,
+             scrollY: '500px',
+             scrollCollapse: true,
+             order: [
+                 [0, "asc"]
+             ],
+             lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
+             "autoWidth": true,
+             dom: '<"top"if>rt<"bottom"lp><"clear">',
+             stateSave: true
+            });
+        }
+
     </script>
 </asp:Content>

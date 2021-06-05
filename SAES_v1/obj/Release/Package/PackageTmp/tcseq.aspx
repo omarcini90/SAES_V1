@@ -100,13 +100,13 @@
                 <a class="nav-link" href="tcamp.aspx">Campus</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tcapr.aspx">Programas</a>
+                <a class="nav-link" href="tcapr.aspx">Programas x Campus</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tpaco.aspx">Cobranza</a>
+                <a class="nav-link" href="tpaco.aspx">Parámetros Cobranza</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="tcseq.aspx">Secuencias</a>
+                <a class="nav-link active" href="tcseq.aspx">Secuencias x Campus</a>
             </li>
         </ul>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
