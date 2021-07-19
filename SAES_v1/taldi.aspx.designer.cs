@@ -123,13 +123,31 @@ namespace SAES_v1
         protected global::System.Web.UI.WebControls.TextBox txt_ciudad;
 
         /// <summary>
-        /// Control txt_dirección.
+        /// Control txt_direccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_dirección;
+        protected global::System.Web.UI.WebControls.TextBox txt_direccion;
+
+        /// <summary>
+        /// Control lbl_consecutivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_consecutivo;
+
+        /// <summary>
+        /// Control lbl_id_pers.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_id_pers;
 
         /// <summary>
         /// Control btn_taldi.

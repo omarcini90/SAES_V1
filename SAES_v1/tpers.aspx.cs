@@ -164,7 +164,7 @@ namespace SAES_v1
         protected void btn_save_Click(object sender, EventArgs e)
         {
 
-            if (!String.IsNullOrEmpty(txt_nombre.Text) && !String.IsNullOrEmpty(txt_apellido_p.Text) && !String.IsNullOrEmpty(txt_apellido_m.Text) && !String.IsNullOrEmpty(txt_curp.Text))
+            if (!String.IsNullOrEmpty(txt_nombre.Text) && !String.IsNullOrEmpty(txt_apellido_p.Text) && !String.IsNullOrEmpty(txt_apellido_m.Text) && !String.IsNullOrEmpty(txt_curp.Text.Trim()))
             {
                 if (valida_curp_format(txt_curp.Text))
                 {
@@ -250,7 +250,7 @@ namespace SAES_v1
 
         protected void btn_update_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txt_nombre.Text) && !String.IsNullOrEmpty(txt_apellido_p.Text) && !String.IsNullOrEmpty(txt_apellido_m.Text) && !String.IsNullOrEmpty(txt_curp.Text))
+            if (!String.IsNullOrEmpty(txt_nombre.Text) && !String.IsNullOrEmpty(txt_apellido_p.Text) && !String.IsNullOrEmpty(txt_apellido_m.Text) && !String.IsNullOrEmpty(txt_curp.Text.Trim()))
             {
                 if (valida_curp_format(txt_curp.Text))
                 {
@@ -292,7 +292,8 @@ namespace SAES_v1
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                grid_solicitudes_bind();
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validar_campos_solicitud();", true);
             }
 

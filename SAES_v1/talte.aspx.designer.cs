@@ -24,13 +24,13 @@ namespace SAES_v1
         protected global::System.Web.UI.UpdatePanel upd_Campus;
 
         /// <summary>
-        /// Control form_taldi.
+        /// Control form_talte.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_taldi;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_talte;
 
         /// <summary>
         /// Control txt_matricula.
@@ -94,6 +94,24 @@ namespace SAES_v1
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_estatus;
+
+        /// <summary>
+        /// Control lbl_id_pers.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_id_pers;
+
+        /// <summary>
+        /// Control lbl_consecutivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_consecutivo;
 
         /// <summary>
         /// Control btn_talte.

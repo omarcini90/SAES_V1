@@ -193,7 +193,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="ContentPlaceHolder1_txt_f_nac" class="form-label">Fecha Nacimiento</label>
-                            <asp:TextBox ID="txt_f_nac" MaxLength="60" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txt_f_nac"  runat="server" CssClass="form-control"></asp:TextBox>
                             <script>
                                 function ctrl_f_nac() {
                                     $('#ContentPlaceHolder1_txt_f_nac').datepicker({
