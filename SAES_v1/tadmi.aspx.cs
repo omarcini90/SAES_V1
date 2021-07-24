@@ -32,7 +32,35 @@ namespace SAES_v1
                     combo_campus();
                     combo_tipo_ingreso();
                     combo_tasa_financiera();
+                    if (!string.IsNullOrEmpty(Session["matricula"] as string) && !string.IsNullOrEmpty(Session["nombre"] as string) && !string.IsNullOrEmpty(Session["periodo"] as string) && !string.IsNullOrEmpty(Session["campus"] as string) && !string.IsNullOrEmpty(Session["programa"] as string) && !string.IsNullOrEmpty(Session["tipo_ingreso"] as string) && !string.IsNullOrEmpty(Session["tasa"] as string))
+                    {
+                        txt_matricula.Text = Session["matricula"].ToString();
+                        txt_nombre.Text = Session["nombre"].ToString();
+                        if (valida_matricula(txt_matricula.Text))
+                        {
 
+                            if (valida_solicitud(txt_matricula.Text))
+                            {
+                                txt_nombre.Text = nombre_alumno(txt_matricula.Text);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                                grid_solicitud_bind(txt_matricula.Text);
+                            }
+                            else if (txt_matricula.Text.Contains("%"))
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                                grid_solicitud_bind(txt_matricula.Text);
+                            }
+                            else
+                            {
+                                txt_nombre.Text = nombre_alumno(txt_matricula.Text);
+                            }
+
+                        }
+                        else
+                        {
+                            ///Matricula no existe
+                        }
+                    }
                 }
 
             }
@@ -642,5 +670,120 @@ namespace SAES_v1
             }
         }
 
+        protected void simualdor_Click(object sender, EventArgs e)
+        {
+            if (ddl_periodo.SelectedValue != "0" && ddl_Campus.SelectedValue != "0" && ddl_Programa.SelectedValue != "0" && ddl_tipo_ingreso.SelectedValue != "0" && ddl_tasa_f.SelectedValue != "0" && ddl_escuela_pro.SelectedValue != "0" && !String.IsNullOrEmpty(txt_promedio.Text) && ddl_turno.SelectedValue != "0")
+            {
+                Session["matricula"] = txt_matricula.Text;
+                Session["nombre"] = txt_nombre.Text;
+                Session["periodo"] = ddl_periodo.SelectedValue;
+                Session["campus"] = ddl_Campus.SelectedValue;
+                Session["programa"] = ddl_Programa.SelectedValue;
+                Session["tipo_ingreso"] = ddl_tipo_ingreso.SelectedValue;
+                Session["tasa"] = ddl_tasa_f.SelectedValue;
+                elimina_simulador();
+                inserta_simulador();
+                Response.Redirect("tsimu.aspx");
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(txt_matricula.Text))
+                {
+                    grid_solicitud_bind(txt_matricula.Text);
+                }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "remove_class", "remove_class();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "", "validar_campos_solicitud();", true);
+            }
+        }
+
+        protected void elimina_simulador()
+        {
+            string Query_Delete = "delete from  tsimu where tsimu_id='" + txt_matricula.Text + "'" ;
+            MySqlConnection conexion = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
+            conexion.Open();
+            MySqlCommand mysqlcmd = new MySqlCommand(Query_Delete, conexion);
+            mysqlcmd.CommandType = CommandType.Text;
+            try
+            {
+                mysqlcmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string test = ex.Message;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+        protected void inserta_simulador()
+        {
+            string QueryTcomb = " select distinct tcomb_ttasa_clave, tcomb_tcoco_clave from tcomb " +
+                " where tcomb_ttasa_clave='" + ddl_tasa_f.SelectedValue + "'";
+            MySqlConnection conexion = new MySqlConnection(ConfigurationManager.ConnectionStrings["MysqlConnectionStringSAES"].ConnectionString);
+            try
+            {
+                MySqlDataAdapter sqladapter = new MySqlDataAdapter();
+                DataSet dssql1 = new DataSet();
+                MySqlCommand commandsql1 = new MySqlCommand(QueryTcomb, conexion);
+                sqladapter.SelectCommand = commandsql1;
+                sqladapter.Fill(dssql1);
+                sqladapter.Dispose();
+                commandsql1.Dispose();
+
+                for (int i = 0; i < dssql1.Tables[0].Rows.Count; i++)
+                {
+                    string QueryTcuot = " select tcomb_ttasa_clave, tcomb_tcoco_clave, tcuot_importe , tcoco_ind_parc, tcuot_tcamp_clave, " +
+                        " tcuot_tnive_clave,tcuot_tcole_clave, tcuot_tmoda_clave, tcuot_tprog_clave, tcuot_ttiin_clave " +
+                        " from tcomb,tcuot,tprog, tcoco " +
+                        " where tcomb_ttasa_clave = '" + ddl_tasa_f.SelectedValue + "' and tcomb_tcoco_clave = '" + dssql1.Tables[0].Rows[i][1].ToString() + "'" +
+                        " and tcomb_tcoco_clave = tcuot_tcoco_clave and tprog_clave='" + ddl_Programa.SelectedValue + "'" +
+                        " and(tcuot_tcamp_clave = '" + ddl_Campus.SelectedValue + "' or tcuot_tcamp_clave = '000') " +
+                        " and(tcuot_tnive_clave = tprog_tnive_clave or tcuot_tnive_clave = '000') " +
+                        " and(tcuot_tcole_clave = tprog_tcole_clave or tcuot_tcole_clave = '000') " +
+                        " and(tcuot_tmoda_clave = tprog_tmoda_clave or tcuot_tmoda_clave = '000') " +
+                        " and(tcuot_tprog_clave = tprog_clave or tcuot_tprog_clave = '0000000000') " +
+                        " and(tcuot_ttiin_clave = '" + ddl_tipo_ingreso.SelectedValue + "' or tcuot_ttiin_clave = '000') " +
+                        " and tcuot_estatus = 'A' and curdate() between tcuot_inicio and tcuot_fin and tcoco_clave = tcuot_tcoco_clave " +
+                        " order by tcomb_ttasa_clave,tcomb_tcoco_clave,tcuot_tcamp_clave desc, tcuot_tnive_clave desc,tcuot_tcole_clave desc, " +
+                        " tcuot_tmoda_clave desc,tcuot_tprog_clave desc,  tcuot_ttiin_clave desc";
+                    //resultado.Text = resultado.Text + "----" + QueryTcuot;
+
+                    MySqlDataAdapter sqladapter1 = new MySqlDataAdapter();
+
+                    DataSet dssql11 = new DataSet();
+
+                    MySqlCommand commandsql11 = new MySqlCommand(QueryTcuot, conexion);
+                    sqladapter1.SelectCommand = commandsql11;
+                    sqladapter1.Fill(dssql11);
+                    sqladapter1.Dispose();
+                    commandsql11.Dispose();
+
+                    for (int w = 0; w < dssql11.Tables[0].Rows.Count; w++)
+                    {
+                        if (w == 0)
+                        {
+                            string Queryinserta = " insert into tsimu values ('" + txt_matricula.Text + "','" + ddl_tasa_f.SelectedValue + "','" +
+                             dssql1.Tables[0].Rows[i][1].ToString() + "'," + Convert.ToDouble(dssql11.Tables[0].Rows[w][2].ToString()) + ")";
+                            //resultado.Text = resultado.Text + "---" + Queryinserta;
+                            MySqlCommand myCommandinserta = new MySqlCommand(Queryinserta, conexion);
+                            myCommandinserta.ExecuteNonQuery();
+                        }
+                    }
+                    //resultado.Text = QueryTcuot;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string test = ex.Message;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            
+        }
     }
 }

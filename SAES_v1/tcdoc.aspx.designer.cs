@@ -11,71 +11,89 @@ namespace SAES_v1
 {
 
 
-    public partial class tredo
+    public partial class tcdoc
     {
 
         /// <summary>
-        /// Control upd_documentos.
+        /// Control upd_c_documentos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upd_documentos;
+        protected global::System.Web.UI.UpdatePanel upd_c_documentos;
 
         /// <summary>
-        /// Control form_tredo.
+        /// Control back.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_tredo;
+        protected global::System.Web.UI.WebControls.LinkButton back;
 
         /// <summary>
-        /// Control txt_matricula.
+        /// Control form_tcdoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_matricula;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_tcdoc;
 
         /// <summary>
-        /// Control txt_nombre.
+        /// Control ddl_periodo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nombre;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_periodo;
 
         /// <summary>
-        /// Control txt_clave_doc.
+        /// Control ddl_campus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_clave_doc;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_campus;
 
         /// <summary>
-        /// Control txt_documento.
+        /// Control ddl_programa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_documento;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_programa;
 
         /// <summary>
-        /// Control ddl_estatus.
+        /// Control ddl_documento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_estatus;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_documento;
+
+        /// <summary>
+        /// Control ddl_estatus_doc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_estatus_doc;
+
+        /// <summary>
+        /// Control ddl_estatus_sol.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_estatus_sol;
 
         /// <summary>
         /// Control txt_fecha_l.
@@ -87,58 +105,13 @@ namespace SAES_v1
         protected global::System.Web.UI.WebControls.TextBox txt_fecha_l;
 
         /// <summary>
-        /// Control txt_fecha_e.
+        /// Control btn_tcdoc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_fecha_e;
-
-        /// <summary>
-        /// Control consulta_docs.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton consulta_docs;
-
-        /// <summary>
-        /// Control lbl_id_pers.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_id_pers;
-
-        /// <summary>
-        /// Control lbl_consecutivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_consecutivo;
-
-        /// <summary>
-        /// Control lbl_periodo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_periodo;
-
-        /// <summary>
-        /// Control btn_documentos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btn_documentos;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btn_tcdoc;
 
         /// <summary>
         /// Control btn_cancel.
@@ -150,21 +123,21 @@ namespace SAES_v1
         protected global::System.Web.UI.WebControls.Button btn_cancel;
 
         /// <summary>
-        /// Control btn_save.
+        /// Control btn_consultar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
+        protected global::System.Web.UI.WebControls.Button btn_consultar;
 
         /// <summary>
-        /// Control GridDocumentos.
+        /// Control GridCDocumentos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridDocumentos;
+        protected global::System.Web.UI.WebControls.GridView GridCDocumentos;
     }
 }

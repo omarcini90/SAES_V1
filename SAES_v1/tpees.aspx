@@ -158,13 +158,9 @@
                         </div>
                         <div class="col-md-3">
                             <label for="ContentPlaceHolder1_txt_fecha_i" class="form-label">Fecha Inicio</label>
-                            <asp:TextBox ID="txt_fecha_i" runat="server" class="datepicker" data-date-format="/dd/mm/yyyy"></asp:TextBox>
+                            <asp:TextBox ID="txt_fecha_i" runat="server" class="form-control"></asp:TextBox>
                             <script>
                                 function ctrl_fecha_i() {
-                                    $('.datepicker').datepicker({
-                                        format: 'dd/mm/yyyy',
-                                        startDate: '-3d'
-                                    });
                                     $('#ContentPlaceHolder1_txt_fecha_i').datepicker({
                                         uiLibrary: 'bootstrap4',
                                         locale: 'es-es',
@@ -176,13 +172,9 @@
 
                         <div class="col-md-3">
                             <label for="ContentPlaceHolder1_txt_fecha_f" class="form-label">Fecha Fin</label>
-                            <asp:TextBox ID="txt_fecha_f" runat="server" class="datepicker" data-date-format="/dd/mm/yyyy"></asp:TextBox>
+                            <asp:TextBox ID="txt_fecha_f" runat="server" class="form-control"></asp:TextBox>
                             <script>
                                 function ctrl_fecha_f() {
-                                    $('.datepicker').datepicker({
-                                        format: 'dd/mm/yyyy',
-                                        startDate: '-3d'
-                                    });
                                     $('#ContentPlaceHolder1_txt_fecha_f').datepicker({
                                         uiLibrary: 'bootstrap4',
                                         locale: 'es-es',

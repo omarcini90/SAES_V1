@@ -168,18 +168,30 @@
             validar_escuela('ContentPlaceHolder1_ddl_escuela_pro');
             return false;
         }
+
     </script>
     <style>
         .buscar {
             margin-bottom: 20px;
-            margin-top: 25px;
+            margin-top: 26px;
         }
+        .icon_simula{
+            width:100%;
+            text-align:center;
+            border-color:#FFF !important;
+            color:#6c757d !important;
+        }
+        .icon_simula:hover{
+            background-color:#fff !important;
+            color: #26b99a;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="x_title">
         <h2>
-            <img src="Images/Admisiones/curriculum.png" style="width: 30px;" /><small>Catálogo de Campus</small></h2>
+            <img src="Images/Admisiones/curriculum.png" style="width: 30px;" /><small>Solicitud</small></h2>
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
@@ -211,42 +223,41 @@
                             <label for="ContentPlaceHolder1_txt_matricula" class="form-label">Matrícula</label>
                             <asp:TextBox ID="txt_matricula" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txt_matricula_TextChanged"></asp:TextBox><!--Configurar BackEnd la longitud de la BD-->
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <label for="ContentPlaceHolder1_txt_nombre" class="form-label">Nombre</label>
                             <asp:TextBox ID="txt_nombre" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label for="ContentPlaceHolder1_ddl_turno" class="form-label">Turno</label>
                             <asp:DropDownList ID="ddl_turno" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="ContentPlaceHolder1_ddl_periodo" class="form-label">Periodo</label>
                             <asp:DropDownList ID="ddl_periodo" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
-                        <div class="col-md-4">
+                        <div class="w-100"></div>                        
+                        <div class="col-md-3">
                             <label for="ContentPlaceHolder1_ddl_Campus" class="form-label">Campus</label>
                             <asp:DropDownList ID="ddl_Campus" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddl_Campus_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="ContentPlaceHolder1_ddl_Programa" class="form-label">Programa</label>
                             <asp:DropDownList ID="ddl_Programa" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="ContentPlaceHolder1_ddl_tipo_ingreso" class="form-label">Tipo de ingreso</label>
                             <asp:DropDownList ID="ddl_tipo_ingreso" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="ContentPlaceHolder1_ddl_tasa_f" class="form-label">Tasa Financiera</label>
                             <asp:DropDownList ID="ddl_tasa_f" runat="server" CssClass="form-control"></asp:DropDownList>
                         </div>
+                        <div class="w-100"></div>
                         <div class="col-md-4">
                             <label for="ContentPlaceHolder1_lbl_estatus_sol" class="form-label">Estatus</label>
                             <asp:TextBox ID="txt_estatus_sol" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                         </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-3 input-group">
+                        <div class="col-md-4 input-group">
                             <div class="form-outline" runat="server" id="search">
                                 <label for="ContentPlaceHolder1_txt_escuela_pro" class="form-label">Escuela de Procedencia</label>
                                 <asp:TextBox ID="txt_escuela_pro" runat="server" CssClass="form-control"></asp:TextBox>
@@ -259,9 +270,13 @@
                             </div>
                             <asp:LinkButton ID="cancelar" runat="server" CssClass="btn btn-secondary buscar" Visible="false" OnClick="cancelar_Click"><i class="fas fa-undo"></i></asp:LinkButton>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label for="ContentPlaceHolder1_txt_promedio" class="form-label">Promedio Anterior</label>
                             <asp:TextBox ID="txt_promedio" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-2" style="text-align:center;">
+                            <label for="ContentPlaceHolder1_simualdor" class="form-label">Simulador de Estado de Cuenta</label>
+                            <asp:LinkButton ID="simualdor" runat="server" CssClass="icon_simula btn btn-link" OnClick="simualdor_Click"><i class="fas fa-file-invoice-dollar fa-2x"></i></asp:LinkButton>
                         </div>
                         <asp:Label ID="lbl_id_pers" runat="server" Text="" Visible="false"></asp:Label>
                         <asp:Label ID="lbl_consecutivo" runat="server" Text="" Visible="false"></asp:Label>

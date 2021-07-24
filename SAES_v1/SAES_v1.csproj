@@ -125,8 +125,16 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Images\Admisiones\agregar-usuario.png" />
+    <Content Include="Images\Admisiones\buscar.png" />
+    <Content Include="Images\Admisiones\correo-electronico.png" />
     <Content Include="Images\Admisiones\curriculum.png" />
+    <Content Include="Images\Admisiones\dosier.png" />
+    <Content Include="Images\Admisiones\lucro.png" />
+    <Content Include="Images\Admisiones\tarjeta_usuario.png" />
+    <Content Include="Images\Admisiones\expediente.png" />
+    <Content Include="Images\Admisiones\mapa.png" />
     <Content Include="Images\Admisiones\solicitud.png" />
+    <Content Include="Images\Admisiones\telefono.png" />
     <Content Include="Images\Dashboard\dashboard.png" />
     <Content Include="Images\Generales\editar.png" />
     <Content Include="Images\Generales\hacer-clic.png" />
@@ -169,6 +177,7 @@
     <Content Include="tapba.aspx" />
     <Content Include="tarea.aspx" />
     <Content Include="tbanc.aspx" />
+    <Content Include="tcdoc.aspx" />
     <Content Include="tcier.aspx" />
     <Content Include="tcoba.aspx" />
     <Content Include="tcoco.aspx" />
@@ -3929,6 +3938,7 @@
     <Content Include="tpred.aspx" />
     <Content Include="tpron.aspx" />
     <Content Include="tredo.aspx" />
+    <Content Include="tsimu.aspx" />
     <Content Include="tstal.aspx" />
     <Content Include="tstdo.aspx" />
     <Content Include="tstso.aspx" />
@@ -3987,6 +3997,13 @@
     </Compile>
     <Compile Include="tbanc.aspx.designer.cs">
       <DependentUpon>tbanc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tcdoc.aspx.cs">
+      <DependentUpon>tcdoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tcdoc.aspx.designer.cs">
+      <DependentUpon>tcdoc.aspx</DependentUpon>
     </Compile>
     <Compile Include="tcier.aspx.cs">
       <DependentUpon>tcier.aspx</DependentUpon>
@@ -4470,6 +4487,13 @@
     </Compile>
     <Compile Include="tredo.aspx.designer.cs">
       <DependentUpon>tredo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tsimu.aspx.cs">
+      <DependentUpon>tsimu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tsimu.aspx.designer.cs">
+      <DependentUpon>tsimu.aspx</DependentUpon>
     </Compile>
     <Compile Include="tstal.aspx.cs">
       <DependentUpon>tstal.aspx</DependentUpon>

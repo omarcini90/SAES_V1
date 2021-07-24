@@ -118,7 +118,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="x_title">
         <h2>
-            <img src="Images/Admisiones/curriculum.png" style="width: 30px;" /><small>Catálogo de Campus</small></h2>
+            <img src="Images/Admisiones/correo-electronico.png" style="width: 30px;" /><small>Correo Electrónico</small></h2>
         <div class="clearfix"></div>
     </div>
     <div class="x_content">
